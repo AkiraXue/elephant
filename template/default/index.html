@@ -1,0 +1,251 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?11" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?11" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css" />
+
+<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/mCustomScrollbar.js"></script>
+
+<script>
+	window['adaptive'].desinWidth = 750;
+	window['adaptive'].init();
+</script>
+
+<style>
+	@media (max-width: 768px) {
+		.dcHead .navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light.png);}
+	}
+
+</style>
+
+<div class="dcWrap">
+
+	<!-- nav start -->
+	{include file=comm/nav.html}
+	<!-- nav stop -->
+
+	<!-- banner start -->
+	{include file=index/banner.html}
+	<!-- banner stop -->
+
+	<!-- recommend start -->
+	{include file=index/recommend.html}
+	<!-- recommend stop -->
+
+	<!-- recommend video start -->
+	<div class="videoBox hidden">
+		<video id="myVideo" class="myvideo" src="{pboot:sitetplpath}/img/index/video.mp4" poster="{pboot:sitetplpath}/img/index/video.png"
+			   x5-playsinline="" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true"
+			   x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"
+			   autoplay="" loop="" muted="muted">您的浏览器不支持 video 标签。</video>
+	</div>
+	<!-- recommend video stop  -->
+
+	<!-- scientific start -->
+	{include file=index/scientific.html}
+	<!-- scientific stop -->
+
+</div>
+
+<script type="text/javascript">
+	var mySwiper;
+	$(function() {
+		var clientWidth = $(window).width();
+		if (clientWidth > 768) {
+			$(document).off('click.bs.dropdown.data-api');
+			$('.videoBox').removeClass('hidden');
+		} else {
+			$(document).on('click.bs.dropdown.data-api', function(){
+				var isExpand = $('#navbar-collapse').attr('aria-expanded');
+				if (isExpand == 'true') {
+					$('.navbar-header').css({'background-color': '#ffffff'});
+					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
+					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
+				} else {
+					$('.navbar-header').css({'background-color': ''});
+					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_light.png)', "display": 'none'});
+					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
+				}
+			});
+			$('.videoBox').addClass('hidden');
+			$('#myVideo').stop().hide(0);
+		}
+
+		var _md = getUrlParam("md");
+		if (_md == 0) {
+			$(".ibody").css("top", "0");
+			$(".loadding").hide();
+		} else {
+			var winw = $(window).width();
+			if (winw > 1024) {
+				var userAgent = navigator.userAgent; // 谷歌浏览器不能自动播放，需要有交互事件，判断为谷歌浏览器，执行其他方式。
+				if (userAgent.indexOf("Chrome") > -1) {
+					$(".loadding-a").show();
+					$(".loadding").click(function() {
+						vkp();
+						$(".loadding-a").fadeOut();
+					})
+
+				} else {
+					vkp();
+				}
+			}
+		}
+
+		window.onresize = function(){
+			var clientWidth = $(window).width();
+			if (clientWidth > 768) {
+				$(document).off('click.bs.dropdown.data-api');
+				$('.videoBox').removeClass('hidden');
+			} else {
+				$(document).on('click.bs.dropdown.data-api', function(){
+					var isExpand = $('#navbar-collapse').attr('aria-expanded');
+					if (isExpand == 'true') {
+						$('.navbar-header').css({'background-color': '#ffffff'});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
+						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
+					} else {
+						$('.navbar-header').css({'background-color': ''});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_light.png)', "display": 'none'});
+						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
+					}
+				});
+				$('.videoBox').addClass('hidden');
+				$('#myVideo').stop().hide(0);
+			}
+
+			var _md = getUrlParam("md");
+			if (_md == 0) {
+				$(".ibody").css("top", "0");
+				$(".loadding").hide();
+			} else {
+				var winw = $(window).width();
+				if (winw > 1024) {
+					var userAgent = navigator.userAgent; // 谷歌浏览器不能自动播放，需要有交互事件，判断为谷歌浏览器，执行其他方式。
+					if (userAgent.indexOf("Chrome") > -1) {
+						$(".loadding-a").show();
+						$(".loadding").click(function() {
+							vkp();
+							$(".loadding-a").fadeOut();
+						})
+
+					} else {
+						vkp();
+					}
+				}
+			}
+
+			mySwiper.destroy();
+			initProductSwiper();
+
+			setTimeout(function() {
+				$(".wfull-video").stop().hide(0);
+				$('.ibanner-span-cont .swiper-pagination').show();
+				var myiban = new Swiper('.ibanner-pc', {
+					pagination: '.ibanner-span-pc',
+					loop: true,
+					autoplayDisableOnInteraction: false,
+					paginationClickable: true,
+					speed: 800,
+					autoplay: 4000
+				});
+			}, 5000)
+		};
+
+		window.onload = function() {
+			setTimeout(function() {
+				$(".wfull-video").stop().hide(0);
+				$('.ibanner-span-cont .swiper-pagination').show();
+				var myiban = new Swiper('.ibanner-pc', {
+					pagination: '.ibanner-span-pc',
+					loop: true,
+					autoplayDisableOnInteraction: false,
+					paginationClickable: true,
+					speed: 800,
+					autoplay: 4000
+				});
+			}, 5000)
+		};
+
+		var myiban = new Swiper('.ibanner-m', {
+			pagination: '.ibanner-span-m',
+			loop: true,
+			autoplayDisableOnInteraction: false,
+			paginationClickable: true,
+			speed: 800,
+			autoplay: 4000
+		});
+
+		var video = document.getElementById("loadding-video");
+		video.addEventListener('ended', function() {
+			$(".loadding").fadeOut(500);
+			$(".ibody").fadeIn(500);
+		}, false);
+
+		// initBannerSwiper();
+
+		// $('#productMenu .menuItem').on('click', function(){
+		// 	$(this).addClass('active').siblings().removeClass('active');
+		// 	var key = $(this).attr('data-key');
+		// 	var len = $('#product').find('.swiper-slide').length;
+		// 	$('#product').find('.swiper-slide').each(function(index, item){
+		// 		if (index >= (key * 4) && index <= (key * 4 + 3)) {
+		// 			$(item).show();
+		// 		}  else {
+		// 			$(item).hide();
+		// 		}
+		// 	})
+		// 	initProductSwiper();
+		// })
+
+		// initProduct();
+		initProductSwiper();
+	});
+
+	function initProduct() {
+		var key = 0;
+		$('#productMenu .menuItem').eq(0).addClass('active').siblings().removeClass('active');
+		var len = $('#product').find('.swiper-slide').length;
+		$('#product').find('.swiper-slide').each(function(index, item){
+			if (index >= (key * 4) && index <= (key * 4 + 3)) {
+				$(item).show();
+			}  else {
+				$(item).hide();
+			}
+		});
+		initProductSwiper();
+	}
+	function vkp() {
+		var myVideo = document.getElementById('loadding-video');
+		myVideo.play();
+
+	}
+
+	// banner轮播
+	function initBannerSwiper() {
+		var mySwiper = new Swiper('#banner', {
+			autoplay: 5000, //可选选项，自动滑动
+			pagination: '.swiper-pagination',
+			loop: true,
+		})
+	}
+
+	function initProductSwiper() {
+		var clientWidth = $(window).width();
+		var slidesPerView = 3;
+		if (clientWidth <= 768) slidesPerView = '1.2';
+		mySwiper = new Swiper('#product', {
+			autoplay: 5000, //可选选项，自动滑动
+			loop: true,
+			slidesPerView: slidesPerView,
+			spaceBetween: 24,
+			prevButton: '#leftarrow',
+			nextButton: '#rightarrow',
+		})
+	}
+</script>
+
+{include file=comm/footer1.html}

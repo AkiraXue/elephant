@@ -1,0 +1,23 @@
+<div class="mainProductBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="mainProductCon">
+        <div class="titleBox clearfix">
+            <div class="title" style="text-align: center;">主推系列</div>
+        </div>
+        <div class="swiper-container productSwiper" id="product">
+            <div class="swiper-wrapper">
+
+                {pboot:list scode=1  filter=isrecommend|1}
+                <div class="swiper-slide" style="width: 30%">
+                    <a href="[list:link]">
+                        <img class="swiperProduct" src="[list:ext_pic]" />
+                        <span class="swiperText">[list:sortname]</span>
+                    </a>
+                </div>
+                {/pboot:list}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <img id="leftarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+        <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+    </div>
+</div>
