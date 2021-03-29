@@ -14,11 +14,111 @@ $(function() {
 			a.click();
 		}
 	});
+
+	var clientWidth = $(window).width();
+	if (clientWidth > 768) {
+		var headH = $('.pcHead').height();
+		$('.pcHead .menuListBox').css({ "top": headH});
+
+		var scrollFunc = function (e) {
+			e = e || window.event;
+			if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件
+				if (e.wheelDelta > 0) { //当滑轮向上滚动时
+					console.log("滑轮向上滚动");
+					$('.menuBox').css({opacity: 1, height: '41px',});
+				}
+				if (e.wheelDelta < 0) { //当滑轮向下滚动时
+					console.log("滑轮向下滚动");
+					$('.menuBox').css({opacity: 0, height: 0});
+				}
+			} else if (e.detail) { //Firefox滑轮事件
+				if (e.detail> 0) { //当滑轮向上滚动时
+					console.log("滑轮向上滚动");
+					$('.menuBox').css({opacity: 1, height: '41px'});
+				}
+				if (e.detail< 0) { //当滑轮向下滚动时
+					console.log("滑轮向下滚动");
+					$('.menuBox').css({opacity: 0, height: 0});
+				}
+			}
+		}
+		//给页面绑定滑轮滚动事件
+		if (document.addEventListener) {//firefox
+			document.addEventListener('DOMMouseScroll', scrollFunc, false);
+		}
+		//滚动滑轮触发scrollFunc方法 //ie 谷歌
+		window.onmousewheel = document.onmousewheel = scrollFunc;
+
+		$('.pcHead .hSearch').on('click', function(){
+			var pDom = $('.pcHead .hSearchBox');
+			if (!pDom.hasClass('on')) {
+				pDom.addClass('on');
+			} else {
+				console.log('搜索');
+			}
+		});
+	} else {
+		$('.mCollapse').on('click', function(){
+			$('.mSearchContainer').hide();
+			if (!$(this).hasClass('on')) {
+				$('.mHead').addClass('on');
+				$(this).addClass('on').siblings().removeClass('on');
+				$('.mCollapseMenuBox').toggle();
+			} else {
+				$('.mHead').removeClass('on');
+				$(this).removeClass('on');
+				$('.mCollapseMenuBox').toggle();
+			}
+
+		});
+		$('.mSearchBox').on('click', function(){
+			$('.mCollapseMenuBox').hide();
+			if (!$(this).hasClass('on')) {
+				$('.mHead').addClass('on');
+				$(this).addClass('on').siblings().removeClass('on');
+				$('.mSearchContainer').toggle();
+			} else {
+				$('.mHead').removeClass('on');
+				$(this).removeClass('on');
+				$('.mSearchContainer').toggle();
+			}
+
+		});
+
+		$(window).scroll(function() {
+			var wtop = $(window).scrollTop();
+			if (wtop > 60) {
+				$('.mHead').addClass('on');
+			} else {
+				$('.mHead').removeClass('on');
+			}
+
+			$('.mCollapse').removeClass('on');
+			$('.mSearchBox').removeClass('on');
+			$('.mCollapseMenuBox').hide();
+			$('.mSearchContainer').hide();
+		});
+	}
+
+
 });
+
+function setSubNavHeight(obj) {
+	var navMaxH = $('.dropdown-pc > .dropdown-menu > li').size() * 34 + 10;
+	var subNavMaxH = $(obj).parent().find('.dropdown-menu li').size() * 34 + 10;
+	if (navMaxH < subNavMaxH) {
+		$('.dropdown-pc > .dropdown-menu').css({'height': subNavMaxH});
+		$(obj).parent().find('.dropdown-menu').css({'height': subNavMaxH});
+	} else  {
+		$('.dropdown-pc > .dropdown-menu').css({'height': navMaxH});
+		$(obj).parent().find('.dropdown-menu').css({'height': navMaxH});
+	}
+}
 
 // 导航效果
 function head() {
 	var onk = false;
+
 	if ($("header").hasClass("on")) {
 		return false
 	} else {

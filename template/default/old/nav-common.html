@@ -1,0 +1,89 @@
+<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js"></script>
+
+<div class="dcHead">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{pboot:sitepath}/">
+                    <div class="logoImg"></div>
+                </a>
+            </div>
+            <div class="navbar-left leftcollapse">
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown-m"><a href="{pboot:sitepath}/stars">明星产品</a></li>
+                        <li class="dropdown dropdown-pc">
+                            <a href="{pboot:sitepath}/stars" class="dropdown-toggle" data-toggle="dropdown">
+                                明星产品
+                            </a>
+                            <ul class="dropdown-menu">
+                                {pboot:nav parent=1}
+                                <li class="dropdown dropdown-menu-parent">
+                                    <a class="dropdown-toggle" href="[nav:link]?md=[nav:scode]" data-toggle="dropdown">
+                                        [nav:name]
+                                        <i class="fa fa-angle-right pull-right"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-child" data-scode="[nav:scode]">
+                                        {pboot:2nav parent=[nav:scode]}
+                                        <li><a href="[2nav:link]?md=[nav:scode]&nd=[2nav:scode]">[2nav:name]</a></li>
+                                        {/pboot:2nav}
+                                    </ul>
+                                </li>
+                                {/pboot:nav}
+
+                            </ul>
+                        </li>
+
+
+                        <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
+
+                        <li class="dropdown-m"><a href="{pboot:sitepath}/about">关于小象</a></li>
+                        <li class="dropdown dropdown-pc">
+                            <a href="{pboot:sitepath}/about" class="dropdown-toggle" data-toggle="dropdown">
+                                关于小象
+                            </a>
+                            <ul class="dropdown-menu">
+                                {pboot:nav parent=3}
+                                <li><a href="{pboot:sitepath}/about?md=[nav:n]">[nav:name]</a></li>
+                                {/pboot:nav}
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                                天猫旗舰店
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-right searchBox">
+                <form action="{pboot:scaction}"  method="get">
+                    <input class="searchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
+                    <i class="searchIcon fa fa-search"></i>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        var winh = $(window).height();
+        var navh = $(".swiper-container").height();
+
+        $(window).scroll(function() {
+            var wtop = $(window).scrollTop();
+
+        });
+    })
+</script>

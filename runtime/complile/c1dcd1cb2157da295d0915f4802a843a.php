@@ -12,15 +12,15 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?26" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?26" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?26" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?26" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?34" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?31" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?1"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -33,10 +33,9 @@
 	</script>
 	<body>
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?11" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?11" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?31" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
 <script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
 <script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
@@ -49,90 +48,167 @@
 
 <style>
 	@media (max-width: 768px) {
-		.dcHead .navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light.png);}
+		.navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light.png);}
 	}
-
 </style>
+
 
 <div class="dcWrap">
 
 	<!-- nav start -->
-	<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js"></script>
+	
+<!-- nav pc start -->
+<!-- pc端nav效果 -->
+<div class="dcHead pcHead">
+    <div class="headCon">
 
-<div class="dcHead">
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header navbar-left">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-					<span class="sr-only">切换导航</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="{pboot:sitepath}/">
-					<div class="logoImg"></div>
-				</a>
-			</div>
-			<div class="navbar-left leftcollapse">
-				<div class="navbar-collapse collapse" id="navbar-collapse">
-					<ul class="nav navbar-nav">
+        <!-- logo -->
+        <div class="logoBox">
+            <a href="{pboot:sitepath}/">
+                <span class="logo"></span>
+            </a>
+        </div>
 
-						<li class="dropdown-m"><a href="{pboot:sitepath}/stars">明星产品</a></li>
-						<li class="dropdown dropdown-pc">
-							<a href="{pboot:sitepath}/stars" class="dropdown-toggle" data-toggle="dropdown">
-								明星产品
-							</a>
-							<ul class="dropdown-menu">
-								{pboot:nav parent=1}
-								<li class="dropdown dropdown-menu-parent">
-									<a class="dropdown-toggle" href="[nav:link]?md=[nav:scode]" data-toggle="dropdown">
-										[nav:name]
-										 <i class="fa fa-angle-right pull-right"></i>
-									</a>
-									<ul class="dropdown-menu dropdown-menu-child" data-scode="[nav:scode]">
-										{pboot:2nav parent=[nav:scode]}
-										<li><a href="[2nav:link]?md=[nav:scode]&nd=[2nav:scode]">[2nav:name]</a></li>
-										{/pboot:2nav}
-									</ul>
-								</li>
-								{/pboot:nav}
+        <!-- nav -->
+        <div class="menuBox">
+            <ul class="menuCon">
+                <li class="menuItem productMenu">
+                    <a href="{pboot:sitepath}/stars">明星产品</a>
+                    <div class="menuListBox">
+                        <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
 
-							</ul>
-						</li>
+                            {pboot:nav parent=1}
+                            <ul class="menuList">
+                                <li class="listTitle" data-link="[nav:link]?md=[nav:scode]">
+                                    <img src="[nav:ico]" />
+                                    [nav:name]
+                                </li>
 
+                                {pboot:2nav parent=[nav:scode]}
+                                <li><a href="[2nav:link]?md=[nav:scode]&nd=[2nav:scode]">[2nav:name]</a></li>
+                                {/pboot:2nav}
+                            </ul>
+                            {/pboot:nav}
 
-						<li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
+                        </div>
+                    </div>
+                </li>
+                <li class="menuItem">
+                    <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
+                </li>
+                <li class="menuItem dropdown">
+                    <a  href="{pboot:sitepath}/about">关于小象</a>
+                    <ul class="dropdown-menu">
 
-						<li class="dropdown-m"><a href="{pboot:sitepath}/about">关于小象</a></li>
-						<li class="dropdown dropdown-pc">
-							<a href="{pboot:sitepath}/about" class="dropdown-toggle" data-toggle="dropdown">
-								关于小象
-							</a>
-							<ul class="dropdown-menu">
-								{pboot:nav parent=3}
-								<li><a href="{pboot:sitepath}/about?md=[nav:n]">[nav:name]</a></li>
-								{/pboot:nav}
-							</ul>
-						</li>
+                        {pboot:nav parent=3}
+                        <li><a href="{pboot:sitepath}/about?md=[nav:n]">[nav:name]</a></li>
+                        {/pboot:nav}
 
-						<li class="">
-							<a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
-								天猫旗舰店
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="navbar-right searchBox">
-				<form action="{pboot:scaction}"  method="get">
-					<input class="searchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
-					<i class="searchIcon fa fa-search"></i>
-				</form>
-			</div>
-		</div>
-	</nav>
+                    </ul>
+                </li>
+                <li class="menuItem">
+                    <a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                        天猫旗舰店
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- h search -->
+        <form action="{pboot:scaction}"  method="get" class="hSearchCon">
+            <div class="hSearchBox">
+                <input class="hSearchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
+                <div class="hSearch"></div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var clientWidth = $(window).width();
+        if (clientWidth > 768) {
+            $('.videoBox').removeClass('hidden');
+
+            var bannerH = $('.ibanner-pc').height();
+
+            $(window).scroll(function() {
+                var wtop = $(window).scrollTop();
+                if (wtop > bannerH -30) {
+                    $('.pcHead').addClass('on');
+                } else {
+                    $('.pcHead').removeClass('on');
+                }
+            });
+
+        } else {
+
+            $(window).scroll(function() {
+                var wtop = $(window).scrollTop();
+                if (wtop > 60) {
+                    $('.mHead').addClass('on');
+                } else {
+                    $('.mHead').removeClass('on');
+                }
+
+                $('.mCollapse').removeClass('on');
+                $('.mSearchBox').removeClass('on');
+
+                $('.mCollapseMenuBox').hide();
+                $('.mSearchContainer').hide();
+
+            });
+
+            $('.videoBox').addClass('hidden');
+
+            $('#myVideo').stop().hide(0);
+        }
+
+        $('.menuTitle').on('click', function () {
+            $('.mHead').addClass('on');
+        });
+
+    });
+
+</script>
+<!-- nav pc stop -->
+
+<!-- nav mobile start -->
+<!-- 移动端nav效果 -->
+<div class="dcHead mHead">
+    <div class="mNavBox">
+        <div class="mCollapse"></div>
+        <div class="mLogoBox"><a href="{pboot:sitepath}/"></a></div>
+        <div class="mSearchBox"></div>
+    </div>
+    <div class="mCollapseMenuBox">
+        <ul class="mCollapseMenu">
+            <li class=""><a href="{pboot:sitepath}/stars">明星产品</a></li>
+            <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
+            <li class=""><a href="{pboot:sitepath}/about">关于小象</a></li>
+            <li class="">
+                <a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                    天猫旗舰店
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mSearchContainer">
+        <div class="mSearchCon">
+            <form action="{pboot:scaction}"  method="get">
+                <div class="mSearchItem">
+                    <input type="text" name="title" placeholder="请输入搜索内容" />
+                    <img src="img/search_d.png" />
+                </div>
+            </form>
+        </div>
+    </div>
 
 </div>
+<!-- nav mobile stop -->
+
 	<!-- nav stop -->
 
 	<!-- banner start -->
@@ -185,7 +261,7 @@
 <div class="swiper-container ibanner ibanner-m swiper-container-horizontal">
     <div class="swiper-wrapper">
 
-        {pboot:list scode=1  filter=isheadline|1}
+        {pboot:list scode=1 filter=isheadline|1}
         <div class="swiper-slide" style="background-image: url([list:ext_banner]);">
             <a href="[list:link]">
                 <div class="ibanner-div"></div>
@@ -217,11 +293,15 @@
         <div class="swiper-container productSwiper" id="product">
             <div class="swiper-wrapper">
 
-                {pboot:list scode=1  filter=isrecommend|1}
-                <div class="swiper-slide" style="width: 30%">
-                    <a href="[list:link]">
-                        <img class="swiperProduct" src="[list:ext_pic]" />
-                        <span class="swiperText">[list:sortname]</span>
+                {pboot:list scode=1 filter=isrecommend|1 order='sorting asc'}
+                <div class="swiper-slide" style="background-image:url([list:ext_bg_img]);">
+                    <a href="[list:link]" style="display: block;">
+                        <div class="product-recommend-img">
+                            <img class="swiperProduct" src="[list:ext_pic]"/>
+                        </div>
+                        <div class="product-recommend-txt">
+                            <span class="swiperText">[list:sortname]</span>
+                        </div>
                     </a>
                 </div>
                 {/pboot:list}
@@ -232,6 +312,29 @@
         <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
     </div>
 </div>
+
+<style>
+    .productSwiper .swiper-slide {
+        width: 30%;
+        -moz-background-size:100% 100%;
+        background-size:100% 100%;
+    }
+    .product-recommend-img {
+        overflow: hidden;
+        text-align: center;
+    }
+    .product-recommend-img img{
+        padding: 10% 13% 16% 13%;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    .productSwiper .swiper-slide:hover .product-recommend-img img {
+        transform: scale(1.08);
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+</style>
 
 	<!-- recommend stop -->
 
@@ -261,10 +364,10 @@
                             <div class="detailTitle"><span class="num">35</span> 个</div>
                             <div class="detailLabel">日本医药部外品</div>
                         </div>
-                        <div class="col-lg-4 col-xs-4">
-                            <div class="detailTitle"><span class="num">11</span> 个</div>
-                            <div class="detailLabel">韩国功能性化妆品</div>
-                        </div>
+<!--                        <div class="col-lg-4 col-xs-4">-->
+<!--                            <div class="detailTitle"><span class="num">11</span> 个</div>-->
+<!--                            <div class="detailLabel">韩国功能性化妆品</div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -281,26 +384,6 @@
 <script type="text/javascript">
 	var mySwiper;
 	$(function() {
-		var clientWidth = $(window).width();
-		if (clientWidth > 768) {
-			$(document).off('click.bs.dropdown.data-api');
-			$('.videoBox').removeClass('hidden');
-		} else {
-			$(document).on('click.bs.dropdown.data-api', function(){
-				var isExpand = $('#navbar-collapse').attr('aria-expanded');
-				if (isExpand == 'true') {
-					$('.navbar-header').css({'background-color': '#ffffff'});
-					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
-					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
-				} else {
-					$('.navbar-header').css({'background-color': ''});
-					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_light.png)', "display": 'none'});
-					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
-				}
-			});
-			$('.videoBox').addClass('hidden');
-			$('#myVideo').stop().hide(0);
-		}
 
 		var _md = getUrlParam("md");
 		if (_md == 0) {
@@ -313,11 +396,13 @@
 				if (userAgent.indexOf("Chrome") > -1) {
 					$(".loadding-a").show();
 					$(".loadding").click(function() {
+						$('.dcHead').hide();
 						vkp();
 						$(".loadding-a").fadeOut();
 					})
 
 				} else {
+					$('.dcHead').hide();
 					vkp();
 				}
 			}
@@ -381,8 +466,7 @@
 					autoplay: 4000
 				});
 			}, 5000)
-		};
-
+		}
 		window.onload = function() {
 			setTimeout(function() {
 				$(".wfull-video").stop().hide(0);
@@ -396,7 +480,9 @@
 					autoplay: 4000
 				});
 			}, 5000)
-		};
+
+
+		}
 
 		var myiban = new Swiper('.ibanner-m', {
 			pagination: '.ibanner-span-m',
@@ -431,7 +517,7 @@
 
 		// initProduct();
 		initProductSwiper();
-	});
+	})
 
 	function initProduct() {
 		var key = 0;
@@ -443,7 +529,7 @@
 			}  else {
 				$(item).hide();
 			}
-		});
+		})
 		initProductSwiper();
 	}
 	function vkp() {
@@ -455,7 +541,7 @@
 	// banner轮播
 	function initBannerSwiper() {
 		var mySwiper = new Swiper('#banner', {
-			autoplay: 5000, //可选选项，自动滑动
+			// autoplay: 5000, //可选选项，自动滑动
 			pagination: '.swiper-pagination',
 			loop: true,
 		})
@@ -503,9 +589,11 @@
 </html>
 <?php return array (
   0 => '/data/wwwroot/default/template/default/comm/header.html',
-  1 => '/data/wwwroot/default/template/default/comm/nav.html',
+  1 => '/data/wwwroot/default/template/default/comm/nav-common.html',
   2 => '/data/wwwroot/default/template/default/index/banner.html',
   3 => '/data/wwwroot/default/template/default/index/recommend.html',
   4 => '/data/wwwroot/default/template/default/index/scientific.html',
   5 => '/data/wwwroot/default/template/default/comm/footer1.html',
+  6 => '/data/wwwroot/default/template/default/comm/nav-pc.html',
+  7 => '/data/wwwroot/default/template/default/comm/nav-m.html',
 ); ?>

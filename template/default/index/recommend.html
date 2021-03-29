@@ -6,11 +6,15 @@
         <div class="swiper-container productSwiper" id="product">
             <div class="swiper-wrapper">
 
-                {pboot:list scode=1  filter=isrecommend|1}
-                <div class="swiper-slide" style="width: 30%">
-                    <a href="[list:link]">
-                        <img class="swiperProduct" src="[list:ext_pic]" />
-                        <span class="swiperText">[list:sortname]</span>
+                {pboot:list scode=1 filter=isrecommend|1 order='sorting asc'}
+                <div class="swiper-slide" style="background-image:url([list:ext_bg_img]);">
+                    <a href="[list:link]" style="display: block;">
+                        <div class="product-recommend-img">
+                            <img class="swiperProduct" src="[list:ext_pic]"/>
+                        </div>
+                        <div class="product-recommend-txt">
+                            <span class="swiperText">[list:sortname]</span>
+                        </div>
                     </a>
                 </div>
                 {/pboot:list}
@@ -21,3 +25,26 @@
         <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
     </div>
 </div>
+
+<style>
+    .productSwiper .swiper-slide {
+        width: 30%;
+        -moz-background-size:100% 100%;
+        background-size:100% 100%;
+    }
+    .product-recommend-img {
+        overflow: hidden;
+        text-align: center;
+    }
+    .product-recommend-img img{
+        padding: 10% 13% 16% 13%;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    .productSwiper .swiper-slide:hover .product-recommend-img img {
+        transform: scale(1.08);
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+</style>

@@ -1,9 +1,8 @@
 {include file=comm/header.html}
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?11" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?11" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?31" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
 <script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
 <script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
@@ -16,15 +15,15 @@
 
 <style>
 	@media (max-width: 768px) {
-		.dcHead .navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light.png);}
+		.navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light.png);}
 	}
-
 </style>
+
 
 <div class="dcWrap">
 
 	<!-- nav start -->
-	{include file=comm/nav.html}
+	{include file=comm/nav-common.html}
 	<!-- nav stop -->
 
 	<!-- banner start -->
@@ -53,26 +52,6 @@
 <script type="text/javascript">
 	var mySwiper;
 	$(function() {
-		var clientWidth = $(window).width();
-		if (clientWidth > 768) {
-			$(document).off('click.bs.dropdown.data-api');
-			$('.videoBox').removeClass('hidden');
-		} else {
-			$(document).on('click.bs.dropdown.data-api', function(){
-				var isExpand = $('#navbar-collapse').attr('aria-expanded');
-				if (isExpand == 'true') {
-					$('.navbar-header').css({'background-color': '#ffffff'});
-					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
-					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
-				} else {
-					$('.navbar-header').css({'background-color': ''});
-					$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_light.png)', "display": 'none'});
-					$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
-				}
-			});
-			$('.videoBox').addClass('hidden');
-			$('#myVideo').stop().hide(0);
-		}
 
 		var _md = getUrlParam("md");
 		if (_md == 0) {
@@ -85,11 +64,13 @@
 				if (userAgent.indexOf("Chrome") > -1) {
 					$(".loadding-a").show();
 					$(".loadding").click(function() {
+						$('.dcHead').hide();
 						vkp();
 						$(".loadding-a").fadeOut();
 					})
 
 				} else {
+					$('.dcHead').hide();
 					vkp();
 				}
 			}
@@ -153,8 +134,7 @@
 					autoplay: 4000
 				});
 			}, 5000)
-		};
-
+		}
 		window.onload = function() {
 			setTimeout(function() {
 				$(".wfull-video").stop().hide(0);
@@ -168,7 +148,9 @@
 					autoplay: 4000
 				});
 			}, 5000)
-		};
+
+
+		}
 
 		var myiban = new Swiper('.ibanner-m', {
 			pagination: '.ibanner-span-m',
@@ -203,7 +185,7 @@
 
 		// initProduct();
 		initProductSwiper();
-	});
+	})
 
 	function initProduct() {
 		var key = 0;
@@ -215,7 +197,7 @@
 			}  else {
 				$(item).hide();
 			}
-		});
+		})
 		initProductSwiper();
 	}
 	function vkp() {
@@ -227,7 +209,7 @@
 	// banner轮播
 	function initBannerSwiper() {
 		var mySwiper = new Swiper('#banner', {
-			autoplay: 5000, //可选选项，自动滑动
+			// autoplay: 5000, //可选选项，自动滑动
 			pagination: '.swiper-pagination',
 			loop: true,
 		})

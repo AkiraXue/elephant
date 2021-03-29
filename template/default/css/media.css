@@ -16,6 +16,8 @@
 	.nav > li:hover > .dropdown-menu > li.dropdown:hover > .dropdown-menu{ display: block; transition: all .3s;}
 	.nav > li.dropdown > .dropdown-menu > li.dropdown > .dropdown-menu{ left: 100%; top: 0;}
 	.nav .fa{line-height: 26px; margin-right: -10px;}
+	.dcHead.pcHead{ display: block;}
+	.dcHead.mHead{ display: none;}
 }
 @media (max-width: 767px) {
 	.dcHead{ position: fixed;}
@@ -58,15 +60,15 @@
 	.dcFooter .footBox .footImg{ width: fit-content; float: none; display: block; height: 32px; margin: 0 auto;}
 
 
-	.dcMenu{ width: 100%; margin: 0 auto; margin-top: 63px; padding: 20px;}
-	.dcMenu .menuTitle{ padding: 10px 0}
+	.dcMenu{ width: 100%; margin: 0 auto; margin-top: 60px; padding: 20px;}
+	.dcMenu .menuTitle{ padding: 10px 0; background-position: right 18px;}
 	.dcMenu .menuListBox{ display: flex; flex-direction: row; flex-wrap: nowrap; white-space: nowrap; overflow-x: scroll; }
 	.dcMenu .menuListBox::-webkit-scrollbar{ display: none;}
 	.dcMenu .menuListBox .menuList{ padding-right: 30px; width: auto;}
 	.productListBox .productListCon{ width: 100%; margin: 0 auto; padding: 20px 16px;}
 	.productListBox .productItem .productInfo{ padding: 20px 6px; line-height: 30px;}
 
-	.productInfoBox { width: 100%; margin: 0 auto; margin-top: 63px; padding: 20px;}
+	.productInfoBox { width: 100%; margin: 0 auto; margin-top: 60px; padding: 20px;}
 	.productInfoBox .infoLeft{ border: none;}
 	.productInfoBox .breadcrumb{ display: none;}
 	.productInfoBox .volume > span{font-family: arial, helvetica, sans-serif; font-size: 16px; color: #595959;}
@@ -74,7 +76,7 @@
 	.productInfoBox .price > span{font-family: arial, helvetica, sans-serif; font-size: 16px; color: #595959;}
 	.productInfoBox .price .priceNum{color: #000000; font-style: normal;}
 
-	.dcBanner{ margin-top: 63px;}
+	.dcBanner{ margin-top: 60px;}
 	.dcBanner .bannerImgBox{ width: 100%; margin-top: 0;}
 
 	.brandInfoBox { width: 100%; margin: 0 auto; padding: 20px;}
@@ -129,6 +131,9 @@
 	.addressInfoBox .infoItem .markIcon{ width: 50px; display: none;}
 	.addressInfoBox .infoItem .title{ padding: 10px 0; font-size: 20px;}
 	.proinfo-a1{ height: auto; }
+
+	.dcHead.pcHead{ display: none;}
+	.dcHead.mHead{ display: block;}
 }
 
 @media (min-width: 768px) and (max-width: 1025px) {
@@ -139,9 +144,9 @@
 
 	.scientificCenterBox .scientificInfo .detailBox .detailTitle .num{ font-size: 50px;}
 
-	.addressInfoBox .infoItem .markIcon{ width: 50px; height: auto;}
+	.addressInfoBox .infoItem .markIcon{ width: auto; height: 50px;}
 	.addressInfoBox .infoItem .title{ font-size: 32px; padding: 20px 0;}
-	.addressInfoBox .infoItem .addressInfo{ padding-right: 5%;}
+	.addressInfoBox .infoItem .addressInfo{ padding-right: 5%; padding-top: 20px;}
 	.addressInfoBox .infoItem .addressInfo.p2{ padding: 20px 3% 10px 8%;}
 
 	.brandInfoBox { width: 100%; margin: 0 auto; padding: 20px;}
@@ -166,5 +171,10 @@
 	.productInfoBox { width: 100%; margin: 0 auto; margin-top: 100px; padding: 20px;}
 	.productInfoBox .infoLeft{ border: none;}
 	.productInfoBox .breadcrumb{ display: none;}
-}
 
+	.dcHead.pcHead{ display: block;}
+	.dcHead.mHead{ display: none;}
+
+	.pcHead .hSearchInput{ width: 180px;}
+	.pcHead .menuBox .menuCon .menuItem{ padding: 0 15px;}
+}
