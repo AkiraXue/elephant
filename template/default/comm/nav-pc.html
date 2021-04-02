@@ -1,3 +1,4 @@
+<?$php_url=get_current_url();?>
 <!-- pc端nav效果 -->
 <div class="dcHead pcHead">
     <div class="headCon">
@@ -12,7 +13,7 @@
         <!-- nav -->
         <div class="menuBox">
             <ul class="menuCon">
-                <li class="menuItem productMenu">
+                <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
                     <a href="{pboot:sitepath}/stars">明星产品</a>
                     <div class="menuListBox">
                         <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -33,10 +34,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="menuItem">
+                <li class="menuItem  <?=strstr($php_url, 'scientificCenter') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
                 </li>
-                <li class="menuItem dropdown">
+                <li class="menuItem dropdown <?=strstr($php_url, 'about') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/about">关于小象</a>
                     <ul class="dropdown-menu">
 
@@ -104,11 +105,6 @@
 
             $('#myVideo').stop().hide(0);
         }
-
-        $('.menuTitle').on('click', function () {
-            $('.mHead').addClass('on');
-        });
-
     });
 
 </script>

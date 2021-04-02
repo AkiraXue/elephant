@@ -1,6 +1,6 @@
 {include file=comm/header.html}
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?31" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?32" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
@@ -52,6 +52,39 @@
 <script type="text/javascript">
 	var mySwiper;
 	$(function() {
+		var clientWidth = $(window).width();
+		if (clientWidth > 768) {
+			$('.videoBox').removeClass('hidden');
+
+			var bannerH = $('.ibanner-pc').height();
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > bannerH -30) {
+					$('.pcHead').addClass('on');
+				} else {
+					$('.pcHead').removeClass('on');
+				}
+			});
+		} else {
+
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > 60) {
+					$('.mHead').addClass('on');
+				} else {
+					$('.mHead').removeClass('on');
+				}
+
+				$('.mCollapse').removeClass('on');
+				$('.mSearchBox').removeClass('on');
+				$('.mCollapseMenuBox').hide();
+				$('.mSearchContainer').hide();
+			});
+
+
+			$('.videoBox').addClass('hidden');
+			$('#myVideo').stop().hide(0);
+		}
 
 		var _md = getUrlParam("md");
 		if (_md == 0) {
@@ -64,13 +97,11 @@
 				if (userAgent.indexOf("Chrome") > -1) {
 					$(".loadding-a").show();
 					$(".loadding").click(function() {
-						$('.dcHead').hide();
 						vkp();
 						$(".loadding-a").fadeOut();
 					})
 
 				} else {
-					$('.dcHead').hide();
 					vkp();
 				}
 			}
@@ -209,7 +240,7 @@
 	// banner轮播
 	function initBannerSwiper() {
 		var mySwiper = new Swiper('#banner', {
-			// autoplay: 5000, //可选选项，自动滑动
+			autoplay: 5000, //可选选项，自动滑动
 			pagination: '.swiper-pagination',
 			loop: true,
 		})
@@ -230,4 +261,4 @@
 	}
 </script>
 
-{include file=comm/footer1.html}
+{include file=comm/footer.html}

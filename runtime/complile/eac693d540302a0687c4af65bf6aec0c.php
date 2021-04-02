@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?34" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?31" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?40" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?1"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -43,6 +43,7 @@
 
     
 <!-- nav pc start -->
+<?$php_url=get_current_url();?>
 <!-- pc端nav效果 -->
 <div class="dcHead pcHead">
     <div class="headCon">
@@ -57,7 +58,7 @@
         <!-- nav -->
         <div class="menuBox">
             <ul class="menuCon">
-                <li class="menuItem productMenu">
+                <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
                     <a href="{pboot:sitepath}/stars">明星产品</a>
                     <div class="menuListBox">
                         <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -78,10 +79,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="menuItem">
+                <li class="menuItem  <?=strstr($php_url, 'scientificCenter') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
                 </li>
-                <li class="menuItem dropdown">
+                <li class="menuItem dropdown <?=strstr($php_url, 'about') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/about">关于小象</a>
                     <ul class="dropdown-menu">
 
@@ -149,11 +150,6 @@
 
             $('#myVideo').stop().hide(0);
         }
-
-        $('.menuTitle').on('click', function () {
-            $('.mHead').addClass('on');
-        });
-
     });
 
 </script>
@@ -185,7 +181,7 @@
             <form action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
                     <input type="text" name="title" placeholder="请输入搜索内容" />
-                    <img src="img/search_d.png" />
+                    <img src="{pboot:sitepath}/img/search_d.png" />
                 </div>
             </form>
         </div>
@@ -194,6 +190,19 @@
 </div>
 <!-- nav mobile stop -->
 
+<script type="text/javascript">
+    $(function () {
+        $(".menuTitle").click(function(){
+            if($(".product-a").is(":hidden")){
+                $(".product-a").slideDown();
+                $(".menuTitle").removeClass("on");
+            }else{
+                $(".product-a").slideUp();
+                $(".menuTitle").addClass("on");
+            }
+        })
+    })
+</script>
 
     <div class="dcBanner">
         <div class="bannerImgBox">
@@ -205,15 +214,15 @@
             <div class="titleBox clearfix">
                 <div class="title">国际化科研团队</div>
                 <div class="btnBox">
-                    <img id="leftarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
-                    <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+                    <img id="leftarrow" class="arrowBtn arrowLeft" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+                    <img id="rightarrow" class="arrowBtn arrowRight" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
                 </div>
             </div>
             <div class="swiper-container teamSwiper" style="padding: 0 10px;" id="team">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_0.png" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_0.png?1" />
                             <div class="textBox">
                                 <span class="title">胡新成</span>
                                 <span class="subTitle">上美全球研发中心总监</span>
@@ -223,7 +232,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_1.png" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_1.png?1" />
                             <div class="textBox">
                                 <span class="title">ROBERT BAO HA</span>
                                 <span class="subTitle">上美全球研发中心 首席科学家</span>
@@ -233,7 +242,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_2.png" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_2.png?1" />
                             <div class="textBox">
                                 <span class="title">谷口 登志也</span>
                                 <span class="subTitle">日本神户研究所首席彩妆工程师</span>
@@ -243,7 +252,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_3.png" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_3.png?1" />
                             <div class="textBox">
                                 <span class="title">山田 耕作</span>
                                 <span class="subTitle">日本神户研究所首席护肤研究员</span>
@@ -253,7 +262,7 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_4.png?2" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_4.png?1" />
                             <div class="textBox">
                                 <span class="title">付 さん</span>
                                 <span class="subTitle">日本神户研究所所长</span>
@@ -265,27 +274,24 @@
             </div>
         </div>
     </div>
+
     <div class="scientificCenterBox scientificDetailBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
         <div class="scientificInfo">
             <div class="detailBox scientificDetail clearfix">
                 <div class="detailItem">
-                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_1.png" />
+                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_1.png?1" />
                     <div class="detailTitle"><span class="num">188</span> 项</div>
                     <div class="detailLabel">获得专利</div>
                 </div>
                 <div class="detailItem">
-                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_2.png" />
+                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_2.png?1" />
                     <div class="detailTitle"><span class="num">35</span> 个</div>
                     <div class="detailLabel">日本医药部外品</div>
                 </div>
-<!--                <div class="detailItem">-->
-<!--                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_3.png" />-->
-<!--                    <div class="detailTitle"><span class="num">11</span> 个</div>-->
-<!--                    <div class="detailLabel">韩国功能性化妆品</div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
+
     <div class="addressInfoBox">
         <div class="addressInfoCon">
             <div class="infoItem wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -293,7 +299,7 @@
                     <img src="{pboot:sitetplpath}/img/scientific/a_1.png" />
                 </div>
                 <div class="addressInfo">
-                    <img class="markIcon" src="{pboot:sitetplpath}/img/scientific/n_1.png" />
+                    <img class="markIcon" src="{pboot:sitetplpath}/img/scientific/n_1.png?1" />
                     <div class="title">上海奉贤</div>
                     <div class="description">即上海中翊日化有限公司，系上美的主力工厂。其位于上海市奉贤区，是上美旗下设备先进、自动化、体系化的产研基地，致力于成为智慧核心工厂。目前，工厂一期已正式投产，日设计产能120万瓶。二期竣工后，一二期占地面积达150亩。</div>
                 </div>
@@ -304,7 +310,7 @@
                     <img src="{pboot:sitetplpath}/img/scientific/a_2.png" />
                 </div>
                 <div class="addressInfo p2">
-                    <img class="markIcon" src="{pboot:sitetplpath}/img/scientific/n_2.png" />
+                    <img class="markIcon" src="{pboot:sitetplpath}/img/scientific/n_2.png?1" />
                     <div class="title">日本冈山</div>
                     <div class="description">日本冈山生产基地是上美旗下高端的纯日本制造工厂，其位于环境绝佳的冈山县胜央工业园区。工厂配备了日本高品质的内料制造机器，坚持日本配方、原料直采。同时，冈山工厂距上美神户科研中心仅2小时车程，实现高效率的研产一体，代表着日本化妆品制造的生产标准。</div>
                 </div>
@@ -356,9 +362,16 @@
             <div class="dcFooter">
                 <div class="footBox">
                     <div class="footImg">
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_0.png" /></a>
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_1.png" /></a>
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
+                        <a target="_blank" href="https://hsxx.tmall.com/">
+                            <img src="{pboot:sitetplpath}/img/footImg_0.png" />
+                        </a>
+                        <a class="wechat">
+                            <img src="{pboot:sitetplpath}/img/footImg_1.png" />
+                            <div class="weChatImg">
+                                <img src="{pboot:sitetplpath}/img/scientific/wechat.png" />
+                            </div>
+                        </a>
+                        <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
                     </div>
                     <a target="_blank" href="https://beian.miit.gov.cn">
                         <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>

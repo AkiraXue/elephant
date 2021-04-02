@@ -69,7 +69,7 @@
 .ibanner .swiper-slide > a{ width: 100%; height: 100%;}
 
 .mainProductBox{ width: 100%;}
-.mainProductBox .mainProductCon{position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 80px 60px 80px;}
+.mainProductBox .mainProductCon{ position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 80px 60px 80px;}
 .mainProductBox .mainProductCon .titleBox{ width: 100%; margin-bottom: 20px;}
 .mainProductBox .titleBox .title{ text-align: left; font-size: 24px; color: #000000; }
 .mainProductBox .titleBox .btnBox{ float: right; overflow: hidden;}
@@ -78,11 +78,11 @@
 .mainProductBox .productMenuBox .menuItem span{ line-height: 30px; border-bottom: solid 1px #ffffff; padding: 10px 5px;}
 .mainProductBox .productMenuBox .menuItem.active span,
 .mainProductBox .productMenuBox .menuItem:hover span{ color: #EB8698; border-bottom-color: #EB8698;}
-.mainProductBox .arrowBtn{ float: left; width: 40px; height: 40px; margin: 5px; cursor: pointer; opacity: 0.5; background-size: cover; background-repeat: no-repeat;}
-.mainProductBox #leftarrow{ position: absolute; left: 0; top: 50%; margin-top: -20px; background-image: url(../img/index/leftarrow.png);}
-.mainProductBox #leftarrow:hover{  background-image: url(../img/index/leftarrow_d.png); opacity: 1;}
-.mainProductBox #rightarrow{ position: absolute; right: 0; top: 50%; margin-top: -20px;background-image: url(../img/index/rightarrow.png);}
-.mainProductBox #rightarrow:hover{  background-image: url(../img/index/rightarrow_d.png);opacity: 1;}
+.mainProductBox .arrowBtn{ float: left; width: 40px; height: 40px; margin: 5px; cursor: pointer; opacity: 1; background-size: cover; background-repeat: no-repeat;}
+.mainProductBox #leftarrow{ position: absolute; left: 0; top: 50%; margin-top: -20px; background-image: url(../img/index/leftarrow_d.png);}
+.mainProductBox #leftarrow:hover{  background-image: url(../img/index/leftarrow.png); opacity: 0.5;}
+.mainProductBox #rightarrow{ position: absolute; right: 0; top: 50%; margin-top: -20px;background-image: url(../img/index/rightarrow_d.png);}
+.mainProductBox #rightarrow:hover{  background-image: url(../img/index/rightarrow.png); opacity: 0.5;}
 .mainProductBox .productSwiper .swiper-slide > a > img{ width: 100%; height: auto; display: block;}
 .mainProductBox .productSwiper .swiper-slide:hover .productCover { display: block;}
 .mainProductBox .productSwiper .productCover{ position: absolute; left: 0; top: 0; background-color: #FF8DA1; opacity: 0.8; width: 100%; height: 100%; cursor: pointer; display: none;}
@@ -128,20 +128,20 @@
 .mainTeamBox .titleBox .title{ text-align: left; float: left; font-size: 24px; color: #000000;}
 .mainTeamBox .titleBox .btnBox{ float: right; overflow: hidden;}
 .mainTeamBox .arrowBtn{ float: left; width: 30px; height: 30px; margin: 5px; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
-.mainTeamBox .arrowBtn.arrowLeft{ opacity: 0.5; background-image: url(../img/index/leftarrow.png);}
-.mainTeamBox .arrowBtn.arrowLeft:hover{ opacity: 1; background-image: url(../img/index/leftarrow_d.png);}
-.mainTeamBox .arrowBtn.arrowRight{ opacity: 0.5; background-image: url(../img/index/rightarrow.png);}
-.mainTeamBox .arrowBtn.arrowRight:hover{ opacity: 1; background-image: url(../img/index/rightarrow_d.png);}
+.mainTeamBox .arrowBtn.arrowLeft{ opacity: 1; background-image: url(../img/index/leftarrow_d.png);}
+.mainTeamBox .arrowBtn.arrowLeft:hover{ opacity: 0.5; background-image: url(../img/index/leftarrow.png);}
+.mainTeamBox .arrowBtn.arrowRight{ opacity: 1; background-image: url(../img/index/rightarrow_d.png);}
+.mainTeamBox .arrowBtn.arrowRight:hover{ opacity: 0.5; background-image: url(../img/index/rightarrow.png);}
 .mainTeamBox .teamItem{ cursor: pointer; padding: 0; margin: 20px 0;}
 .mainTeamBox .teamItem:hover{ box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);}
-.mainTeamBox .teamItem .swiperTeam{ width: 100%; height: auto; display: block; margin: 0 auto;}
-.mainTeamBox .teamItem .textBox{ position: relative; padding: 10px; background-color: #FFFFFF;}
+.mainTeamBox .teamItem .swiperTeam{ width: 100%; height: auto; display: block; margin: 0 auto; padding: 26px 42px 10px 42px;}
+.mainTeamBox .teamItem .textBox{ position: relative; padding: 10px 25px 25px 25px; background-color: #FFFFFF;}
 .mainTeamBox .teamItem .textBox span{ display: block;}
 .mainTeamBox .teamItem .textBox span.title{ text-align: center; font-size: 18px; color: #000000; line-height: 20px; padding: 10px 0;}
-.mainTeamBox .teamItem .textBox span.subTitle{ text-align: center; font-size: 14px; color: #595959; line-height: 18px; padding: 0px 0 10px 0;}
+.mainTeamBox .teamItem .textBox span.subTitle{ text-align: center; font-size: 14px; color: #595959; line-height: 18px; padding: 0px 0 16px 0;}
 .mainTeamBox .teamItem .textBox span.description{ text-align: left; font-size: 12px; color: #595959; line-height: 20px; visibility: hidden; }
 .mainTeamBox .teamItem:hover span.description{ visibility: visible; -webkit-transition: all .3s; transition: all .3s; height: auto;}
-.mainTeamBox .teamItem:hover .textBox{ margin-top: -40px; margin-left: -1px; margin-right: -1px;}
+/* .mainTeamBox .teamItem:hover .textBox{ margin-top: -40px; margin-left: -1px; margin-right: -1px;} */
 .addressInfoBox{ width: 100%; }
 .addressInfoBox .addressInfoCon{width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px;}
 .addressInfoBox .infoItem{ overflow: hidden;}
@@ -156,19 +156,23 @@
 .addressInfoBox .infoItem .description{ color: #595959; font-size: 14px; line-height: 24px;}
 
 .dcFooter{ width: 100%; border-top: solid 1px rgba(0, 0, 0, 0.1); }
-.dcFooter .footBox{ overflow: hidden; width: 100%; max-width: 1200px; margin: 0 auto; padding: 10px 20px;}
+.dcFooter .footBox{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 10px 20px;}
 .dcFooter .footBox .text{ float: left; line-height: 60px; color: rgba(0, 0, 0, 0.65); font-size: 14px;}
 .dcFooter .footBox .text:first-child{ margin-right: 30px;}
 .dcFooter .footBox .footImg{ float: right; margin: 14px 0;}
-.dcFooter .footBox .footImg > a{ float: left; display: block; margin: 0 8px;}
+.dcFooter .footBox .footImg > a{ float: left; display: block; margin: 0 8px; position: relative;}
 .dcFooter .footBox .footImg > a > img{ display: block; width: 100%; height: auto;}
 .beianImg{ display: inline-block; width: 20px; height: 20px; margin-right: 5px; margin-top: -1px; vertical-align: middle;}
+.dcFooter .wechat:hover .weChatImg{ display: block;}
+.dcFooter .weChatImg{ display: none; transition: all 0.3s; position: absolute; right: -46px; bottom: 56px; background: #FFFFFF; padding: 10px; border-radius: 5px; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08); width: 124px;}
+.dcFooter .weChatImg >img{ display: block; width: 104px; height: auto;}
+.dcFooter .weChatImg:before{ content: ''; position: absolute; bottom: -10px; left: 50%; margin-left: -12px; width:0; height:0; border-right: 12px solid transparent; border-left: 12px solid transparent; border-top: 10px solid #ffffff;}
 
 
 
 /* productList */
 .dcMenu{ width: 100%; max-width: 1200px; margin: 138px auto 0 auto; padding: 0 20px; padding-bottom: 60px;}
-.dcMenu .menuTitle{ line-height: 32px; font-size: 20px; padding: 30px 0 10px 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1); background-image: url(../img/menu_close.png); background-repeat: no-repeat; background-size: 24px 24px; background-position: right 36px; cursor: pointer;}
+.dcMenu .menuTitle{ line-height: 32px; font-size: 20px; padding: 48px 0 10px 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1); background-image: url(../img/menu_close.png); background-repeat: no-repeat; background-size: 24px 24px; background-position: right 54px; cursor: pointer;}
 .dcMenu .menuTitle.on{ background-image: url(../img/menu_down.png);}
 .dcMenu .menuListBox{ overflow: hidden; width: 100%; padding: 10px 0 20px 0;}
 .dcMenu .menuListBox .menuList{ width: 20%; float: left;}
@@ -191,7 +195,7 @@
 
 
 /* productInfo */
-.productInfoBox { width: 100%; max-width: 1200px; margin: 100px auto 0 auto; padding: 0 20px;}
+.productInfoBox { width: 100%; max-width: 1200px; margin: 138px auto 0 auto; padding: 0 20px;}
 .productInfoBox .infoLeft{ border-right: solid 1px rgba(0, 0, 0, 0.1);}
 .productInfoBox .breadcrumb{ background-color: transparent; padding: 15px;}
 .productInfoBox .breadcrumb>li+li:before{content: ">";}
@@ -272,12 +276,11 @@
 
 /* v2.0 nav */
 .dcHead.pcHead{ display: block; width: 100%; background-color: #FFFFFF; border-bottom-width: 0; position: fixed; top: 0; left: 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
-.pcHead .headCon{ width: 100%; margin: 0 auto; position: relative;}
-.pcHead .hSearchCon {width: 100%; max-width: 1200px; margin: 0 auto; position: relative;}
-.pcHead .hSearchBox{height: 38px; position: absolute; bottom: 10px; right: 0;}
+.pcHead .headCon{ width: 100%; max-width: 1200px; margin: 0 auto; position: relative;}
+.pcHead .hSearchBox{ height: 34px; position: absolute; bottom: 10px; right: 15px;}
 .pcHead .hSearchBox.on .hSearchInput{ display: block; transition: all 0.3s;}
-.pcHead .hSearchInput{ display: none; transition: all 0.2s; border: solid 1px rgba(0, 0, 0, 0.35); border-radius: 36px; font-size: 14px; padding: 8px 30px 8px 8px; line-height: 20px; background-color: #FFFFFF; width: 270px;}
-.pcHead .hSearch{ background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 24px 24px; width: 24px; height: 24px; position: absolute; right: 8px; top: 8px; cursor: pointer;}
+.pcHead .hSearchInput{ display: none; transition: all 0.2s; border: none; border-bottom: solid 1px rgba(0, 0, 0, 1); font-size: 14px; padding: 6px 30px 6px 0; line-height: 20px; background-color: #FFFFFF; width: 204px;}
+.pcHead .hSearch{ background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 24px 24px; width: 24px; height: 24px; position: absolute; right: 0; top: 4px; cursor: pointer;}
 .pcHead .logoBox{ height: 94px; padding: 20px 0;}
 .pcHead .logoBox > a{ display: block;}
 .pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-size: cover;}
@@ -290,13 +293,13 @@
 .pcHead .menuBox .menuCon .menuItem.dropdown:hover .dropdown-menu{ display: block; }
 .pcHead .dropdown-menu{ margin-top: -2px; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.12);}
 .productMenu:hover .menuListBox{ display: block; transition: all 0.2s;}
-.pcHead .menuListBox{ margin-top: -1px; border-top: solid 1px rgba(0, 0, 0, 0.1); display: none; transition: all 0.2s; width: 100%; box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.12); position: absolute; top: 138px; left: 0; background-color: #ffffff; text-align: left;}
+.pcHead .menuListBox{ margin-top: -1px; border-top: solid 1px rgba(0, 0, 0, 0.1); display: none; transition: all 0.2s; width: 100vw; box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.12); position: fixed; top: 138px; left: 0; background-color: #ffffff; text-align: left;}
 .pcHead .menuListCon{ overflow: hidden; max-width: 1200px; margin: 0 auto; padding: 30px 20px;}
 .pcHead .menuListBox .menuList{ width: 20%; float: left;}
 .pcHead .menuListBox .menuList >li>a{ font-size: 14px; color: #000000; line-height: 28px;}
-.pcHead .menuListBox .menuList > li.listTitle{ font-size: 18px; color: #000000; line-height: 40px; border-bottom: solid 1px #EAEAEA; width: max-content; padding-bottom: 10px; padding-right: 40px; margin-bottom: 20px;}
+.pcHead .menuListBox .menuList > li.listTitle{ font-size: 18px; color: #000000; line-height: 40px; border-bottom: solid 1px #EAEAEA; width: max-content; padding-bottom: 10px; padding-right: 40px; margin-bottom: 20px; white-space: nowrap;}
 .pcHead .menuListBox .menuList > li:not(.listTitle){ margin-bottom: 10px;}
-.pcHead .menuListBox .menuList > li.listTitle > img{ display: inline-block; width: 28px; height: 28px; margin-left: -5px; vertical-align: middle; margin-right: 2px;}
+.pcHead .menuListBox .menuList > li.listTitle > img{ display: inline-block; width: 28px; height: 28px; margin-left: -5px; vertical-align: middle; margin-right: 2px; margin-top: -6px;}
 .pcHead .menuListBox .menuList >li.active a,
 .pcHead .menuListBox .menuList >li:hover a{ color: #FF8DA1; border-bottom: solid 1px #FF8DA1;}
 

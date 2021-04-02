@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?34" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?31" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?40" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?1"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -41,6 +41,7 @@
 
     
 <!-- nav pc start -->
+<?$php_url=get_current_url();?>
 <!-- pc端nav效果 -->
 <div class="dcHead pcHead">
     <div class="headCon">
@@ -55,7 +56,7 @@
         <!-- nav -->
         <div class="menuBox">
             <ul class="menuCon">
-                <li class="menuItem productMenu">
+                <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
                     <a href="{pboot:sitepath}/stars">明星产品</a>
                     <div class="menuListBox">
                         <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -76,10 +77,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="menuItem">
+                <li class="menuItem  <?=strstr($php_url, 'scientificCenter') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
                 </li>
-                <li class="menuItem dropdown">
+                <li class="menuItem dropdown <?=strstr($php_url, 'about') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/about">关于小象</a>
                     <ul class="dropdown-menu">
 
@@ -147,11 +148,6 @@
 
             $('#myVideo').stop().hide(0);
         }
-
-        $('.menuTitle').on('click', function () {
-            $('.mHead').addClass('on');
-        });
-
     });
 
 </script>
@@ -183,7 +179,7 @@
             <form action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
                     <input type="text" name="title" placeholder="请输入搜索内容" />
-                    <img src="img/search_d.png" />
+                    <img src="{pboot:sitepath}/img/search_d.png" />
                 </div>
             </form>
         </div>
@@ -192,8 +188,21 @@
 </div>
 <!-- nav mobile stop -->
 
+<script type="text/javascript">
+    $(function () {
+        $(".menuTitle").click(function(){
+            if($(".product-a").is(":hidden")){
+                $(".product-a").slideDown();
+                $(".menuTitle").removeClass("on");
+            }else{
+                $(".product-a").slideUp();
+                $(".menuTitle").addClass("on");
+            }
+        })
+    })
+</script>
 
-    <div class="dcMenu">
+<!--    <div class="dcMenu">
     <div class="menuTitle">明星产品</div>
     <div class="menuListBox product-a wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
 
@@ -211,6 +220,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(function() {
         // 点击分类刷新内容
         $(".menuList li:not('.listTitle')").click(function() {
@@ -243,7 +253,21 @@
         if (r!=null) return unescape(r[2]); return null;
     }
 </script>
+-->
 
+    <div class="productInfoBox clearfix">
+        <ul class="breadcrumb">
+            <li><a href="{pboot:sitepath}/stars">产品列表</a></li>
+            {pboot:nav parent=1}
+            {pboot:2nav parent=[nav:scode]}
+            {pboot:if('[2nav:scode]'=='{sort:scode}')}
+            <li><a href="[nav:link]">[nav:name]</a></li>
+            <li><a href="[2nav:link]">[2nav:name]</a></li>
+            {/pboot:if}
+            {/pboot:2nav}
+            {/pboot:nav}
+        </ul>
+    </div>
 
     <div class="product-b">
         <div class="w1200">
@@ -310,9 +334,16 @@
             <div class="dcFooter">
                 <div class="footBox">
                     <div class="footImg">
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_0.png" /></a>
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_1.png" /></a>
-                        <a href="#"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
+                        <a target="_blank" href="https://hsxx.tmall.com/">
+                            <img src="{pboot:sitetplpath}/img/footImg_0.png" />
+                        </a>
+                        <a class="wechat">
+                            <img src="{pboot:sitetplpath}/img/footImg_1.png" />
+                            <div class="weChatImg">
+                                <img src="{pboot:sitetplpath}/img/scientific/wechat.png" />
+                            </div>
+                        </a>
+                        <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
                     </div>
                     <a target="_blank" href="https://beian.miit.gov.cn">
                         <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>

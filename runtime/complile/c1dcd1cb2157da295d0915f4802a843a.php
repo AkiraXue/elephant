@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?34" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?31" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?40" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?1"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -33,7 +33,7 @@
 	</script>
 	<body>
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?31" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?32" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
@@ -58,6 +58,7 @@
 	<!-- nav start -->
 	
 <!-- nav pc start -->
+<?$php_url=get_current_url();?>
 <!-- pc端nav效果 -->
 <div class="dcHead pcHead">
     <div class="headCon">
@@ -72,7 +73,7 @@
         <!-- nav -->
         <div class="menuBox">
             <ul class="menuCon">
-                <li class="menuItem productMenu">
+                <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
                     <a href="{pboot:sitepath}/stars">明星产品</a>
                     <div class="menuListBox">
                         <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
@@ -93,10 +94,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="menuItem">
+                <li class="menuItem  <?=strstr($php_url, 'scientificCenter') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
                 </li>
-                <li class="menuItem dropdown">
+                <li class="menuItem dropdown <?=strstr($php_url, 'about') ? 'active' : '' ?>">
                     <a  href="{pboot:sitepath}/about">关于小象</a>
                     <ul class="dropdown-menu">
 
@@ -164,11 +165,6 @@
 
             $('#myVideo').stop().hide(0);
         }
-
-        $('.menuTitle').on('click', function () {
-            $('.mHead').addClass('on');
-        });
-
     });
 
 </script>
@@ -200,7 +196,7 @@
             <form action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
                     <input type="text" name="title" placeholder="请输入搜索内容" />
-                    <img src="img/search_d.png" />
+                    <img src="{pboot:sitepath}/img/search_d.png" />
                 </div>
             </form>
         </div>
@@ -209,6 +205,19 @@
 </div>
 <!-- nav mobile stop -->
 
+<script type="text/javascript">
+    $(function () {
+        $(".menuTitle").click(function(){
+            if($(".product-a").is(":hidden")){
+                $(".product-a").slideDown();
+                $(".menuTitle").removeClass("on");
+            }else{
+                $(".product-a").slideUp();
+                $(".menuTitle").addClass("on");
+            }
+        })
+    })
+</script>
 	<!-- nav stop -->
 
 	<!-- banner start -->
@@ -356,18 +365,14 @@
                 <div class="description">截至2020年8月，上美集团已获得专利188项；<br />日本和中国研发团队共开发日本医药部外品35个，韩国功能性化妆品（美白、抗衰老）11个<br />与全球高等学府、科研机构展开联动，自主形成多项核心化妆品研发配方与工艺</div>
                 <div class="detailBox">
                     <div class="row">
-                        <div class="col-lg-4 col-xs-4">
+                        <div class="col-lg-4 col-xs-6">
                             <div class="detailTitle"><span class="num">188</span> 项</div>
                             <div class="detailLabel">获得专利</div>
                         </div>
-                        <div class="col-lg-4 col-xs-4">
+                        <div class="col-lg-4 col-xs-6">
                             <div class="detailTitle"><span class="num">35</span> 个</div>
                             <div class="detailLabel">日本医药部外品</div>
                         </div>
-<!--                        <div class="col-lg-4 col-xs-4">-->
-<!--                            <div class="detailTitle"><span class="num">11</span> 个</div>-->
-<!--                            <div class="detailLabel">韩国功能性化妆品</div>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -384,6 +389,39 @@
 <script type="text/javascript">
 	var mySwiper;
 	$(function() {
+		var clientWidth = $(window).width();
+		if (clientWidth > 768) {
+			$('.videoBox').removeClass('hidden');
+
+			var bannerH = $('.ibanner-pc').height();
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > bannerH -30) {
+					$('.pcHead').addClass('on');
+				} else {
+					$('.pcHead').removeClass('on');
+				}
+			});
+		} else {
+
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > 60) {
+					$('.mHead').addClass('on');
+				} else {
+					$('.mHead').removeClass('on');
+				}
+
+				$('.mCollapse').removeClass('on');
+				$('.mSearchBox').removeClass('on');
+				$('.mCollapseMenuBox').hide();
+				$('.mSearchContainer').hide();
+			});
+
+
+			$('.videoBox').addClass('hidden');
+			$('#myVideo').stop().hide(0);
+		}
 
 		var _md = getUrlParam("md");
 		if (_md == 0) {
@@ -396,13 +434,11 @@
 				if (userAgent.indexOf("Chrome") > -1) {
 					$(".loadding-a").show();
 					$(".loadding").click(function() {
-						$('.dcHead').hide();
 						vkp();
 						$(".loadding-a").fadeOut();
 					})
 
 				} else {
-					$('.dcHead').hide();
 					vkp();
 				}
 			}
@@ -541,7 +577,7 @@
 	// banner轮播
 	function initBannerSwiper() {
 		var mySwiper = new Swiper('#banner', {
-			// autoplay: 5000, //可选选项，自动滑动
+			autoplay: 5000, //可选选项，自动滑动
 			pagination: '.swiper-pagination',
 			loop: true,
 		})
@@ -562,29 +598,48 @@
 	}
 </script>
 
-		
+
 		<footer >
-			<div class="dcFooter">
-				<div class="footBox">
-					<div class="footImg">
-						<a href="#"><img src="{pboot:sitetplpath}/img/footImg_0.png" /></a>
-						<a href="#"><img src="{pboot:sitetplpath}/img/footImg_1.png" /></a>
-						<a href="#"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
-					</div>
-					<a target="_blank" href="https://beian.miit.gov.cn">
-                            <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>
-					</a>
-					<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402001581">
+            <div class="dcFooter">
+                <div class="footBox">
+                    <div class="footImg">
+                        <a target="_blank" href="https://hsxx.tmall.com/">
+                            <img src="{pboot:sitetplpath}/img/footImg_0.png" />
+                        </a>
+                        <a class="wechat">
+                            <img src="{pboot:sitetplpath}/img/footImg_1.png" />
+                            <div class="weChatImg">
+                                <img src="{pboot:sitetplpath}/img/scientific/wechat.png" />
+                            </div>
+                        </a>
+                        <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
+                    </div>
+                    <a target="_blank" href="https://beian.miit.gov.cn">
+                        <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>
+                    </a>
+                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402001581">
                         <span class="text">
                             <img class="beianImg" src="{pboot:sitetplpath}/img/beian.png" />
                             沪公网安备 31011402001581号
                         <span>
-					</a>
-				</div>
-			</div>
+                    </a>
+                </div>
+            </div>
+
 		</footer>
 
 	</body>
+
+	<script type="text/javascript">
+		$(function(){
+            var clientWidth = $(window).width();
+            if (clientWidth > 768) {
+                $(document).off('click.bs.dropdown.data-api');
+            } else {
+                $(document).on('click.bs.dropdown.data-api');
+            }
+		})
+	</script>
 
 </html>
 <?php return array (
@@ -593,7 +648,7 @@
   2 => '/data/wwwroot/default/template/default/index/banner.html',
   3 => '/data/wwwroot/default/template/default/index/recommend.html',
   4 => '/data/wwwroot/default/template/default/index/scientific.html',
-  5 => '/data/wwwroot/default/template/default/comm/footer1.html',
+  5 => '/data/wwwroot/default/template/default/comm/footer.html',
   6 => '/data/wwwroot/default/template/default/comm/nav-pc.html',
   7 => '/data/wwwroot/default/template/default/comm/nav-m.html',
 ); ?>

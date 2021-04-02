@@ -8,7 +8,21 @@
 
     {include file=comm/nav.html}
 
-    {include file=product/menu.html}
+<!--    {include file=product/menu.html}-->
+
+    <div class="productInfoBox clearfix">
+        <ul class="breadcrumb">
+            <li><a href="{pboot:sitepath}/stars">产品列表</a></li>
+            {pboot:nav parent=1}
+            {pboot:2nav parent=[nav:scode]}
+            {pboot:if('[2nav:scode]'=='{sort:scode}')}
+            <li><a href="[nav:link]">[nav:name]</a></li>
+            <li><a href="[2nav:link]">[2nav:name]</a></li>
+            {/pboot:if}
+            {/pboot:2nav}
+            {/pboot:nav}
+        </ul>
+    </div>
 
     <div class="product-b">
         <div class="w1200">

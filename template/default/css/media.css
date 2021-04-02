@@ -112,7 +112,8 @@
 	.mainTeamBox .titleBox .title{ font-size: 18px;}
 	.mainTeamBox .arrowBtn{ width: 24px; height: 24px;}
 	.mainTeamBox .teamItem{ padding: 0; box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 8%);}
-	.mainTeamBox .teamItem .textBox{ margin-top: -40px; margin-left: -1px; margin-right: -1px;}
+	.mainTeamBox .teamItem .swiperTeam { padding: 20px 20px 0 20px;}
+	.mainTeamBox .teamItem .textBox{ padding: 10px;}
 	.mainTeamBox .teamItem .textBox span.subTitle{ font-size: 12px;}
 	.mainTeamBox .teamItem .textBox span.description{ visibility: visible; -webkit-transition: all .3s; transition: all .3s; height: auto;}
 	.scientificCenterBox .scientificInfo .scientificDetail .detailIcon{ margin: 10px 0 10px 5px;}
@@ -178,3 +179,5 @@
 	.pcHead .hSearchInput{ width: 180px;}
 	.pcHead .menuBox .menuCon .menuItem{ padding: 0 15px;}
 }
+
+

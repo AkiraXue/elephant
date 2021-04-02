@@ -24,21 +24,21 @@ $(function() {
 			e = e || window.event;
 			if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件
 				if (e.wheelDelta > 0) { //当滑轮向上滚动时
-					console.log("滑轮向上滚动");
-					$('.menuBox').css({opacity: 1, height: '41px',});
+					$('.menuBox').css({opacity: 1, height: '41px'});
+					$('.hSearchBox').css({bottom: '10px'});
 				}
 				if (e.wheelDelta < 0) { //当滑轮向下滚动时
-					console.log("滑轮向下滚动");
 					$('.menuBox').css({opacity: 0, height: 0});
+					$('.hSearchBox').css({bottom: '25px'});
 				}
 			} else if (e.detail) { //Firefox滑轮事件
-				if (e.detail> 0) { //当滑轮向上滚动时
-					console.log("滑轮向上滚动");
-					$('.menuBox').css({opacity: 1, height: '41px'});
-				}
-				if (e.detail< 0) { //当滑轮向下滚动时
-					console.log("滑轮向下滚动");
+				if (e.detail> 0) { //当滑轮向滚动时
 					$('.menuBox').css({opacity: 0, height: 0});
+					$('.hSearchBox').css({bottom: '25px'});
+				}
+				if (e.detail< 0) { //当滑轮向下上下滚动时
+					$('.menuBox').css({opacity: 1, height: '41px'});
+					$('.hSearchBox').css({bottom: '10px'});
 				}
 			}
 		}
@@ -176,3 +176,4 @@ function sf_nav(a, b) {
 		}
 	});
 }
+
