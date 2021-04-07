@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?40" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?42" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?4"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -165,7 +165,15 @@
     </div>
     <div class="mCollapseMenuBox">
         <ul class="mCollapseMenu">
-            <li class=""><a href="{pboot:sitepath}/stars">明星产品</a></li>
+            <li class="dropdown">
+                <!-- href="{pboot:sitepath}/stars" -->
+                <a class="dropdownToggle">明星产品</a>
+                <ul class="dropdownMenu">
+                    {pboot:nav parent=1}
+                    <li><a href="[nav:link]?md=[nav:scode]">[nav:name]</a></li>
+                    {/pboot:nav}
+                </ul>
+            </li>
             <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
             <li class=""><a href="{pboot:sitepath}/about">关于小象</a></li>
             <li class="">
@@ -181,7 +189,7 @@
             <form action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
                     <input type="text" name="title" placeholder="请输入搜索内容" />
-                    <img src="{pboot:sitepath}/img/search_d.png" />
+                    <img src="{pboot:sitetplpath}/img/search_d.png" />
                 </div>
             </form>
         </div>

@@ -98,6 +98,10 @@ $(function() {
 			$('.mCollapseMenuBox').hide();
 			$('.mSearchContainer').hide();
 		});
+
+		$('.mCollapseMenu .dropdownToggle').on('click', function() {
+			$(this).siblings('.dropdownMenu').toggle();
+		});
 	}
 
 
@@ -176,4 +180,3 @@ function sf_nav(a, b) {
 		}
 	});
 }
-

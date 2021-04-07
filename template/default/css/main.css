@@ -314,7 +314,8 @@
 .mHead .mNavBox .mSearchBox.on{ background-image: url(../img/menu_close.png);}
 .mCollapseMenuBox{ display: none; transition: all 0.2s; position: absolute; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: rgba(0, 0, 0, 0.2);}
 .mCollapseMenuBox .mCollapseMenu{ background-color: #FFFFFF; padding-left: 15px; padding-bottom: 60px;}
-.mCollapseMenuBox .mCollapseMenu > li > a{ font-size: 16px; font-family: PingFangSC-Regular, PingFang SC; border-bottom: solid 1px #EAEAEA; line-height: 60px; display: block; color: rgba(0, 0, 0, 0.65);}
+.mCollapseMenuBox .mCollapseMenu > li{border-bottom: solid 1px #EAEAEA;}
+.mCollapseMenuBox .mCollapseMenu > li > a{ font-size: 16px; font-family: PingFangSC-Regular, PingFang SC;  line-height: 60px; display: block; color: rgba(0, 0, 0, 0.65);}
 .mSearchContainer{ display: none; transition: all 0.2s; position: absolute; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: rgba(0, 0, 0, 0.2);}
 .mSearchContainer .mSearchCon{ background-color: #FFFFFF; padding: 15px 15px 60px 15px; padding-bottom: 60px;}
 .mSearchContainer .mSearchItem{ border-bottom: solid 1px #EAEAEA; display: flex; flex-direction: row; align-items: center; }
@@ -332,3 +333,6 @@
 	color: #C4C3C3;
 }
 .mSearchContainer .mSearchItem > img{ width: 30px; height: 40px; padding: 10px 0 10px 10px;}
+
+.mCollapseMenuBox .dropdown .dropdownMenu{ margin-top: -10px; margin-bottom: 10px; display: none;}
+.mCollapseMenuBox .dropdown .dropdownMenu li{ line-height: 40px; padding-left: 10px;}
