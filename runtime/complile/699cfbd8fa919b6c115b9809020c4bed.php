@@ -14,14 +14,14 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css?1" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css?1" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?40" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?42" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
+		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?4"></script>
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -164,7 +164,15 @@
     </div>
     <div class="mCollapseMenuBox">
         <ul class="mCollapseMenu">
-            <li class=""><a href="{pboot:sitepath}/stars">明星产品</a></li>
+            <li class="dropdown">
+                <!-- href="{pboot:sitepath}/stars" -->
+                <a class="dropdownToggle">明星产品</a>
+                <ul class="dropdownMenu">
+                    {pboot:nav parent=1}
+                    <li><a href="[nav:link]?md=[nav:scode]">[nav:name]</a></li>
+                    {/pboot:nav}
+                </ul>
+            </li>
             <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
             <li class=""><a href="{pboot:sitepath}/about">关于小象</a></li>
             <li class="">
@@ -187,6 +195,7 @@
     </div>
 
 </div>
+
 <!-- nav mobile stop -->
 
 <script type="text/javascript">
@@ -363,7 +372,7 @@
                         <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
                     </div>
                     <a target="_blank" href="https://beian.miit.gov.cn">
-                        <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>
+                        <span class="text">上海上美化妆品股份有限公司 沪ICP备 15047150号-2<span>
                     </a>
                     <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402001581">
                         <span class="text">
@@ -390,6 +399,7 @@
 	</script>
 
 </html>
+
 
 <?php return array (
   0 => '/data/wwwroot/elephant/template/default/comm/header.html',

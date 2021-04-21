@@ -17,19 +17,11 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?42" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
-<<<<<<< Updated upstream:runtime/complile/42b94fc4214654710302d791c2561cb7.php
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?4"></script>
-=======
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/bootstrap.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/swiper.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js?1"></script>
-		<script type="text/javascript" src="{pboot:sitetplpath}/js/main.js?3"></script>
->>>>>>> Stashed changes:runtime/complile/7b4e8975da256fbbcbc90f0524e68787.php
 	</head>
 	<script>
 		var _hmt = _hmt || [];
@@ -204,6 +196,7 @@
     </div>
 
 </div>
+
 <!-- nav mobile stop -->
 
 <script type="text/javascript">
@@ -364,7 +357,7 @@
                         <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
                     </div>
                     <a target="_blank" href="https://beian.miit.gov.cn">
-                        <span class="text">上海上美化妆品有限公司版权所有 沪ICP备 15047150号-2<span>
+                        <span class="text">上海上美化妆品股份有限公司 沪ICP备 15047150号-2<span>
                     </a>
                     <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402001581">
                         <span class="text">
@@ -391,6 +384,7 @@
 	</script>
 
 </html>
+
 <?php return array (
   0 => '/data/wwwroot/elephant/template/default/comm/header.html',
   1 => '/data/wwwroot/elephant/template/default/comm/nav.html',
