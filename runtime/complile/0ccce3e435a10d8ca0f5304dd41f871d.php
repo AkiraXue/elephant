@@ -235,11 +235,12 @@
 	<!--PC端使用-->
 <div class="swiper-container ibanner ibanner-pc por swiper-container-horizontal">
 
-    <div class="wfull-video">
-        <div class="full-video">
-            <video id="loadding-video" muted="" autoplay="" src="{pboot:sitetplpath}/img/index/video-pc.mp4"></video>
-        </div>
-    </div>
+<!--    <div class="wfull-video">-->
+<!--        <div class="full-video">-->
+<!--            <video id="loadding-video" muted="" autoplay="" src="{pboot:sitetplpath}/img/index/video-pc.mp4"></video>-->
+<!--        </div>-->
+<!--    </div>-->
+
     <div class="swiper-wrapper">
 
         {pboot:list scode=1 filter=isheadline|1}
@@ -273,11 +274,11 @@
 
 
 <!--手机端使用-->
-<div class="wfull-video1 ibanner-m swiper-container-horizontal">
-    <div class="full-video">
-        <video id="loadding-video" muted="" autoplay="" loop="" playsinline="" onplay="this.style.opacity = 1;" src="{pboot:sitetplpath}/img/index/video-m.mp4" poster=""></video>
-    </div>
-</div>
+<!--<div class="wfull-video1 ibanner-m swiper-container-horizontal">-->
+<!--    <div class="full-video">-->
+<!--        <video id="loadding-video" muted="" autoplay="" loop="" playsinline="" onplay="this.style.opacity = 1;" src="{pboot:sitetplpath}/img/index/video-m.mp4" poster=""></video>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="swiper-container ibanner ibanner-m swiper-container-horizontal">
     <div class="swiper-wrapper">
 
