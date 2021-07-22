@@ -193,6 +193,12 @@
             $(".sf-nav-a").eq(_md).click();
         }
 
+        var video = document.getElementById("loadding-video");
+        video.addEventListener('ended', function() {
+            $(".loadding").fadeOut(500);
+            $(".ibody").fadeIn(500);
+        }, false);
+
     });
 
     window.onresize = function(){
