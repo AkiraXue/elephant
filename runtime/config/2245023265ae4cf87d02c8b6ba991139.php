@@ -20,7 +20,7 @@ return array (
   'baidu_xzh_appid' => '',
   'baidu_xzh_token' => '',
   'wap_domain' => '',
-  'gzip' => '0',
+  'gzip' => '1',
   'content_tags_replace_num' => '',
   'smtp_username_test' => '',
   'form_send_mail' => '0',

@@ -541,12 +541,6 @@
 			autoplay: 4000
 		});
 
-		var video = document.getElementById("loadding-video");
-		video.addEventListener('ended', function() {
-			$(".loadding").fadeOut(500);
-			$(".ibody").fadeIn(500);
-		}, false);
-
 		// initBannerSwiper();
 
 		// $('#productMenu .menuItem').on('click', function(){
@@ -580,6 +574,7 @@
 		})
 		initProductSwiper();
 	}
+	
 	function vkp() {
 		var myVideo = document.getElementById('loadding-video');
 		myVideo.play();
