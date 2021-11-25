@@ -323,6 +323,10 @@
                     <p>2020年，签约明星辣妈董璇为品牌星推官。</p>
                     <p>2020年，红色小象益生元南极冰藻系列产品引爆全渠道，备受追捧。</p>
                     <p>2020年，在湖南卫视热播剧《以家人之名》投放硬广，积极活跃品牌形象。</p>
+                    <p>2021年，与超级IP迪士尼达成年度合作。</p>
+                    <p>2021年，携手优酷视频《奇妙的蛋生》，持续关爱女性群体。</p>
+                    <p>2021年，打造红色小象专家天团，崔玉涛、郑玉巧、周高俊、褚岩，儿科、皮肤科专家强强联合。</p>
+                    <p>2021年，与“老爸评测”建立深度合作，男/女童氨基酸洗发水获老爸抽检绿标。</p>
                 </div>
                 <div class="line vertical"></div>
             </div>
@@ -343,60 +347,60 @@
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic06.png" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_1.png" />
                         <div class="awardText">
-                            <span class="text1">2020 ParentsBest</span>
-                            <span class="text2">优选洗护用品</span>
+                            <span class="text1">2021亿邦动力</span>
+                            <span class="text2">新消费·成长TOP100</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic01.png" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_2.png" />
                         <div class="awardText">
-                            <span class="text1">2020年京东金榜</span>
-                            <span class="text2">年度婴儿洗护金奖</span>
+                            <span class="text1">2021年度天猫母婴亲子</span>
+                            <span class="text2">最具影响力品牌</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic02.png" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_3.png" />
                         <div class="awardText">
-                            <span class="text1">2020樱桃大赏-宝宝洗浴洗浴</span>
-                            <span class="text2">最佳表现力大奖</span>
+                            <span class="text1">2021京东超市宝贝趴</span>
+                            <span class="text2">最具潜力店铺奖 创新营销奖</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic03.png?1" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_4.png?1" />
                         <div class="awardText">
-                            <span class="text1">2020年化妆品蓝玫奖</span>
-                            <span class="text2">年度最受欢迎品牌</span>
+                            <span class="text1">2021京东超市年度亿元俱乐部新增品牌代表</span>
+                            <span class="text2">年度最具创新奖</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic04.png" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_5.png" />
                         <div class="awardText">
-                            <span class="text1">2020樱桃大赏-婴幼儿洗浴</span>
-                            <span class="text2">最佳表现力大奖</span>
+                            <span class="text1">2021京东母婴洗护行业峰会</span>
+                            <span class="text2">母婴洗护行业领袖奖</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="swiper-slide">
                     <div class="swiperAwards">
-                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/about_pic05.png" />
+                        <img class="awardImg" src="{pboot:sitetplpath}/img/brand/award_6.png" />
                         <div class="awardText">
-                            <span class="text1">2020天猫母婴亲子榜</span>
-                            <span class="text2">年度杰出新品奖</span>
+                            <span class="text1">2021中国新消费品牌Growth50</span>
+                            <span class="text2">年度增长力品牌</span>
                         </div>
                     </div>
                 </div>
@@ -445,85 +449,85 @@
         <div class="title">品牌新闻</div>
         <div class="brandNewsListBox">
             <div class="row">
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/XMUblGImuuV28Fy_bNQSfQ')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/NYQVGu5DBJMJ0RbfKHjuGQ')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_1.png" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_1.jpg" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/XMUblGImuuV28Fy_bNQSfQ" target="_blank">翻倍增长后，上美集团红色小象又瞄准了1500万孕妈妈</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/NYQVGu5DBJMJ0RbfKHjuGQ" target="_blank">获测评大V和育儿专家推荐，红色小象新品凭什么？</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/09/16</span>
+                                <span class="detailDate pull-left">2021/06/22</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/K_4rUfgWw9ru3i4dXOxeng')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/QnVbE9Ssve_VqFhskAVWdg')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_2.png" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_2.jpg" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/K_4rUfgWw9ru3i4dXOxeng" target="_blank">Q2实现120%销售增长，红色小象靠什么逆势长红？</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/QnVbE9Ssve_VqFhskAVWdg" target="_blank">上美集团红色小象入选“超级新‘申’代品牌力A计划”</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/5/28</span>
+                                <span class="detailDate pull-left">2021/10/15</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/Ti7eUZ56CjQogJg0ll647A')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/VdI_sUBRjBJgpdQUgDE3uA')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_3.png" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_3.jpg" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/Ti7eUZ56CjQogJg0ll647A" target="_blank">业绩120%增长，红色小象持续领跑2020母婴赛道！</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/VdI_sUBRjBJgpdQUgDE3uA" target="_blank">红色小象x丁香医生联名礼盒上线，专业守护宝宝敏感肌</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/6/1</span>
+                                <span class="detailDate pull-left">2021/11/08</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/LPI808WKj_OL0eqWqaoA_g')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/p6HLRb7uzcj1oiufl1lwQQ')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_4_1.png?1" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_4.jpg?1" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/LPI808WKj_OL0eqWqaoA_g" target="_blank">扛起新国货大旗，上美集团斩获金物奖双黄蛋！</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/p6HLRb7uzcj1oiufl1lwQQ" target="_blank">获老爸评测&五大儿科专家联袂推荐，红色小象有多硬核？</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/12/31</span>
+                                <span class="detailDate pull-left">2021/09/07</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/Xj6xpvCgnBbwNQGJl9maVg')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/UjLZ9SL4zLlzLM8L-aIaGA')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_5.png" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_5.jpg" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/Xj6xpvCgnBbwNQGJl9maVg" target="_blank">疫情期间不降反涨，上美集团线上渠道增长107%</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/UjLZ9SL4zLlzLM8L-aIaGA" target="_blank">红色小象获2021中国化妆品蓝玫奖最具影响力品牌</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/2/12</span>
+                                <span class="detailDate pull-left">2021/09/16</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/KAQytHE-dCgquHmqJDSrEg')">
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('https://mp.weixin.qq.com/s/tDpmWUprhXvyl2jdF3Beaw')">
                     <div class="brandNewsItem">
                         <div class="brandNewsImg">
-                            <img src="{pboot:sitetplpath}/img/brand/news_6.png" />
+                            <img src="{pboot:sitetplpath}/img/brand/news_6.jpg" />
                         </div>
                         <div class="brandNewsText">
-                            <p class=""><a href="https://mp.weixin.qq.com/s/KAQytHE-dCgquHmqJDSrEg" target="_blank">类目唯一获奖，上美集团斩获第一财经“年度产品力大奖”</a></p>
+                            <p class=""><a href="https://mp.weixin.qq.com/s/tDpmWUprhXvyl2jdF3Beaw" target="_blank">中国婴童适合的护肤品，听医生专家们怎么说</a></p>
                             <div class="detail clearfix">
-                                <span class="detailDate pull-left">2020/12/17</span>
+                                <span class="detailDate pull-left">2021/06/02</span>
                                 <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
                             </div>
                         </div>

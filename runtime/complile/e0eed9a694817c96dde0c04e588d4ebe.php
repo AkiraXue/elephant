@@ -241,16 +241,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_1.png?1" />
-                            <div class="textBox">
-                                <span class="title">ROBERT BAO HA</span>
-                                <span class="subTitle">上美全球研发中心 首席科学家</span>
-                                <span class="description">1988年加入宝洁集团，2011-2018年任职宝洁（美国）首席科学家，主攻功效成分的配方运用、配方机理研究等方向，曾获10项美国专利。</span>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="swiper-slide">-->
+<!--                        <div class="teamItem">-->
+<!--                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_1.png?1" />-->
+<!--                            <div class="textBox">-->
+<!--                                <span class="title">ROBERT BAO HA</span>-->
+<!--                                <span class="subTitle">上美全球研发中心 首席科学家</span>-->
+<!--                                <span class="description">1988年加入宝洁集团，2011-2018年任职宝洁（美国）首席科学家，主攻功效成分的配方运用、配方机理研究等方向，曾获10项美国专利。</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="swiper-slide">
                         <div class="teamItem">
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_2.png?1" />
