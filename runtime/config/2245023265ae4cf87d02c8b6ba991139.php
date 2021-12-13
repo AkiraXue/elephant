@@ -1,6 +1,6 @@
 <?php
 return array (
-  'open_wap' => '0',
+  'open_wap' => '1',
   'message_check_code' => '1',
   'smtp_server' => 'smtp.qq.com',
   'smtp_port' => '465',

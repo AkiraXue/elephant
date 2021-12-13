@@ -291,7 +291,7 @@
             <div class="detailBox scientificDetail clearfix">
                 <div class="detailItem">
                     <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_1.png?1" />
-                    <div class="detailTitle"><span class="num">188</span> 项</div>
+                    <div class="detailTitle">近<span class="num">200</span> 项</div>
                     <div class="detailLabel">获得专利</div>
                 </div>
                 <div class="detailItem">
@@ -412,6 +412,7 @@
 	</script>
 
 </html>
+
 <?php return array (
   0 => '/data/wwwroot/elephant/template/default/comm/header.html',
   1 => '/data/wwwroot/elephant/template/default/comm/nav.html',
