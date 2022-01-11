@@ -233,51 +233,77 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_0.png?1" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/1_ky.jpg?1" />
+                            <div class="textBox">
+                                <span class="title">黄虎</span>
+                                <span class="subTitle">全球研发中心首席科学家，博士</span>
+                                <span class="description animated">曾任美国宝洁全球研发总部首席科学家，服务宝洁27年，拥有数百项专利，精通新品开发战略制定、原料开发、配方和生产工艺、功效评价和消费者测试等；擅长创新产品的研发与落地，曾与清华大学共同建立产学研一体的开放性创新平台。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="teamItem">
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/2_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">胡新成</span>
-                                <span class="subTitle">上美全球研发中心总监</span>
-                                <span class="description animated">日本大阪店立大学博士，拥有25年日化及彩妆研发经验。曾任宝洁护肤研发总监，成功建立了宝洁亚洲护肤技术团队，为我国民族化妆品培养了众多研发骨干人才。</span>
+                                <span class="subTitle">全球研发中心总监</span>
+                                <span class="description animated">日本大阪府立大学博士，25年日化及彩妆研发经验，曾任宝洁护肤研发总监，在产品功效评价、原料开发、配方及工艺开发方面造诣深湛。</span>
                             </div>
                         </div>
                     </div>
-<!--                    <div class="swiper-slide">-->
-<!--                        <div class="teamItem">-->
-<!--                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_1.png?1" />-->
-<!--                            <div class="textBox">-->
-<!--                                <span class="title">ROBERT BAO HA</span>-->
-<!--                                <span class="subTitle">上美全球研发中心 首席科学家</span>-->
-<!--                                <span class="description">1988年加入宝洁集团，2011-2018年任职宝洁（美国）首席科学家，主攻功效成分的配方运用、配方机理研究等方向，曾获10项美国专利。</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
+
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_2.png?1" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/3_ky.jpg?1" />
                             <div class="textBox">
-                                <span class="title">谷口 登志也</span>
-                                <span class="subTitle">日本神户研究所首席彩妆工程师</span>
-                                <span class="description">服务宝洁30年，为蜜丝佛陀、SK-II 、Cover girl等品牌打造备受全球欢迎的粉底液，曾主导研发令宝洁引以为傲的SEC专利，至今无人超越。</span>
+                                <span class="title">付子华</span>
+                                <span class="subTitle">神户科研中心所长</span>
+                                <span class="description animated">日本东京工业大学博士，宝洁亚太第一代美白配方师，曾任宝洁、联合利华全球技术总监。擅长原料功效及其应用、配方及工艺开发，时任日本国家项目技术指导。</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_3.png?1" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/4_ky.jpg?1" />
                             <div class="textBox">
-                                <span class="title">山田 耕作</span>
-                                <span class="subTitle">日本神户研究所首席护肤研究员</span>
-                                <span class="description">日本薬剤師，一生在宝洁致力于高端护肤和彩妆的研究开发，成功推出备受世界瞩目的SK-II和蜜丝佛陀产品，拥有防晒等技术专利。</span>
+                                <span class="title">内川惠一</span>
+                                <span class="subTitle">全球研发中心首席科学家</span>
+                                <span class="description">北海道大学理学硕士。在资生堂全球创新中心从事了35年的研究。专注于乳化技术、护肤品配方开发、护发产品配方开发，并带领了欧珀莱、丝蓓绮等众多品牌的开发团队。</span>
                             </div>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="teamItem">
-                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/ky_4.png?1" />
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/5_ky.jpg?1" />
                             <div class="textBox">
-                                <span class="title">付 さん</span>
-                                <span class="subTitle">日本神户研究所所长</span>
-                                <span class="description">日本东京工业大学博士，宝洁进入亚太地区后美白领域第一代配方师，曾任宝洁技术总监、联合利华全球总监，多次荣获全球技术创新大奖。</span>
+                                <span class="title">山田耕作</span>
+                                <span class="subTitle">神户科研中心首席研究员</span>
+                                <span class="description">日本药剂师，毕业于京都药科大学，前SK-Ⅱ资深科学家，曾服务于SK-Ⅱ品牌33年，并致力于高端护肤线研究，拥有多项专利技术。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="teamItem">
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/6_ky.jpg?1" />
+                            <div class="textBox">
+                                <span class="title">谷口登志也</span>
+                                <span class="subTitle">神户科研中心首席彩妆研究员</span>
+                                <span class="description">服务宝洁30年，为蜜丝佛陀、SK-Ⅱ、Cover girl等品牌打造备受全球欢迎的粉底液，曾主导研发令宝洁引以为傲的SEC专利技术，至今无人超越。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="teamItem">
+                            <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/7_ky.jpg?1" />
+                            <div class="textBox">
+                                <span class="title">板谷行生</span>
+                                <span class="subTitle">神户科研中心首席研究员</span>
+                                <span class="description">曾作为一名资深研究员任职于佳丽宝Kanebo化妆品公司35年，成功开发了众多世界知名的高端护肤和彩妆产品。一生致力于化妆品配方和工艺技术开发，已申请多项专利。</span>
                             </div>
                         </div>
                     </div>
@@ -294,11 +320,13 @@
                     <div class="detailTitle">近<span class="num">200</span> 项</div>
                     <div class="detailLabel">获得专利</div>
                 </div>
+                <!--
                 <div class="detailItem">
                     <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_2.png?1" />
                     <div class="detailTitle"><span class="num">35</span> 个</div>
                     <div class="detailLabel">日本医药部外品</div>
                 </div>
+                -->
             </div>
         </div>
     </div>
