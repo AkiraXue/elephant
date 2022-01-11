@@ -374,17 +374,19 @@
         <div class="col-lg-8 col-xs-12 col-sm-8">
             <div class="scientificInfo">
                 <div class="title">科研中心</div>
-                <div class="description">截至2020年8月，上美集团已获得专利近200项；<br />日本和中国研发团队共开发日本医药部外品35个，韩国功能性化妆品（美白、抗衰老）11个<br />与全球高等学府、科研机构展开联动，自主形成多项核心化妆品研发配方与工艺</div>
+                <div class="description">截至2020年8月，上美集团已获得专利近200项；<br />与全球高等学府、科研机构展开联动，自主形成多项核心化妆品研发配方与工艺</div>
                 <div class="detailBox">
                     <div class="row">
                         <div class="col-lg-4 col-xs-6">
                             <div class="detailTitle">近<span class="num">200</span> 项</div>
                             <div class="detailLabel">获得专利</div>
                         </div>
+                        <!--
                         <div class="col-lg-4 col-xs-6">
                             <div class="detailTitle"><span class="num">35</span> 个</div>
                             <div class="detailLabel">日本医药部外品</div>
                         </div>
+                        -->
                     </div>
                 </div>
             </div>
