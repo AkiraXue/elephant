@@ -320,6 +320,8 @@
                     <div class="detailTitle">近<span class="num">200</span> 项</div>
                     <div class="detailLabel">获得专利</div>
                 </div>
+                <div class="detailItem">
+                </div>
                 <!--
                 <div class="detailItem">
                     <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_2.png?1" />
