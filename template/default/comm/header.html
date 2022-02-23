@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/font-awesome.min.css?1" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/swiper.min.css?1" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/public.css?31" />
-		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?42" />
+		<link rel="stylesheet" href="{pboot:sitetplpath}/css/main.css?421" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/media.css?32" />
 		<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?32" />
 		<script type="text/javascript" src="{pboot:sitetplpath}/js/jquery-2.1.4.min.js"></script>
