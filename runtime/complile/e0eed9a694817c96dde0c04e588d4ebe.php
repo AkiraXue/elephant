@@ -236,7 +236,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/1_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">黄虎</span>
-                                <span class="subTitle">全球研发中心首席科学家，博士</span>
+                                <span class="subTitle">全球科研中心全球首席科学家</span>
                                 <span class="description animated">曾任美国宝洁全球研发总部首席科学家，服务宝洁27年，拥有数百项专利，精通新品开发战略制定、原料开发、配方和生产工艺、功效评价和消费者测试等；擅长创新产品的研发与落地，曾与清华大学共同建立产学研一体的开放性创新平台。</span>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/2_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">胡新成</span>
-                                <span class="subTitle">全球研发中心总监</span>
+                                <span class="subTitle">全球科研中心研发总监</span>
                                 <span class="description animated">日本大阪府立大学博士，25年日化及彩妆研发经验，曾任宝洁护肤研发总监，在产品功效评价、原料开发、配方及工艺开发方面造诣深湛。</span>
                             </div>
                         </div>
@@ -258,7 +258,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/3_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">付子华</span>
-                                <span class="subTitle">神户科研中心所长</span>
+                                <span class="subTitle">日本红道科研中心研发总监</span>
                                 <span class="description animated">日本东京工业大学博士，宝洁亚太第一代美白配方师，曾任宝洁、联合利华全球技术总监。擅长原料功效及其应用、配方及工艺开发，时任日本国家项目技术指导。</span>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/4_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">内川惠一</span>
-                                <span class="subTitle">全球研发中心首席科学家</span>
+                                <span class="subTitle">中国科研中心首席科学家</span>
                                 <span class="description">北海道大学理学硕士。在资生堂全球创新中心从事了35年的研究。专注于乳化技术、护肤品配方开发、护发产品配方开发，并带领了欧珀莱、丝蓓绮等众多品牌的开发团队。</span>
                             </div>
                         </div>
@@ -280,7 +280,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/5_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">山田耕作</span>
-                                <span class="subTitle">神户科研中心首席研究员</span>
+                                <span class="subTitle">日本红道科研中心护肤首席科学家</span>
                                 <span class="description">日本药剂师，毕业于京都药科大学，前SK-Ⅱ资深科学家，曾服务于SK-Ⅱ品牌33年，并致力于高端护肤线研究，拥有多项专利技术。</span>
                             </div>
                         </div>
@@ -291,7 +291,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/6_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">谷口登志也</span>
-                                <span class="subTitle">神户科研中心首席彩妆研究员</span>
+                                <span class="subTitle">日本弘道科研中心副总监及彩妆首席科学家</span>
                                 <span class="description">服务宝洁30年，为蜜丝佛陀、SK-Ⅱ、Cover girl等品牌打造备受全球欢迎的粉底液，曾主导研发令宝洁引以为傲的SEC专利技术，至今无人超越。</span>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
                             <img class="swiperTeam" src="{pboot:sitetplpath}/img/scientific/7_ky.jpg?1" />
                             <div class="textBox">
                                 <span class="title">板谷行生</span>
-                                <span class="subTitle">神户科研中心首席研究员</span>
+                                <span class="subTitle">日本弘道科研中心洗护首席科学家</span>
                                 <span class="description">曾作为一名资深研究员任职于佳丽宝Kanebo化妆品公司35年，成功开发了众多世界知名的高端护肤和彩妆产品。一生致力于化妆品配方和工艺技术开发，已申请多项专利。</span>
                             </div>
                         </div>
@@ -342,7 +342,7 @@
                 <div class="addressInfo">
                     <img class="markIcon" src="{pboot:sitetplpath}/img/scientific/n_1.png?1" />
                     <div class="title">上海奉贤</div>
-                    <div class="description">即上海中翊日化有限公司，系上美的主力工厂。其位于上海市奉贤区，是上美旗下设备先进、自动化、体系化的产研基地，致力于成为智慧核心工厂。目前，工厂一期已正式投产，日设计产能120万瓶。二期竣工后，一二期占地面积达150亩。</div>
+                    <div class="description">上美科技园，系上美的主力工厂，位于上海市奉贤区东方美谷，是上美旗下设备先进、自动化、体系化的产研基地，致力于成为智慧核心工厂。上美科技园总面积150亩，2021年设计产能超44000吨。</div>
                 </div>
 
             </div>
