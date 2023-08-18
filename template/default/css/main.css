@@ -184,7 +184,7 @@
 .productListBox{ width: 100%; background-color: #F2F2F2;}
 .productListBox .productListCon{width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px;}
 .productListBox .col-lg-3{ padding-left: 12px; padding-right: 12px;}
-.productListBox .productItem{ background-color: #ffffff; margin-bottom: 24px; padding: 10px 10px 0 10px;}
+.productListBox .productItem{ background-color: #ffffff; margin-bottom: 0px; padding: 10px 10px 0 10px;}
 
 .productListBox .productItem .productImg{ width: 100%; display: block; height: auto;}
 .productListBox .productItem .productInfo{ padding: 20px 14px; line-height: 30px;}
