@@ -27,7 +27,7 @@
 	.container-fluid>.navbar-header,
 	.container>.navbar-collapse,
 	.container>.navbar-header{ margin: 0;}
-	.dcHead .navbar-brand > .logoImg{ width: 35px; height: 37px; background-image: url(../img/logo_red.png);}
+	.dcHead .navbar-brand > .logoImg{ width: 35px; height: 37px; background-image: url(../img/logo_red_new.png);}
 	.dcHead .navbar-default{ height: 62px; background-color: #ffffff!important;}
 	.dcHead .navbar-default .navbar-toggle{ border: none; margin: 15px;}
 	.dcHead .searchBox{ display: none;}

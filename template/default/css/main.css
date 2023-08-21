@@ -1,6 +1,6 @@
 .dcWrap{ width: 100%; }
 .dcHead{ position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
-.dcHead .logoImg{ background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-position: 0 0; background-size: cover; width: 58px; height: 60px;}
+.dcHead .logoImg{ background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-position: 0 0; background-size: cover; width: 58px; height: 60px;}
 .dcHead .navbar{ border-radius: 0; margin-bottom: 0;}
 .dcHead .navbar-default{ background-color: #ffffff; border: none;}
 .dcHead .navbar-default .navbar-nav>li:not(.active)>a{ color: #000000;}
@@ -283,7 +283,7 @@
 .pcHead .hSearch{ background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 24px 24px; width: 24px; height: 24px; position: absolute; right: 0; top: 4px; cursor: pointer;}
 .pcHead .logoBox{ height: 94px; padding: 20px 0;}
 .pcHead .logoBox > a{ display: block;}
-.pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-size: cover;}
+.pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-size: cover;}
 .pcHead .menuBox{ transition: all 0.2s; text-align: center; width: 100%;}
 .pcHead .menuBox .menuCon{ height: 100%; display: inline-block;}
 .pcHead .menuBox .menuCon .menuItem{ height: 100%; display: inline-block; padding: 0 25px;}
@@ -307,7 +307,7 @@
 .mHead .mNavBox{ width: 100%; height: 60px; position: relative;}
 .mHead .mNavBox > * { position: absolute; top: 0;}
 .mHead .mNavBox .mCollapse{ display: block; background-image: url(../img/mCollapse_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; left: 0;}
-.mHead .mNavBox .mLogoBox{ display: block; background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-size: cover; margin: 10px; height: 40px; width: 40px; left: 50%; margin-left: -20px;}
+.mHead .mNavBox .mLogoBox{ display: block; background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-size: cover; margin: 10px; height: 40px; width: 40px; left: 50%; margin-left: -20px;}
 .mHead .mNavBox .mLogoBox >a{ display: block; width: 100%; height: 100%;}
 .mHead .mNavBox .mSearchBox{ display: block; background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; right: 0; }
 .mHead .mNavBox .mCollapse.on,
