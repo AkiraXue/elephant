@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaa7f738-d91c-4c9c-ad67-70eb79f3366e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/template/default/img/微信二维码.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/default/comm/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/comm/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/default/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/default/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/default/css/media.css" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/css/media.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/default/img/logo_light.png" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/img/logo_light_old.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/default/img/logo_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/template/default/img/logo_red_old.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +122,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template/default/img" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -137,6 +146,8 @@
       <workItem from="1645362650412" duration="2314000" />
       <workItem from="1645453345673" duration="263000" />
       <workItem from="1645580267879" duration="875000" />
+      <workItem from="1692600303793" duration="8000" />
+      <workItem from="1692600328451" duration="873000" />
     </task>
     <servers />
   </component>
