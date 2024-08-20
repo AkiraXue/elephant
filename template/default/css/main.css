@@ -1,6 +1,6 @@
 .dcWrap{ width: 100%; }
 .dcHead{ position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
-.dcHead .logoImg{ background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-position: 0 0; background-size: cover; width: 58px; height: 60px;}
+.dcHead .logoImg{ background-image: url(../img/logo_red_new2.png); background-repeat: no-repeat; background-position: 0 0; background-size: cover; width: 58px; height: 60px;}
 .dcHead .navbar{ border-radius: 0; margin-bottom: 0;}
 .dcHead .navbar-default{ background-color: #ffffff; border: none;}
 .dcHead .navbar-default .navbar-nav>li:not(.active)>a{ color: #000000;}
@@ -148,12 +148,14 @@
 .addressInfoBox .infoItem .addressInfo{ width: 50%; float: left;}
 .addressInfoBox .infoItem .addressiImgBox{ width: 50%; float: right;}
 .addressInfoBox .infoItem .addressiImgBox >img{ display: block; width: 100%;}
+.addressInfoBox .infoItem .addressiImgBox Title{ padding: 10px 0; font-size: 20px; color: #ff0000}
 .addressInfoBox .infoItem .addressInfo{ padding: 60px 15% 10px 0;}
 .addressInfoBox .infoItem .addressInfo.p2{ float: right; padding: 60px 10% 10px 10%;}
 .addressInfoBox .infoItem .addressiImgBox.p2{ float: left;}
 .addressInfoBox .infoItem .markIcon{ display: block; width: auto; height: 70px;}
-.addressInfoBox .infoItem .title{ padding: 40px 0; font-size: 40px; color: #000000;}
+.addressInfoBox .infoItem .title{ padding: 25px 0; font-size: 40px; color: #000000;}
 .addressInfoBox .infoItem .description{ color: #595959; font-size: 14px; line-height: 24px;}
+.addressInfoBox .infoItem .desc_title{ font-size: 24px; color: #ff0000;}
 
 .dcFooter{ width: 100%; border-top: solid 1px rgba(0, 0, 0, 0.1); }
 .dcFooter .footBox{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 10px 20px;}
@@ -230,7 +232,7 @@
 .brandInfoBox .brandModule .brandTextBox{ position: relative; padding: 0 40px 0 70px ;}
 .brandInfoBox .brandModule .brandTextBox .title{ font-size: 30px; line-height: 72px; color: #000000;}
 .brandInfoBox .brandModule .brandTextBox .description{ color: #595959; font-size: 14px; line-height: 24px; margin-top: 30px;}
-.brandInfoBox .brandModule .brandTextBox .description > p{ margin-bottom: 10px;}
+.brandInfoBox .brandModule .brandTextBox .description > p{ margin-bottom: 0px; }
 .line.vertical{ position: absolute; top: 0; right: 0; width: 2px; height: 130px; background-color: #FF8DA1;}
 .line.horizontal{ position: absolute; top: 0; left: 0; width: 130px; height: 2px; background-color: #FF8DA1;}
 .brandInfoBox .brandModule.module1 .brandTextBox{ padding: 0 60px 0 180px;}
@@ -283,7 +285,7 @@
 .pcHead .hSearch{ background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 24px 24px; width: 24px; height: 24px; position: absolute; right: 0; top: 4px; cursor: pointer;}
 .pcHead .logoBox{ height: 94px; padding: 20px 0;}
 .pcHead .logoBox > a{ display: block;}
-.pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-size: cover;}
+.pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red_new2.png); background-repeat: no-repeat; background-size: cover;}
 .pcHead .menuBox{ transition: all 0.2s; text-align: center; width: 100%;}
 .pcHead .menuBox .menuCon{ height: 100%; display: inline-block;}
 .pcHead .menuBox .menuCon .menuItem{ height: 100%; display: inline-block; padding: 0 25px;}
@@ -307,7 +309,7 @@
 .mHead .mNavBox{ width: 100%; height: 60px; position: relative;}
 .mHead .mNavBox > * { position: absolute; top: 0;}
 .mHead .mNavBox .mCollapse{ display: block; background-image: url(../img/mCollapse_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; left: 0;}
-.mHead .mNavBox .mLogoBox{ display: block; background-image: url(../img/logo_red_new.png); background-repeat: no-repeat; background-size: cover; margin: 10px; height: 40px; width: 40px; left: 50%; margin-left: -20px;}
+.mHead .mNavBox .mLogoBox{ display: block; background-image: url(../img/logo_red_new2.png); background-repeat: no-repeat; background-size: cover; margin: 10px; height: 40px; width: 40px; left: 50%; margin-left: -20px;}
 .mHead .mNavBox .mLogoBox >a{ display: block; width: 100%; height: 100%;}
 .mHead .mNavBox .mSearchBox{ display: block; background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; right: 0; }
 .mHead .mNavBox .mCollapse.on,

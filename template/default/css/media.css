@@ -27,7 +27,7 @@
 	.container-fluid>.navbar-header,
 	.container>.navbar-collapse,
 	.container>.navbar-header{ margin: 0;}
-	.dcHead .navbar-brand > .logoImg{ width: 35px; height: 37px; background-image: url(../img/logo_red_new.png);}
+	.dcHead .navbar-brand > .logoImg{ width: 35px; height: 37px; background-image: url(../img/logo_red_new2.png);}
 	.dcHead .navbar-default{ height: 62px; background-color: #ffffff!important;}
 	.dcHead .navbar-default .navbar-toggle{ border: none; margin: 15px;}
 	.dcHead .searchBox{ display: none;}
@@ -84,7 +84,7 @@
 	.brandInfoBox .brandModule .w60{ width: 100%;}
 	.brandInfoBox .brandModule .w40{ width: 100%;}
 	.brandInfoBox .brandModule .brandTextBox .title{ font-size: 18px; line-height: 36px;}
-	.brandInfoBox .brandModule .brandTextBox .description{ margin-top: 0; font-size: 12px;}
+	.brandInfoBox .brandModule .brandTextBox .description{ margin-top: 0; font-size: 18px;}
 	.brandInfoBox .brandModule.module0 .line.vertical{ top: 20px;}
 	.brandInfoBox .brandModule.module0 .brandTextBox{ padding: 20px 20px 20px 0;}
 	.brandInfoBox .brandModule.module1 .brandTextBox{ padding: 40px 0 20px 0;}

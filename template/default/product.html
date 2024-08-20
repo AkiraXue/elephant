@@ -42,6 +42,31 @@
                     </span>
                     <br>
                 </p>
+                {pboot:if('{content:ext_color}' != '')}
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px; font-weight: bold">
+                    色号：
+                    </span>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:ext_color}
+                    </span>
+                    <br>
+                </p>
+                {/pboot:if}
+                <br>
+                {pboot:if('{content:ext_ml}' != '')}
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px; font-weight: bold">
+                    容量：
+                    </span>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:ext_ml}
+                    </span>
+                    <br>
+                </p>
+                {/pboot:if}
+
+
             </div>
 
             <div class="btn"><a href="{content:ext_tmall_link}">立即购买</a></div>
@@ -60,13 +85,13 @@
             <div class="swiper-container productSwiper" id="product">
                 <div class="swiper-wrapper">
 
-                    {pboot:list scode=1 istop=0}
+                    {pboot:list scode=1}
                     <div class="swiper-slide">
                         <a href="[list:link]">
                             <div class="productItem">
                                 <img class="productImg" src="[list:ico]" />
                                 <div class="productInfo">
-                                    <span class="text">​[list:title]</span>
+                                    <span class="text">[list:title]</span>
                                 </div>
                             </div>
                         </a>

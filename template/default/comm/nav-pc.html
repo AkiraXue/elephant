@@ -13,6 +13,9 @@
         <!-- nav -->
         <div class="menuBox">
             <ul class="menuCon">
+                <li class="menuItem  {pboot:if(0=='{sort:scode}')}active{/pboot:if}">
+                    <a  href="{pboot:sitepath}/">首页</a>
+                </li>
                 <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
                     <a href="{pboot:sitepath}/stars">明星产品</a>
                     <div class="menuListBox">
