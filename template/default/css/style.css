@@ -25,7 +25,7 @@ body {
 	font-size: 14px;
 	color: #666;
 	font-family: "微软雅黑", "Microsoft Yahei", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-	font-family: "PingFang SC Bold";
+	/*font-family: "PingFang SC Bold";*/
 }
 
 
@@ -4961,7 +4961,7 @@ footer {
 
 .product-b {
 	width: 100%;
-	background: #f3f3f3;
+	background: #FFFFFF;
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
@@ -4985,15 +4985,16 @@ footer {
 }
 
 .product-b-ul li {
-	width: 23%;
+	width: 24%;
 	float: left;
-	margin: 0 1%;
-	margin-bottom: 25px;
+	margin: 0 0.5%;
+	margin-bottom: 10px;
 	background: #fff;
 	position: relative;
 	top: 0;
 	transition: all .3s;
 	-webkit-transition: all .3s;
+	border-radius: 15px;
 }
 
 .product-b-ul li a {
@@ -5004,11 +5005,13 @@ footer {
 	background: #ffffff;
 	overflow: hidden;
 	text-align: center;
+	border-radius: 15px;
 }
 
 .product-b1 img {
 	transition: all .3s;
 	-webkit-transition: all .3s;
+	border-radius: 15px;
 }
 
 .product-b2 {
@@ -5073,12 +5076,14 @@ footer {
 	top: -3px;
 	transition: all .3s;
 	-webkit-transition: all .3s;
+	border-radius: 15px;
 }
 
 .product-b-ul li:hover .product-b1 img {
 	transform: scale(1.08);
 	transition: all .3s;
 	-webkit-transition: all .3s;
+	border-radius: 15px;
 }
 
 .product .page {

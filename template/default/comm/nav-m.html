@@ -29,13 +29,25 @@
 
     <div class="mSearchContainer">
         <div class="mSearchCon">
-            <form action="{pboot:scaction}"  method="get">
+            <form class="mSearchForm" action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
-                    <input type="text" name="title" placeholder="请输入搜索内容" />
-                    <img src="{pboot:sitetplpath}/img/search_d.png" />
+                    <input class="mSearchInput" type="text" name="title" placeholder="请输入搜索内容" />
+                    <img class="mSearch" src="{pboot:sitetplpath}/img/search_d.png" />
                 </div>
             </form>
         </div>
     </div>
 
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".mSearch").click(function() {
+            var inputValue = $('.mSearchInput').first("input").val()
+            if (inputValue.trim() !== "") {
+                $('.mSearchForm').first("form").submit()
+            }
+        })
+    });
+
+</script>

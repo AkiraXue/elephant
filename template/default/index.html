@@ -1,6 +1,6 @@
 {include file=comm/header.html}
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?34" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?44" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
@@ -15,7 +15,7 @@
 
 <style>
 	@media (max-width: 768px) {
-		.navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_light_new.png);}
+		.navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_red_light.png);}
 	}
 </style>
 
@@ -35,12 +35,23 @@
 	<!-- recommend stop -->
 
 	<!-- recommend video start -->
-	<div class="videoBox hidden">
-		<video id="myVideo" class="myvideo" src="{pboot:sitetplpath}/img/index/video2.mp4" poster="{pboot:sitetplpath}/img/index/video.png?1"
-			   x5-playsinline="" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true"
-			   x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"
-			   autoplay="" loop="" muted="muted">您的浏览器不支持 video 标签。</video>
+<!--	<div class="videoBox">-->
+<!--		<video id="myVideo" class="myvideo" src="{pboot:sitetplpath}/img/index/video3.mp4" poster="{pboot:sitetplpath}/img/index/video.png?1"-->
+<!--			   x5-playsinline="" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true"-->
+<!--			   x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"-->
+<!--			   preload="auto" style="object-fit:fill" autoplay="autoplay" loop="" muted="muted">您的浏览器不支持 video 标签。</video>-->
+<!--&lt;!&ndash;		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video.png?1) no-repeat 0 center; background-size:cover;">&ndash;&gt;-->
+<!--	</div>-->
+
+	<div class="brand-video-index">
+		<div class="wfull-video-index">
+			<div class="full-video-index">
+				<video id="myVideo" class="myvideo" preload="auto"  autoplay="autoplay" loop="" muted="muted" src="{pboot:sitetplpath}/img/index/video3.mp4" ></video>
+			</div>
+		</div>
+		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video1.png?1) no-repeat 0 center;background-size:cover;"></div>
 	</div>
+
 	<!-- recommend video stop  -->
 
 	<!-- scientific start -->
@@ -54,7 +65,7 @@
 	$(function() {
 		var clientWidth = $(window).width();
 		if (clientWidth > 768) {
-			$('.videoBox').removeClass('hidden');
+			// $('.videoBox').removeClass('hidden');
 
 			var bannerH = $('.ibanner-pc').height();
 			$(window).scroll(function() {
@@ -82,8 +93,8 @@
 			});
 
 
-			$('.videoBox').addClass('hidden');
-			$('#myVideo').stop().hide(0);
+			// $('.videoBox').addClass('hidden');
+			// $('#myVideo').stop().hide(0);
 		}
 
 		var _md = getUrlParam("md");
@@ -107,26 +118,71 @@
 			}
 		}
 
+		var myVideo = document.getElementById("myVideo");
+		$(".brand-video-index").click(function() {
+			if ($(this).hasClass("cur")) {
+				$(this).removeClass("cur");
+				$(".z-video-bg").removeClass("cur");
+				myVideo.pause();
+
+			} else {
+				$(this).addClass("cur");
+				$(".z-video-bg").addClass("cur");
+				myVideo.play();
+			}
+		})
+
+		$(".brand-video-index").addClass("cur");
+		$(".z-video-bg").addClass("cur");
+		myVideo.play();
+		myVideo.addEventListener('ended', function() {
+			$(".brand-video-index").removeClass("cur");
+			$(".z-video-bg").removeClass("cur");
+			myVideo.pause();
+		}, false);
+
+
+		function doPlay() {
+			WeixinJSBridge.invoke("getNetworkType", {}, function (e) {
+				const player = jQuery("#video");
+				player[0].play();
+			});
+		}
+
+		if (window.WeixinJSBridge) {
+			doPlay();
+		} else {
+			document.addEventListener(
+					"WeixinJSBridgeReady",
+					function () {
+						doPlay();
+					},
+					false
+			);
+		}
+
+
+
 		window.onresize = function(){
 			var clientWidth = $(window).width();
 			if (clientWidth > 768) {
 				$(document).off('click.bs.dropdown.data-api');
-				$('.videoBox').removeClass('hidden');
+				// $('.videoBox').removeClass('hidden');
 			} else {
 				$(document).on('click.bs.dropdown.data-api', function(){
 					var isExpand = $('#navbar-collapse').attr('aria-expanded');
 					if (isExpand == 'true') {
 						$('.navbar-header').css({'background-color': '#ffffff'});
-						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red_new.png)', "display": 'block'});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
 						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
 					} else {
 						$('.navbar-header').css({'background-color': ''});
-						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_light_new.png)', "display": 'none'});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red_light.png)', "display": 'none'});
 						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
 					}
 				});
-				$('.videoBox').addClass('hidden');
-				$('#myVideo').stop().hide(0);
+				// $('.videoBox').addClass('hidden');
+				// $('#myVideo').stop().hide(0);
 			}
 
 			var _md = getUrlParam("md");
@@ -227,9 +283,8 @@
 	}
 	
 	function vkp() {
-		var myVideo = document.getElementById('loadding-video');
+		var myVideo = document.getElementById('myVideo');
 		myVideo.play();
-
 	}
 
 	// banner轮播
@@ -244,14 +299,22 @@
 	function initProductSwiper() {
 		var clientWidth = $(window).width();
 		var slidesPerView = 3;
-		if (clientWidth <= 768) slidesPerView = '1.2';
+		var spaceBetween = 24
+		if (clientWidth <= 768) {
+			slidesPerView = 2
+			spaceBetween = 0
+		}
 		mySwiper = new Swiper('#product', {
-			autoplay: 5000, //可选选项，自动滑动
+			// 启用自动播放
 			loop: true,
+			autoplay: 5000,
+			disableOnInteraction: false, // 用户交互后是否停止自动播放，默认为true
+
 			slidesPerView: slidesPerView,
-			spaceBetween: 24,
+			spaceBetween: spaceBetween,
 			prevButton: '#leftarrow',
 			nextButton: '#rightarrow',
+
 		})
 	}
 </script>

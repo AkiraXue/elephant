@@ -1,7 +1,7 @@
 {include file=comm/header.html}
 
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?20210310" />
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?20210310" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?1" />
 
 <script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
 <script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
@@ -186,14 +186,14 @@
         var slidesPerView = 4;
         var spaceBetween = 40;
         if (clientWidth <= 768) {
-            slidesPerView = '2';
-            spaceBetween = 24;
+            slidesPerView = 2;
+            spaceBetween = 0;
         }
         mySwiper = new Swiper('#team', {
             autoplay: 5000, //可选选项，自动滑动
             loop: true,
             slidesPerView: slidesPerView,
-            spaceBetween: 40,
+            spaceBetween: spaceBetween,
             prevButton: '#leftarrow',
             nextButton: '#rightarrow',
         })

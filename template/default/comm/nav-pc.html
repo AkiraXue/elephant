@@ -73,7 +73,7 @@
     $(function () {
         var clientWidth = $(window).width();
         if (clientWidth > 768) {
-            $('.videoBox').removeClass('hidden');
+            // $('.videoBox').removeClass('hidden');
 
             var bannerH = $('.ibanner-pc').height();
 
@@ -104,10 +104,16 @@
 
             });
 
-            $('.videoBox').addClass('hidden');
-
-            $('#myVideo').stop().hide(0);
+            // $('.videoBox').addClass('hidden');
+            // $('#myVideo').stop().hide(0);
         }
+
+        $(".hSearch").click(function() {
+            var inputValue = $('.hSearchInput').first("input").val()
+            if (inputValue.trim() !== "") {
+                $('.hSearchCon').first("form").submit()
+            }
+        })
     });
 
 </script>
