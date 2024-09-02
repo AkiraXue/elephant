@@ -101,7 +101,11 @@
 	.brandAwardsBox .swiperAwards .awardText{ font-size: 12px;}
 	.swiper-slide-active .text2{ font-size: 16px;}
 	.brandNewsBox .brandNewsCon{ width: 100%; margin: 0 auto; padding: 20px;}
-	.brandNewsBox .brandNewsCon .title{ font-size: 18px; line-height: 50px; padding-left: 70px;}
+	.brandNewsBox .brandNewsCon .title{
+		font-size: 18px;
+		line-height: 50px;
+		/*padding-left: 70px;*/
+	}
 	.brandNewsBox .brandNewsCon .title:before{ top: 25px; width: 50px;}
 	.brandNewsBox .brandNewsItem .brandNewsText > p{ padding: 6px 0; font-size: 14px;}
 	.brandNewsBox .brandNewsItem .brandNewsText .detail{ font-size: 12px; margin-bottom: 0; line-height: 24px;}

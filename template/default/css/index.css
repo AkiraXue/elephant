@@ -71,7 +71,7 @@
 
 
 	.dcHead.mHead{ background-color: transparent;}
-	.mHead .mNavBox .mCollapse{ background-image: url(../img/mCollapse.png);}
+	.mHead .mNavBox .mCollapse{ background-image: url(../img/mCollapse_red.png);}
 	.mHead .mNavBox .mLogoBox{ background-image: url(../img/logo_red_light.png); display: none;}
 	.mHead .mNavBox .mSearchBox{ background-image: url(../img/search_red.png);}
 	.dcHead.mHead.on{ background-color: #FFFFFF;}

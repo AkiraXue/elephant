@@ -1,6 +1,6 @@
 {include file=comm/header.html}
 
-<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?44" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?45" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
 <link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
 
@@ -46,10 +46,14 @@
 	<div class="brand-video-index">
 		<div class="wfull-video-index">
 			<div class="full-video-index">
-				<video id="myVideo" class="myvideo" preload="auto"  autoplay="autoplay" loop="" muted="muted" src="{pboot:sitetplpath}/img/index/video3.mp4" ></video>
+				<video id="myVideo" class="myvideo"
+					   loop="" muted="" playsinline="" autoplay="" preload="" data-wf-ignore="true" data-object-fit="cover" data-wf-ignore="true"
+					   src="{pboot:sitetplpath}/img/index/video3.mp4"
+					   poster="{pboot:sitetplpath}/img/index/video2.png?2">
+				</video>
 			</div>
 		</div>
-		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video1.png?1) no-repeat 0 center;background-size:cover;"></div>
+		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video2.png?1) no-repeat 0 center;background-size:cover;"></div>
 	</div>
 
 	<!-- recommend video stop  -->
@@ -119,6 +123,8 @@
 		}
 
 		var myVideo = document.getElementById("myVideo");
+		myVideo.load(); // 部分手机需要load
+		myVideo.play();
 		$(".brand-video-index").click(function() {
 			if ($(this).hasClass("cur")) {
 				$(this).removeClass("cur");
@@ -134,7 +140,6 @@
 
 		$(".brand-video-index").addClass("cur");
 		$(".z-video-bg").addClass("cur");
-		myVideo.play();
 		myVideo.addEventListener('ended', function() {
 			$(".brand-video-index").removeClass("cur");
 			$(".z-video-bg").removeClass("cur");
