@@ -9,17 +9,17 @@
 
     <div class="swiper-wrapper">
 
-        {pboot:list scode=1 filter=isheadline|1 order='sorting asc'}
-        <div class="swiper-slide" style="background-image: url([list:ext_banner]); width: 100%;"
-             data-swiper-slide-index="[list:scode]">
-            <a href="[list:link]">
+        {pboot:slide gid=1 num=3}
+        <div class="swiper-slide" style="background-image: url([slide:src]); width: 100%;"
+             data-swiper-slide-index="[slide:id]">
+            <a href="[slide:link]">
                 <div class="ibanner-div">
                     <div class="iban-d1"></div>
                     <div class="iban-d2"></div>
                 </div>
             </a>
         </div>
-        {/pboot:list}
+        {/pboot:slide}
 
     </div>
 <!--    <div class="sf-ban-cli"></div>-->
@@ -31,9 +31,9 @@
 <!--        <span class="swiper-pagination-bullet"></span>-->
 <!--        <span class="swiper-pagination-bullet"></span>-->
 
-        {pboot:list scode=1  filter=isheadline|1 order='sorting asc'}
+        {pboot:slide gid=1 num=3}
         <span class="swiper-pagination-bullet {pboot:if('[nav:scode]'=='{sort:tcode}')}swiper-pagination-bullet-active{/pboot:if}"></span>
-        {/pboot:list}
+        {/pboot:slide}
 
     </div>
 </div>
@@ -47,14 +47,13 @@
 <!--</div>-->
 <div class="swiper-container ibanner ibanner-m swiper-container-horizontal">
     <div class="swiper-wrapper">
-
-        {pboot:list scode=1 filter=isheadline|1}
-        <div class="swiper-slide" style="background-image: url([list:ext_banner]);">
-            <a href="[list:link]">
+	{pboot:slide gid=1 num=3}
+        <div class="swiper-slide" style="background-image: url([slide:src]);">
+            <a href="[slide:link]">
                 <div class="ibanner-div"></div>
             </a>
         </div>
-        {/pboot:list}
+        {/pboot:slide}
 
     </div>
 <!--    <div class="sf-ban-cli"></div>-->
@@ -63,8 +62,8 @@
 
 <div class="w1750 ibanner-span-cont ibanner-span-cont-m">
     <div class="swiper-pagination ibanner-span ibanner-span-m swiper-pagination-clickable swiper-pagination-bullets">
-        {pboot:list scode=1  filter=isheadline|1}
+	{pboot:slide gid=1 num=3}
         <span class="swiper-pagination-bullet {pboot:if('[nav:scode]'=='{sort:tcode}')}swiper-pagination-bullet-active{/pboot:if}"></span>
-        {/pboot:list}
+        {/pboot:slide}
     </div>
 </div>
