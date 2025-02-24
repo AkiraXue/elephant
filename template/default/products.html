@@ -1,0 +1,54 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?33" />
+
+
+<div class="dcWrap">
+
+    {include file=comm/nav.html}
+
+<!--    {include file=product/menu.html}-->
+
+    <div class="productInfoBox clearfix">
+        <ul class="breadcrumb">
+            <li><a href="{pboot:sitepath}/stars">产品列表</a></li>
+            {pboot:nav parent=1}
+            {pboot:2nav parent=[nav:scode]}
+            {pboot:if('[2nav:scode]'=='{sort:scode}')}
+            <li><a href="[nav:link]">[nav:name]</a></li>
+            <li><a href="[2nav:link]">[2nav:name]</a></li>
+            {/pboot:if}
+            {/pboot:2nav}
+            {/pboot:nav}
+        </ul>
+    </div>
+
+    <div class="product-b">
+        <div class="w1200">
+            <ul class="product-b-ul">
+                {pboot:list num=24 page=1}
+                <li>
+                    <a href="[list:link]" target="_blank">
+                        <div class="product-b1">
+                            <img src="[list:ico]" alt="[list:subtitle]">
+                        </div>
+                        <div class="product-b2">
+                            <div class="product-b2-a">[list:title]</div>
+                        </div>
+                    </a>
+                </li>
+                {/pboot:list}
+
+            </ul>
+
+            <div class="page">
+                {include file=comm/page.html}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{include file=comm/footer.html}

@@ -1,0 +1,34 @@
+<div class="brandNews brandNewsBox">
+    <div class="brandNewsCon wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="title">品牌新闻</div>
+        <div class="brandNewsListBox">
+            <div class="row">
+
+
+                {pboot:list scode=7}
+                <div class="col-lg-4 col-xs-6 col-md-6 col-sm-6" onclick="jumpLink('[list:ext_news_link]')">
+                    <div class="brandNewsItem">
+                        <div class="brandNewsImg">
+                            <img src="[list:ico]" />
+                        </div>
+                        <div class="brandNewsText">
+                            <p class=""><a href="[list:ext_news_link]" target="_blank">[list:title]</a></p>
+                            <div class="detail clearfix">
+                                <span class="detailDate pull-left">[list:ext_news_date]</span>
+                                <span class="detailMore pull-right">查看更多<i class="fa fa-angle-double-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/pboot:list}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function jumpLink(link) {
+        window.open(link, '_blank');
+    }
+</script>

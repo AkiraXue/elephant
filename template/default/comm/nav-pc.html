@@ -1,0 +1,119 @@
+<?$php_url=get_current_url();?>
+<!-- pc端nav效果 -->
+<div class="dcHead pcHead">
+    <div class="headCon">
+
+        <!-- logo -->
+        <div class="logoBox">
+            <a href="{pboot:sitepath}/">
+                <span class="logo"></span>
+            </a>
+        </div>
+
+        <!-- nav -->
+        <div class="menuBox">
+            <ul class="menuCon">
+                <li class="menuItem  {pboot:if(0=='{sort:scode}')}active{/pboot:if}">
+                    <a  href="{pboot:sitepath}/">首页</a>
+                </li>
+                <li class="menuItem productMenu <?=strstr($php_url, 'stars') || strstr($php_url, 'product') ? 'active' : '' ?>">
+                    <a href="{pboot:sitepath}/stars">明星产品</a>
+                    <div class="menuListBox">
+                        <div class="menuListCon fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+
+                            {pboot:nav parent=1}
+                            <ul class="menuList">
+                                <li class="listTitle" data-link="[nav:link]?md=[nav:scode]">
+                                    <img src="[nav:ico]" />
+                                    [nav:name]
+                                </li>
+
+                                {pboot:2nav parent=[nav:scode]}
+                                <li><a href="[2nav:link]?md=[nav:scode]&nd=[2nav:scode]">[2nav:name]</a></li>
+                                {/pboot:2nav}
+                            </ul>
+                            {/pboot:nav}
+
+                        </div>
+                    </div>
+                </li>
+                <li class="menuItem  <?=strstr($php_url, 'scientificCenter') ? 'active' : '' ?>">
+                    <a  href="{pboot:sitepath}/scientificCenter">科研中心</a>
+                </li>
+                <li class="menuItem dropdown <?=strstr($php_url, 'about') ? 'active' : '' ?>">
+                    <a  href="{pboot:sitepath}/about">关于小象</a>
+                    <ul class="dropdown-menu">
+
+                        {pboot:nav parent=3}
+                        <li><a href="{pboot:sitepath}/about?md=[nav:n]">[nav:name]</a></li>
+                        {/pboot:nav}
+
+                    </ul>
+                </li>
+                <li class="menuItem">
+                    <a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                        天猫旗舰店
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- h search -->
+        <form action="{pboot:scaction}"  method="get" class="hSearchCon">
+            <div class="hSearchBox">
+                <input class="hSearchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
+                <div class="hSearch"></div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var clientWidth = $(window).width();
+        if (clientWidth > 768) {
+            // $('.videoBox').removeClass('hidden');
+
+            var bannerH = $('.ibanner-pc').height();
+
+            $(window).scroll(function() {
+                var wtop = $(window).scrollTop();
+                if (wtop > bannerH -30) {
+                    $('.pcHead').addClass('on');
+                } else {
+                    $('.pcHead').removeClass('on');
+                }
+            });
+
+        } else {
+
+            $(window).scroll(function() {
+                var wtop = $(window).scrollTop();
+                if (wtop > 60) {
+                    $('.mHead').addClass('on');
+                } else {
+                    $('.mHead').removeClass('on');
+                }
+
+                $('.mCollapse').removeClass('on');
+                $('.mSearchBox').removeClass('on');
+
+                $('.mCollapseMenuBox').hide();
+                $('.mSearchContainer').hide();
+
+            });
+
+            // $('.videoBox').addClass('hidden');
+            // $('#myVideo').stop().hide(0);
+        }
+
+        $(".hSearch").click(function() {
+            var inputValue = $('.hSearchInput').first("input").val()
+            if (inputValue.trim() !== "") {
+                $('.hSearchCon').first("form").submit()
+            }
+        })
+    });
+
+</script>

@@ -1,0 +1,56 @@
+<div class="mainProductBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="mainProductCon">
+        <div class="titleBox clearfix">
+            <div class="title" style="text-align: center;">主推产品</div>
+        </div>
+        <div class="swiper-container productSwiper" id="product">
+            <div class="swiper-wrapper">
+
+                {pboot:list scode=1 filter=isrecommend|1 order='sorting asc'}
+                <div class="swiper-slide" style="background-image:url([list:ext_bg_img]);">
+                    <a href="[list:link]" style="display: block;">
+                        <div class="product-recommend-img">
+                            <img class="swiperProduct" src="[list:ext_pic]"/>
+                        </div>
+                        <div class="product-recommend-txt">
+                            <span class="swiperText">[list:title]</span>
+                        </div>
+                    </a>
+                </div>
+                {/pboot:list}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <img id="leftarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+        <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+    </div>
+</div>
+
+<style>
+    .productSwiper .swiper-slide {
+        width: 30%;
+        -moz-background-size:100% 100%;
+        background-size:100% 100%;
+    }
+    .product-recommend-img {
+        overflow: hidden;
+        text-align: center;
+    }
+    .product-recommend-img img{
+        padding: 10% 13% 16% 13%;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+
+    .productSwiper .swiper-slide:hover .product-recommend-img img {
+        transform: scale(1.08);
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+    @media (max-width: 768px) {
+        /*.swiper-slide {*/
+        /*    margin-right: 0px !important;*/
+        /*}*/
+    }
+
+</style>

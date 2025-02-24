@@ -1,0 +1,51 @@
+<div class="dcMenu">
+    <div class="menuTitle">明星产品</div>
+    <div class="menuListBox product-a wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+
+        {pboot:nav parent=1}
+        <ul class="menuList">
+            <li class="listTitle">[nav:name]</li>
+            {pboot:2nav parent=[nav:scode]}
+            <li class="{pboot:if('[2nav:scode]'=='{sort:scode}')}active{/pboot:if}">
+                <a href="[2nav:link]">[2nav:name]</a>
+            </li>
+            {/pboot:2nav}
+        </ul>
+        {/pboot:nav}
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function() {
+        // 点击分类刷新内容
+        $(".menuList li:not('.listTitle')").click(function() {
+            $('.menuListBox').find("li:not('.listTitle')").removeClass("active");
+            $(this).addClass("active");
+
+            var itop = $(".product-b").offset().top;
+            $("html,body").stop().animate({
+                scrollTop: itop
+            }, 1000);
+        });
+
+        var _md = getUrlParam("md");
+        var _nd = getUrlParam("nd");
+        if (_md != null && _nd != null) {
+            $('.menuListBox').find('.menuList').eq(_md)
+                .find("li:not('.listTitle')").eq(_nd).addClass('active');
+
+            var itop = $(".product-b").offset().top;
+            $("html,body").stop().animate({
+                scrollTop: itop
+            }, 1000);
+        }
+    });
+
+    // 带参数效果
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    }
+</script>

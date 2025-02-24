@@ -1,0 +1,364 @@
+<div class="dcHead">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{pboot:sitepath}/">
+                    <div class="logoImg"></div>
+                </a>
+            </div>
+            <div class="navbar-left leftcollapse">
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="{pboot:sitepath}/stars">明星产品</a></li>
+                        <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
+                        <li class="dropdown">
+                            <a href="{pboot:sitepath}/about" class="dropdown-toggle" data-toggle="dropdown">
+                                关于小象
+                            </a>
+                            <ul class="dropdown-menu">
+                                {pboot:nav parent=3}
+                                <li><a href="{pboot:sitepath}/about?md=[nav:n]">[nav:name]</a></li>
+                                {/pboot:nav}
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                                天猫旗舰店
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-right searchBox">
+                <form action="{pboot:scaction}"  method="get">
+                    <input class="searchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
+                    <i class="searchIcon fa fa-search"></i>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="swiper-container ibanner ibanner-pc por swiper-container-horizontal">
+    <div class="wfull-video">
+        <div class="full-video">
+            <video id="loadding-video" muted="" autoplay="" src="https://www.babycare.com/upload/2019/06/21/15611201890578ctt8i.mp4"></video>
+        </div>
+    </div>
+    <div class="swiper-wrapper">
+
+        {pboot:list scode=90}
+        <div class="swiper-slide" style="background-image: url([list:ico]); width: 100%;" data-swiper-slide-index="3">
+            <a href="[list:link]">
+                <div class="ibanner-div">
+                    <div class="iban-d1"></div>
+                    <div class="iban-d2"></div>
+                </div>
+            </a>
+        </div>
+        {/pboot:list}
+
+    </div>
+    <div class="sf-ban-cli"></div>
+</div>
+<div class="w1750 ibanner-span-cont">
+    <div class="swiper-pagination ibanner-span ibanner-span-pc swiper-pagination-clickable swiper-pagination-bullets" style="display: none;">
+
+        {pboot:list scode=90}
+        <span class="swiper-pagination-bullet {pboot:if('[nav:scode]'=='{sort:tcode}')}swiper-pagination-bullet-active{/pboot:if}"></span>
+        {/pboot:list}
+    </div>
+</div>
+
+<!--手机端使用-->
+<div class="wfull-video1 ibanner-m swiper-container-horizontal">
+    <div class="full-video">
+        <video id="loadding-video" muted="" autoplay="" loop="" playsinline="" onplay="this.style.opacity = 1;" src="https://www.babycare.com/upload/2019/06/27/15616195575731m02ur.mp4"
+               poster=""></video>
+    </div>
+</div>
+<div class="swiper-container ibanner ibanner-m swiper-container-horizontal">
+    <div class="swiper-wrapper">
+
+        {pboot:list scode=90}
+        <div class="swiper-slide" style="background-image: url([list:ico]);">
+            <a href="[list:link]">
+                <div class="ibanner-div">
+                </div>
+            </a>
+        </div>
+        {/pboot:list}
+
+    </div>
+    <div class="sf-ban-cli"></div>
+</div>
+<div class="w1750 ibanner-span-cont ibanner-span-cont-m">
+    <div class="swiper-pagination ibanner-span ibanner-span-m swiper-pagination-clickable swiper-pagination-bullets" style="display: none;">
+        {pboot:list scode=90}
+        <span class="swiper-pagination-bullet {pboot:if('[nav:scode]'=='{sort:tcode}')}swiper-pagination-bullet-active{/pboot:if}"></span>
+        {/pboot:list}
+    </div>
+</div>
+
+<!-- old recommend start -->
+<div class="mainProductBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="mainProductCon">
+
+        <div class="productMenuBox clearfix" id="productMenu">
+            {pboot:nav parent=91}
+            <div class="menuItem {pboot:if('[nav:scode]'=='{sort:tcode}')}active{/pboot:if}" data-scope="[nav:subname]">
+                <span>[nav:name]</span>
+            </div>
+            {/pboot:nav}
+        </div>
+
+        <div class="swiper-container productSwiper" id="product">
+            <div class="swiper-wrapper">
+                {pboot:nav parent=91}
+
+                {pboot:list scode=[nav:subname]}
+                <div class="swiper-slide" data-scope="[nav:subname]">
+                    <img class="swiperProduct" src="[list:ico]" />
+                    <div class="productCover">
+                        <a href="[list:link]"><span class="coverText">查看详情</span></a>
+                    </div>
+                </div>
+                {/pboot:list}
+
+                {/pboot:nav}
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <img id="leftarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+        <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+    </div>
+</div>
+<!-- old recommend stop -->
+
+<div class="scientificCenterBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+    <div class="row">
+        <div class="col-lg-8 col-xs-12 col-sm-8">
+            <div class="scientificInfo">
+                <div class="title">科研中心</div>
+                <div class="description">截至2020年8月，上美集团已获得专利近200项；<br />日本和中国研发团队共开发日本医药部外品35个，韩国功能性化妆品（美白、抗衰老）11个<br />与全球高等学府、科研机构展开联动，自主形成多项核心化妆品研发配方与工艺</div>
+                <div class="detailBox">
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-4">
+                            <div class="detailTitle"><span class="num">188</span> 项</div>
+                            <div class="detailLabel">获得专利</div>
+                        </div>
+                        <div class="col-lg-4 col-xs-4">
+                            <div class="detailTitle"><span class="num">35</span> 个</div>
+                            <div class="detailLabel">日本医药部外品</div>
+                        </div>
+                        <div class="col-lg-4 col-xs-4">
+                            <div class="detailTitle"><span class="num">11</span> 个</div>
+                            <div class="detailLabel">韩国功能性化妆品</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-12 col-sm-4">
+            <img class="scientificImg" src="{pboot:sitetplpath}/img/index/scientificPic.png" />
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var mySwiper;
+    $(function() {
+        var clientWidth = $(window).width();
+        if (clientWidth > 768) {
+            $(document).off('click.bs.dropdown.data-api');
+            $('.videoBox').removeClass('hidden');
+        } else {
+            $(document).on('click.bs.dropdown.data-api', function(){
+                var isExpand = $('#navbar-collapse').attr('aria-expanded');
+                if (isExpand == 'true') {
+                    $('.container-fluid').css({'background-color': '#ffffff'});
+                    $('.navbar-brand > .logoImg').css({'background-image': 'url(img/logo_red.png)'});
+                    $('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
+                } else {
+                    $('.container-fluid').css({'background-color': ''});
+                    $('.navbar-brand > .logoImg').css({'background-image': 'url(img/logo_red_light.png)'});
+                    $('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
+                }
+            });
+            $('.videoBox').addClass('hidden');
+            $('#myVideo').stop().hide(0);
+        }
+
+        var _md = getUrlParam("md");
+        if (_md == 0) {
+            $(".ibody").css("top", "0");
+            $(".loadding").hide();
+        } else {
+            var winw = $(window).width();
+            if (winw > 1024) {
+                var userAgent = navigator.userAgent; // 谷歌浏览器不能自动播放，需要有交互事件，判断为谷歌浏览器，执行其他方式。
+                if (userAgent.indexOf("Chrome") > -1) {
+                    $(".loadding-a").show();
+                    $(".loadding").click(function() {
+                        vkp();
+                        $(".loadding-a").fadeOut();
+                    })
+
+                } else {
+                    vkp();
+                }
+            }
+        }
+
+        window.onresize = function(){
+            var clientWidth = $(window).width();
+            if (clientWidth > 768) {
+                $(document).off('click.bs.dropdown.data-api');
+                $('.videoBox').removeClass('hidden');
+            } else {
+                $(document).on('click.bs.dropdown.data-api', function(){
+                    var isExpand = $('#navbar-collapse').attr('aria-expanded');
+                    if (isExpand == 'true') {
+                        $('.container-fluid').css({'background-color': '#ffffff'});
+                        $('.navbar-brand > .logoImg').css({'background-image': 'url(img/logo_red.png)'});
+                        $('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
+                    } else {
+                        $('.container-fluid').css({'background-color': ''});
+                        $('.navbar-brand > .logoImg').css({'background-image': 'url(img/logo_red_light.png)'});
+                        $('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
+                    }
+                });
+                $('.videoBox').addClass('hidden');
+                $('#myVideo').stop().hide(0);
+            }
+
+            mySwiper.destroy();
+            initProductSwiper();
+
+            setTimeout(function() {
+                $(".wfull-video").stop().hide(0);
+                $('.ibanner-span-cont .swiper-pagination').show();
+                var myiban = new Swiper('.ibanner-pc', {
+                    pagination: '.ibanner-span-pc',
+                    loop: true,
+                    autoplayDisableOnInteraction: false,
+                    paginationClickable: true,
+                    speed: 800,
+                    autoplay: 4000
+                });
+            }, 5000)
+        }
+        window.onload = function() {
+            setTimeout(function() {
+                $(".wfull-video").stop().hide(0);
+                $('.ibanner-span-cont .swiper-pagination').show();
+                var myiban = new Swiper('.ibanner-pc', {
+                    pagination: '.ibanner-span-pc',
+                    loop: true,
+                    autoplayDisableOnInteraction: false,
+                    paginationClickable: true,
+                    speed: 800,
+                    autoplay: 4000
+                });
+            }, 5000)
+
+
+        }
+
+        var myiban = new Swiper('.ibanner-m', {
+            pagination: '.ibanner-span-m',
+            loop: true,
+            autoplayDisableOnInteraction: false,
+            paginationClickable: true,
+            speed: 800,
+            autoplay: 4000
+        });
+
+        var video = document.getElementById("loadding-video");
+        video.addEventListener('ended', function() {
+            $(".loadding").fadeOut(500);
+            $(".ibody").fadeIn(500);
+        }, false);
+
+        // initBannerSwiper();
+
+        $('#productMenu .menuItem').on('click', function(){
+            $(this).addClass('active').siblings().removeClass('active');
+            var scope = $(this).data('scope');
+
+
+            var len = $('#product').find('.swiper-slide').length;
+            $('#product').find('.swiper-slide').each(function(index, item){
+                var itemScope = $(item).data('scope');
+                console.log(itemScope + '===' + scope);
+
+                if (parseInt(itemScope) == parseInt(scope)){
+                    $(item).show();
+                } else {
+                    $(item).hide();
+                }
+                // if (index >= (key * 4) && index <= (key * 4 + 3)) {
+                // 	$(item).show();
+                // }  else {
+                // 	$(item).hide();
+                // }
+            })
+            initProductSwiper();
+        })
+
+        initProduct();
+
+    })
+
+    function initProduct() {
+        $('#productMenu .menuItem').eq(0).addClass('active').siblings().removeClass('active');
+        var len = $('#product').find('.swiper-slide').length;
+        $('#product').find('.swiper-slide').each(function(index, item){
+
+            var originScope = $('#product').find('.swiper-slide').first().data('scope');
+            var itemScope = $(item).data('scope');
+            if (parseInt(itemScope) == parseInt(originScope)){
+                $(item).show();
+            } else {
+                $(item).hide();
+            }
+        })
+        initProductSwiper();
+    }
+    function vkp() {
+        var myVideo = document.getElementById('loadding-video');
+        myVideo.play();
+
+    }
+
+    // banner轮播
+    function initBannerSwiper() {
+        var mySwiper = new Swiper('#banner', {
+            autoplay: 5000, //可选选项，自动滑动
+            pagination: '.swiper-pagination',
+            loop: true,
+        })
+    }
+
+    function initProductSwiper() {
+        var clientWidth = $(window).width();
+        var slidesPerView = 3;
+        if (clientWidth <= 768) slidesPerView = '1.2';
+        mySwiper = new Swiper('#product', {
+            autoplay: 5000, //可选选项，自动滑动
+            loop: true,
+            slidesPerView: slidesPerView,
+            spaceBetween: 24,
+            prevButton: '#leftarrow',
+            nextButton: '#rightarrow',
+        })
+    }
+</script>

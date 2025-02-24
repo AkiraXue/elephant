@@ -1,0 +1,40 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?33" />
+
+
+<div class="dcWrap">
+
+    {include file=comm/nav.html}
+
+    {include file=product/menu.html}
+
+    <div class="product-b">
+        <div class="w1200">
+            <ul class="product-b-ul">
+                {pboot:search num=8 page=1}
+                <li>
+                    <a href="[search:link]" target="_blank">
+                        <div class="product-b1">
+                            <img src="[search:ico]" alt="[search:subtitle]">
+                        </div>
+                        <div class="product-b2">
+                            <div class="product-b2-a">[search:title]</div>
+                        </div>
+                    </a>
+                </li>
+                {/pboot:search}
+
+            </ul>
+
+            <div class="page">
+                {include file=comm/page.html}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{include file=comm/footer.html}

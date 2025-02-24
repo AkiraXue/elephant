@@ -1,0 +1,83 @@
+@media (min-width: 768px) {
+	.dcHead{  border-bottom: none;}
+	.dcHead .navbar-default{ height: 100px; background-color: transparent;}
+	.dcHead .navbar-default .logoImg{ background-image: url(../img/logo_red_light.png);}
+	.searchBox{ overflow: hidden;  border: solid 1px #FFFFFF; border-radius: 36px; width: 200px; height: 36px; }
+	.searchBox .searchInput{ float: left; border: none; height: 34px; padding: 6px 9px; line-height: 22px; width: 160px; background-color: transparent; font-size: 14px; color: #FFFFFF;}
+	.searchBox .searchIcon{ float: left; display: block; width: 34px; height: 34px; line-height: 20px; padding: 7px; cursor: pointer; text-align: center; font-size: 16px; color: #ffffff;}
+	.dcHead .navbar-default .searchBox .searchInput::-webkit-input-placeholder{
+		color: #ffffff;
+	}
+	.dcHead .navbar-default .searchBox .searchInput::-moz-placeholder{
+		color: #ffffff;
+	}
+	.dcHead .navbar-default .searchBox .searchInput:-moz-placeholder{
+		color: #ffffff;
+	}
+	.dcHead .navbar-default .searchBox .searchInput:-ms-input-placeholder{
+		color: #ffffff;
+	}
+
+	.dcHead .navbar-default .navbar-nav>li:not(.active)>a{ color: #FFFFFF; font-size: 16px;}
+	.dcHead .navbar-default:focus,
+	.dcHead .navbar-default:hover{ background-color: #FFFFFF; transition: all .3s;}
+	.dcHead .navbar-default:hover .logoImg{ background-image: url(../img/logo_red.png);}
+	.dcHead .navbar-default:hover .navbar-nav>li:not(.active)>a{ color: #000000;}
+
+	.dcHead .navbar-default:hover .navbar-nav>li>a:focus,
+	.dcHead .navbar-default:hover .navbar-nav>li>a:hover{ color: #DD2825;}
+	.dcHead .navbar-default:hover .navbar-nav>.active>a,
+	.dcHead .navbar-default:hover .navbar-nav>.active>a:focus,
+	.dcHead .navbar-default:hover .navbar-nav>.active>a:hover{ color: #DD2825; background-color: transparent;}
+
+	.dcHead .navbar-default:hover .searchBox{ border-color: #AFAFAF;}
+	.dcHead .navbar-default:hover .searchBox .searchIcon{ color: #484848;}
+	.dcHead .navbar-default:hover .searchBox .searchInput{ color: #484848;}
+	.dcHead .navbar-default:hover .searchBox .searchInput::-webkit-input-placeholder{
+		color: #999999;
+	}
+	.dcHead .navbar-default:hover .searchBox .searchInput::-moz-placeholder{   /* Mozilla Firefox 19+ */
+		color: #999999;
+	}
+	.dcHead .navbar-default:hover .searchBox .searchInput:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+		color: #999999;
+	}
+	.dcHead .navbar-default:hover .searchBox .searchInput:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+		color: #999999;
+	}
+
+	.dcHead.pcHead{ background-color: transparent; border-bottom-color: transparent;}
+	.pcHead .logoBox .logo{ background-image: url(../img/logo_red_light.png);}
+	.pcHead .menuBox .menuCon .menuItem > a{ color: #DD2825;}
+	.pcHead .hSearch{ background-image: url(../img/search_red.png);}
+	.pcHead .hSearchBox.on .hSearchInput{ display: none;}
+	.dcHead.pcHead:hover{ background-color: #FFFFFF; border-bottom-color: rgba(0, 0, 0, 0.1);}
+	.pcHead:hover .logoBox .logo{ background-image: url(../img/logo_red.png);}
+	.pcHead:hover .menuBox .menuCon .menuItem > a{ color: #000000;}
+	.pcHead:hover .hSearch{ background-image: url(../img/search_d.png);}
+	.pcHead:hover .hSearchBox.on .hSearchInput{ display: block;}
+	.dcHead.pcHead.on{ background-color: #FFFFFF; border-bottom-color: rgba(0, 0, 0, 0.1);}
+	.pcHead.on .logoBox .logo{ background-image: url(../img/logo_red.png);}
+	.pcHead.on .menuBox .menuCon .menuItem > a{ color: #000000;}
+	.pcHead.on .hSearch{ background-image: url(../img/search_d.png);}
+	.pcHead.on .hSearchBox.on .hSearchInput{ display: block;}
+}
+
+@media (max-width: 768px) {
+	.dcHead{ position: fixed!important; border-bottom: none;}
+	.dcHead .navbar.navbar-default{ background-color: transparent!important;}
+	.dcHead .navbar-brand > .logoImg{background-image: url(../img/logo_red_light.png); display: none;}
+	.navbar-default .navbar-toggle .icon-bar{ background-color: #ffffff;}
+
+
+	.dcHead.mHead{ background-color: transparent;}
+	.mHead .mNavBox .mCollapse{ background-image: url(../img/mCollapse_red.png);}
+	.mHead .mNavBox .mLogoBox{ background-image: url(../img/logo_red_light.png); display: none;}
+	.mHead .mNavBox .mSearchBox{ background-image: url(../img/search_red.png);}
+	.dcHead.mHead.on{ background-color: #FFFFFF;}
+	.mHead.on .mNavBox .mCollapse{ background-image: url(../img/mCollapse_d.png);}
+	.mHead.on .mNavBox .mLogoBox{ background-image: url(../img/logo_red.png); display: block;}
+	.mHead.on .mNavBox .mSearchBox{ background-image: url(../img/search_d.png);}
+	.mHead.on .mNavBox .mCollapse.on,
+	.mHead.on .mNavBox .mSearchBox.on{ background-image: url(../img/menu_close.png);}
+}

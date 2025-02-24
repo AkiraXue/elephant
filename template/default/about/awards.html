@@ -1,0 +1,57 @@
+<div class="awards brandAwardsBox">
+    <div class="brandAwardsCon">
+        <div class="title">
+            <span>品牌奖项</span>
+        </div>
+        <div class="brandAwards swiper-container">
+            <div class="swiper-wrapper">
+
+                {pboot:list scode=6}
+                <div class="swiper-slide">
+                    <div class="swiperAwards">
+                        <img class="awardImg" src="[list:ico]" />
+                        <div class="awardText">
+                            <span class="text1">[list:title]</span>
+                            <span class="text2">[list:content]</span>
+                        </div>
+                    </div>
+                </div>
+                {/pboot:list}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var awardsSwiper;
+
+    initAwardsSwiper();
+
+    window.onresize = function(){
+        awardsSwiper.destroy();
+        initAwardsSwiper();
+    }
+
+    function initAwardsSwiper() {
+        var clientWidth = $(window).width();
+        var slidesPerView = 3;
+        if (clientWidth <= 768) slidesPerView = '1.5';
+        awardsSwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            autoplay: 2000, //可选选项，自动滑动
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: slidesPerView,
+            coverflow: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows : false
+            }
+        });
+    }
+</script>

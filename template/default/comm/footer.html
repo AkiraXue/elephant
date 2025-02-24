@@ -1,0 +1,44 @@
+
+		<footer >
+            <div class="dcFooter">
+                <div class="footBox">
+                    <div class="footImg">
+                        <a target="_blank" href="https://hsxx.tmall.com/">
+                            <img src="{pboot:sitetplpath}/img/footImg_0.png" />
+                        </a>
+                        <a class="wechat">
+                            <img src="{pboot:sitetplpath}/img/footImg_1.png" />
+                            <div class="weChatImg">
+                                <img src="{pboot:sitetplpath}/img/scientific/wechat.png?2" />
+                            </div>
+                        </a>
+                        <a target="_blank" href="https://weibo.com/loveBabyelephant"><img src="{pboot:sitetplpath}/img/footImg_2.png" /></a>
+                    </div>
+                    <a target="_blank" href="https://beian.miit.gov.cn">
+                        <span class="text">上海上美化妆品股份有限公司 沪ICP备 15047150号-2<span>
+                    </a>
+                    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402001581">
+                        <span class="text">
+                            <img class="beianImg" src="{pboot:sitetplpath}/img/beian.png" />
+                            沪公网安备 31011402001581号
+                        <span>
+                    </a>
+                </div>
+            </div>
+
+		</footer>
+
+	</body>
+
+	<script type="text/javascript">
+		$(function(){
+            var clientWidth = $(window).width();
+            if (clientWidth > 768) {
+                $(document).off('click.bs.dropdown.data-api');
+            } else {
+                $(document).on('click.bs.dropdown.data-api');
+            }
+		})
+	</script>
+
+</html>

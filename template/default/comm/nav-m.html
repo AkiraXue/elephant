@@ -1,0 +1,53 @@
+<!-- 移动端nav效果 -->
+<div class="dcHead mHead">
+    <div class="mNavBox">
+        <div class="mCollapse"></div>
+        <div class="mLogoBox"><a href="{pboot:sitepath}/"></a></div>
+        <div class="mSearchBox"></div>
+    </div>
+    <div class="mCollapseMenuBox">
+        <ul class="mCollapseMenu">
+            <li class=""><a href="{pboot:sitepath}/">首页</a></li>
+            <li class="dropdown">
+                <!-- href="{pboot:sitepath}/stars" -->
+                <a class="dropdownToggle">明星产品</a>
+                <ul class="dropdownMenu">
+                    {pboot:nav parent=1}
+                    <li><a href="[nav:link]?md=[nav:scode]">[nav:name]</a></li>
+                    {/pboot:nav}
+                </ul>
+            </li>
+            <li class=""><a href="{pboot:sitepath}/scientificCenter">科研中心</a></li>
+            <li class=""><a href="{pboot:sitepath}/about">关于小象</a></li>
+            <li class="">
+                <a target="_blank" href="https://hsxx.tmall.com/search.htm?spm=a220m.1000858.1000725.3.d6e376771Mxb9u&user_number_id=2707252427&rn=874a5afc4a37c3f4595a655d6f24033d&keyword=%BA%EC%C9%AB%D0%A1%CF%F3">
+                    天猫旗舰店
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mSearchContainer">
+        <div class="mSearchCon">
+            <form class="mSearchForm" action="{pboot:scaction}"  method="get">
+                <div class="mSearchItem">
+                    <input class="mSearchInput" type="text" name="title" placeholder="请输入搜索内容" />
+                    <img class="mSearch" src="{pboot:sitetplpath}/img/search_d.png" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".mSearch").click(function() {
+            var inputValue = $('.mSearchInput').first("input").val()
+            if (inputValue.trim() !== "") {
+                $('.mSearchForm').first("form").submit()
+            }
+        })
+    });
+
+</script>

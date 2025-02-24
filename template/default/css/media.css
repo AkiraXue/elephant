@@ -1,0 +1,187 @@
+@media (min-width: 768px) {
+	.dcHead .navbar-default{ height: 100px;}
+	.dcHead .navbar-default > .container-fluid{ width: 100%; max-width: 1200px;}
+	.navbar-brand{ height: 100px; padding: 24px 15px 15px 15px;}
+	.navbar-nav{ margin-top: 20px;}
+	.nav>li>a{ padding: 30px 15px; text-align: center;}
+	.leftcollapse{width: calc(100% - 280px);}
+	.navbar-collapse{ padding: 0 100px; }
+	.navbar-collapse .navbar-nav{ width: 100%;}
+	.navbar-collapse .navbar-nav > li{ width: 25%;}
+	.navbar-nav .dropdown-m{ display: none;}
+	.navbar-nav .dropdown-pc{ display: block;}
+	.dropdown-menu{ min-width: 100%; width: auto; text-align: center; padding:0 0 10px 0; line-height: 28px; border: none;}
+	.dropdown-menu > li > a{ line-height: 28px;}
+	.nav > li:hover > .dropdown-menu { display: block; transition: all .3s;}
+	.nav > li:hover > .dropdown-menu > li.dropdown:hover > .dropdown-menu{ display: block; transition: all .3s;}
+	.nav > li.dropdown > .dropdown-menu > li.dropdown > .dropdown-menu{ left: 100%; top: 0;}
+	.nav .fa{line-height: 26px; margin-right: -10px;}
+	.dcHead.pcHead{ display: block;}
+	.dcHead.mHead{ display: none;}
+}
+@media (max-width: 767px) {
+	.dcHead{ position: fixed;}
+	.dcHead .navbar{ margin-bottom: 0;}
+	.dcHead .container-fluid{ padding: 0;}
+	.container-fluid>.navbar-collapse,
+	.container-fluid>.navbar-header,
+	.container>.navbar-collapse,
+	.container>.navbar-header{ margin: 0;}
+	.dcHead .navbar-brand > .logoImg{ width: 35px; height: 37px; background-image: url(../img/logo_red.png);}
+	.dcHead .navbar-default{ height: 62px; background-color: #ffffff!important;}
+	.dcHead .navbar-default .navbar-toggle{ border: none; margin: 15px;}
+	.dcHead .searchBox{ display: none;}
+	.navbar-collapse{}
+	.navbar-collapse .navbar-nav{  background-color: rgba(0, 0, 0, 0.2); margin: 0 -15px; height: 100vh;}
+	.navbar-collapse .navbar-nav > li{ border-bottom: solid 1px #EAEAEA; padding: 0; padding: 6px 0; background-color: #FFFFFF;}
+	.navbar-collapse .navbar-nav > li:last-child{ border-bottom: none;}
+	.dcHead .navbar-default .navbar-nav>li:not(.active)>a{ color: #666666;}
+	.navbar-default .navbar-toggle:focus,
+	.navbar-default .navbar-toggle:hover{ background-color: transparent;}
+	.swiper-container-horizontal>.swiper-pagination-bullets,
+	.swiper-pagination-custom, .swiper-pagination-fraction{ bottom: 10px; text-align: center; padding-left: 0px;}
+	.swiper-pagination-bullet{ width: 24px; height: 2px;}
+
+	.navbar-nav .dropdown-pc{ display: none;}
+	.navbar-nav .dropdown-m{ display: block;}
+	.mainProductBox .mainProductCon{ width: 100%; padding: 20px;}
+	/* .mainProductBox .mainProductCon .titleBox{ display: none;} */
+	.mainProductBox .arrowBtn{ display: none;}
+	.mainProductBox .productMenuBox .menuItem{ font-size: 14px; line-height: 36px;}
+	.scientificCenterBox{ width: 100%; padding: 20px;}
+	.scientificCenterBox .scientificInfo .title{ margin-bottom: 20px; font-size: 24px; line-height: 48px;}
+	.scientificCenterBox .scientificInfo .description{ color: #595959; font-size: 14px; margin-bottom: 38px; line-height: 24px;}
+	.scientificCenterBox .scientificInfo .detailBox .detailTitle{ font-size: 16px; }
+	.scientificCenterBox .scientificInfo .detailBox .detailTitle .num{ font-size: 40px; line-height: 50px; }
+	.scientificCenterBox .scientificInfo .detailBox .detailLabel{ color: #595959; font-size: 14px; line-height: 20px; padding-left: 5px;}
+	.scientificCenterBox .scientificImg{ display: none;}
+	.dcFooter .footBox{ width: 100%; padding: 26px 0 36px 0;}
+	.dcFooter .footBox .text{ width: 100%; height: 32px; float: none; text-align: center; display: block; font-size: 12px;}
+	.dcFooter .footBox .footImg{ width: fit-content; float: none; display: block; height: 32px; margin: 0 auto;}
+
+
+	.dcMenu{ width: 100%; margin: 0 auto; margin-top: 60px; padding: 20px;}
+	.dcMenu .menuTitle{ padding: 10px 0; background-position: right 18px;}
+	.dcMenu .menuListBox{ display: flex; flex-direction: row; flex-wrap: nowrap; white-space: nowrap; overflow-x: scroll; }
+	.dcMenu .menuListBox::-webkit-scrollbar{ display: none;}
+	.dcMenu .menuListBox .menuList{ padding-right: 30px; width: auto;}
+	.productListBox .productListCon{ width: 100%; margin: 0 auto; padding: 20px 16px;}
+	.productListBox .productItem .productInfo{ padding: 20px 6px; line-height: 30px;}
+
+	.productInfoBox { width: 100%; margin: 0 auto; margin-top: 60px; padding: 20px;}
+	.productInfoBox .infoLeft{ border: none;}
+	.productInfoBox .breadcrumb{ display: none;}
+	.productInfoBox .volume > span{font-family: arial, helvetica, sans-serif; font-size: 16px; color: #595959;}
+	.productInfoBox .volume .volumeNum{color: #000000; font-style: normal;}
+	.productInfoBox .price > span{font-family: arial, helvetica, sans-serif; font-size: 16px; color: #595959;}
+	.productInfoBox .price .priceNum{color: #000000; font-style: normal;}
+
+	.dcBanner{ margin-top: 60px;}
+	.dcBanner .bannerImgBox{ width: 100%; margin-top: 0;}
+
+	.brandInfoBox { width: 100%; margin: 0 auto; padding: 20px;}
+	.brandInfoBox .brandModule{ padding: 0;}
+	.brandInfoBox .brandModule .w60{ width: 100%;}
+	.brandInfoBox .brandModule .w40{ width: 100%;}
+	.brandInfoBox .brandModule .brandTextBox .title{ font-size: 18px; line-height: 36px;}
+	.brandInfoBox .brandModule .brandTextBox .description{ margin-top: 0; font-size: 18px;}
+	.brandInfoBox .brandModule.module0 .line.vertical{ top: 20px;}
+	.brandInfoBox .brandModule.module0 .brandTextBox{ padding: 20px 20px 20px 0;}
+	.brandInfoBox .brandModule.module1 .brandTextBox{ padding: 40px 0 20px 0;}
+	.brandInfoBox .brandModule.module1 .line.horizontal{ top: 25px;}
+	.brandInfoBox .brandModule.module2 .brandImgBox{ padding: 20px 0 0 0;}
+	.brandInfoBox .brandModule.module2 .brandTextBox{ padding: 20px 0 20px 20px;}
+	.brandInfoBox .brandModule.module2 .line.vertical{ top: 20px;}
+	.brandInfoBox .brandModule.module2 .brandTextBox .title{ line-height: 36px;}
+	.brandInfoBox .brandModule.module2 .brandTextBox .description > p{ margin-bottom: 3px; line-height: 20px;}
+	.brandAwardsBox .brandAwardsCon{ width: 100%; margin: 0 auto; padding: 20px;}
+	.brandAwardsBox .brandAwardsCon .title{ padding-top: 0; font-size: 18px; line-height: 30px;}
+	.brandAwardsBox .brandAwardsCon .title span{ padding: 5px;}
+	.brandAwardsBox .brandAwardsCon .brandAwards{ padding: 40px 0 20px 0;}
+	.brandAwardsBox .swiperAwards .awardText{ font-size: 12px;}
+	.swiper-slide-active .text2{ font-size: 16px;}
+	.brandNewsBox .brandNewsCon{ width: 100%; margin: 0 auto; padding: 20px;}
+	.brandNewsBox .brandNewsCon .title{
+		font-size: 18px;
+		line-height: 50px;
+		/*padding-left: 70px;*/
+	}
+	.brandNewsBox .brandNewsCon .title:before{ top: 25px; width: 50px;}
+	.brandNewsBox .brandNewsItem .brandNewsText > p{ padding: 6px 0; font-size: 14px;}
+	.brandNewsBox .brandNewsItem .brandNewsText .detail{ font-size: 12px; margin-bottom: 0; line-height: 24px;}
+	.z-video-bg .video-btn { width: 40px; height: 40px; }
+	.brand-video{ margin-top: 0!important;}
+
+	.mainTeamBox .mainTeamCon{ width: 100%; padding: 20px;}
+	.mainTeamBox .titleBox .title{ font-size: 18px;}
+	.mainTeamBox .arrowBtn{ width: 24px; height: 24px;}
+	.mainTeamBox .teamItem{ padding: 0; box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 8%);}
+	.mainTeamBox .teamItem .swiperTeam { padding: 20px 20px 0 20px;}
+	.mainTeamBox .teamItem .textBox{ padding: 10px;}
+	.mainTeamBox .teamItem .textBox span.subTitle{ font-size: 12px;}
+	.mainTeamBox .teamItem .textBox span.description{ visibility: visible; -webkit-transition: all .3s; transition: all .3s; height: auto;}
+	.scientificCenterBox .scientificInfo .scientificDetail .detailIcon{ margin: 10px 0 10px 5px;}
+
+	.scientificCenterBox .scientificInfo .scientificDetail .detailItem{width: 50%; padding: 20px; margin: 0;}
+
+	.scientificCenterBox.scientificDetailBox .scientificInfo{ width: 100%; padding: 20px 0;}
+	.scientificCenterBox.scientificDetailBox .scientificInfo .col-xs-1{ display: none;}
+
+	.addressInfoBox .addressInfoCon{ width: 100%; margin: 0 auto; padding: 20px;}
+	.addressInfoBox .infoItem{ margin-bottom: 20px;}
+	/* .addressInfoBox .infoItem >div{ width: 100%;} */
+	.addressInfoBox .infoItem .addressInfo{ width: 100%; padding: 0 0 20px 0;}
+	.addressInfoBox .infoItem .addressiImgBox{ width: 100%;}
+	.addressInfoBox .infoItem .addressInfo.p2{ padding: 20px 0 0 0;}
+	.addressInfoBox .infoItem .markIcon{ width: 50px; display: none;}
+	.addressInfoBox .infoItem .title{ padding: 10px 0; font-size: 20px;}
+	.proinfo-a1{ height: auto; }
+
+	.dcHead.pcHead{ display: none;}
+	.dcHead.mHead{ display: block;}
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+	.leftcollapse { width: calc(100% - 180px);}
+	.navbar-collapse{ padding-right: 0;}
+	.searchBox{ width: 100px;}
+	.searchBox .searchInput{ width: 60px;}
+
+	.scientificCenterBox .scientificInfo .detailBox .detailTitle .num{ font-size: 50px;}
+
+	.addressInfoBox .infoItem .markIcon{ width: auto; height: 50px;}
+	.addressInfoBox .infoItem .title{ font-size: 32px; padding: 20px 0;}
+	.addressInfoBox .infoItem .addressInfo{ padding-right: 5%; padding-top: 20px;}
+	.addressInfoBox .infoItem .addressInfo.p2{ padding: 20px 3% 10px 8%;}
+
+	.brandInfoBox { width: 100%; margin: 0 auto; padding: 20px;}
+	.brandInfoBox .brandModule{ padding: 0;}
+	.brandInfoBox .brandModule .w60{ width: 100%;}
+	.brandInfoBox .brandModule .w40{ width: 100%;}
+	.brandInfoBox .brandModule .brandTextBox .title{ font-size: 18px; line-height: 36px;}
+	.brandInfoBox .brandModule .brandTextBox .description{ margin-top: 0; font-size: 12px;}
+	.brandInfoBox .brandModule.module0 .line.vertical{ top: 20px;}
+	.brandInfoBox .brandModule.module0 .brandTextBox{ padding: 20px 20px 20px 0;}
+	.brandInfoBox .brandModule.module1 .brandTextBox{ padding: 20px 0;}
+	.brandInfoBox .brandModule.module1 .line.horizontal{ top: 0;}
+	.brandInfoBox .brandModule.module2 .brandImgBox{ padding: 20px 0 0 0;}
+	.brandInfoBox .brandModule.module2 .brandTextBox{ padding: 20px 0 20px 20px;}
+	.brandInfoBox .brandModule.module2 .line.vertical{ top: 20px;}
+	.brandInfoBox .brandModule.module2 .brandTextBox .title{ line-height: 36px;}
+	.brandInfoBox .brandModule.module2 .brandTextBox .description > p{ margin-bottom: 3px; line-height: 20px;}
+
+	.brandAwardsBox .brandAwardsCon .title{ font-size: 24px;}
+	.brandNewsBox .brandNewsCon .title{ font-size: 24px;}
+
+	.productInfoBox { width: 100%; margin: 0 auto; margin-top: 100px; padding: 20px;}
+	.productInfoBox .infoLeft{ border: none;}
+	.productInfoBox .breadcrumb{ display: none;}
+
+	.dcHead.pcHead{ display: block;}
+	.dcHead.mHead{ display: none;}
+
+	.pcHead .hSearchInput{ width: 180px;}
+	.pcHead .menuBox .menuCon .menuItem{ padding: 0 15px;}
+}
+
+

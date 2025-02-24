@@ -1,0 +1,22 @@
+
+<!-- nav pc start -->
+{include file=comm/nav-pc.html}
+<!-- nav pc stop -->
+
+<!-- nav mobile start -->
+{include file=comm/nav-m.html}
+<!-- nav mobile stop -->
+
+<script type="text/javascript">
+    $(function () {
+        $(".menuTitle").click(function(){
+            if($(".product-a").is(":hidden")){
+                $(".product-a").slideDown();
+                $(".menuTitle").removeClass("on");
+            }else{
+                $(".product-a").slideUp();
+                $(".menuTitle").addClass("on");
+            }
+        })
+    })
+</script>

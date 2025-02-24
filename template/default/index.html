@@ -1,0 +1,327 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/index.css?45" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?30" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/mCustomScrollbar.css?30" />
+
+<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/mCustomScrollbar.js"></script>
+
+<script>
+	window['adaptive'].desinWidth = 750;
+	window['adaptive'].init();
+</script>
+
+<style>
+	@media (max-width: 768px) {
+		.navbar-brand > .logoImg{background-image: url({pboot:sitetplpath}/img/logo_red_light.png);}
+	}
+</style>
+
+
+<div class="dcWrap">
+
+	<!-- nav start -->
+	{include file=comm/nav-common.html}
+	<!-- nav stop -->
+
+	<!-- banner start -->
+	{include file=index/banner.html}
+	<!-- banner stop -->
+
+	<!-- recommend start -->
+	{include file=index/recommend.html}
+	<!-- recommend stop -->
+
+	<!-- recommend video start -->
+<!--	<div class="videoBox">-->
+<!--		<video id="myVideo" class="myvideo" src="{pboot:sitetplpath}/img/index/video3.mp4" poster="{pboot:sitetplpath}/img/index/video.png?1"-->
+<!--			   x5-playsinline="" playsinline="true" webkit-playsinline="true" x-webkit-airplay="true"-->
+<!--			   x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint"-->
+<!--			   preload="auto" style="object-fit:fill" autoplay="autoplay" loop="" muted="muted">您的浏览器不支持 video 标签。</video>-->
+<!--&lt;!&ndash;		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video.png?1) no-repeat 0 center; background-size:cover;">&ndash;&gt;-->
+<!--	</div>-->
+
+	<div class="brand-video-index">
+		<div class="wfull-video-index">
+			<div class="full-video-index">
+				<video id="myVideo" class="myvideo"
+					   loop="" muted="" playsinline="" autoplay="" preload="" data-wf-ignore="true" data-object-fit="cover" data-wf-ignore="true"
+					   src="{pboot:sitetplpath}/img/index/video3.mp4"
+					   poster="{pboot:sitetplpath}/img/index/video2.png?2">
+				</video>
+			</div>
+		</div>
+		<div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video2.png?1) no-repeat 0 center;background-size:cover;"></div>
+	</div>
+
+	<!-- recommend video stop  -->
+
+	<!-- scientific start -->
+	{include file=index/scientific.html}
+	<!-- scientific stop -->
+
+</div>
+
+<script type="text/javascript">
+	var mySwiper;
+	$(function() {
+		var clientWidth = $(window).width();
+		if (clientWidth > 768) {
+			// $('.videoBox').removeClass('hidden');
+
+			var bannerH = $('.ibanner-pc').height();
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > bannerH -30) {
+					$('.pcHead').addClass('on');
+				} else {
+					$('.pcHead').removeClass('on');
+				}
+			});
+		} else {
+
+			$(window).scroll(function() {
+				var wtop = $(window).scrollTop();
+				if (wtop > 60) {
+					$('.mHead').addClass('on');
+				} else {
+					$('.mHead').removeClass('on');
+				}
+
+				$('.mCollapse').removeClass('on');
+				$('.mSearchBox').removeClass('on');
+				$('.mCollapseMenuBox').hide();
+				$('.mSearchContainer').hide();
+			});
+
+
+			// $('.videoBox').addClass('hidden');
+			// $('#myVideo').stop().hide(0);
+		}
+
+		var _md = getUrlParam("md");
+		if (_md == 0) {
+			$(".ibody").css("top", "0");
+			$(".loadding").hide();
+		} else {
+			var winw = $(window).width();
+			if (winw > 1024) {
+				var userAgent = navigator.userAgent; // 谷歌浏览器不能自动播放，需要有交互事件，判断为谷歌浏览器，执行其他方式。
+				if (userAgent.indexOf("Chrome") > -1) {
+					$(".loadding-a").show();
+					$(".loadding").click(function() {
+						vkp();
+						$(".loadding-a").fadeOut();
+					})
+
+				} else {
+					vkp();
+				}
+			}
+		}
+
+		var myVideo = document.getElementById("myVideo");
+		myVideo.load(); // 部分手机需要load
+		myVideo.play();
+		$(".brand-video-index").click(function() {
+			if ($(this).hasClass("cur")) {
+				$(this).removeClass("cur");
+				$(".z-video-bg").removeClass("cur");
+				myVideo.pause();
+
+			} else {
+				$(this).addClass("cur");
+				$(".z-video-bg").addClass("cur");
+				myVideo.play();
+			}
+		})
+
+		$(".brand-video-index").addClass("cur");
+		$(".z-video-bg").addClass("cur");
+		myVideo.addEventListener('ended', function() {
+			$(".brand-video-index").removeClass("cur");
+			$(".z-video-bg").removeClass("cur");
+			myVideo.pause();
+		}, false);
+
+
+		function doPlay() {
+			WeixinJSBridge.invoke("getNetworkType", {}, function (e) {
+				const player = jQuery("#video");
+				player[0].play();
+			});
+		}
+
+		if (window.WeixinJSBridge) {
+			doPlay();
+		} else {
+			document.addEventListener(
+					"WeixinJSBridgeReady",
+					function () {
+						doPlay();
+					},
+					false
+			);
+		}
+
+
+
+		window.onresize = function(){
+			var clientWidth = $(window).width();
+			if (clientWidth > 768) {
+				$(document).off('click.bs.dropdown.data-api');
+				// $('.videoBox').removeClass('hidden');
+			} else {
+				$(document).on('click.bs.dropdown.data-api', function(){
+					var isExpand = $('#navbar-collapse').attr('aria-expanded');
+					if (isExpand == 'true') {
+						$('.navbar-header').css({'background-color': '#ffffff'});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red.png)', "display": 'block'});
+						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#888'});
+					} else {
+						$('.navbar-header').css({'background-color': ''});
+						$('.dcHead .navbar-brand > .logoImg').css({'background-image': 'url({pboot:sitetplpath}/img/logo_red_light.png)', "display": 'none'});
+						$('.navbar-default .navbar-toggle .icon-bar').css({'background-color': '#fff'});
+					}
+				});
+				// $('.videoBox').addClass('hidden');
+				// $('#myVideo').stop().hide(0);
+			}
+
+			var _md = getUrlParam("md");
+			if (_md == 0) {
+				$(".ibody").css("top", "0");
+				$(".loadding").hide();
+			} else {
+				var winw = $(window).width();
+				if (winw > 1024) {
+					var userAgent = navigator.userAgent; // 谷歌浏览器不能自动播放，需要有交互事件，判断为谷歌浏览器，执行其他方式。
+					if (userAgent.indexOf("Chrome") > -1) {
+						$(".loadding-a").show();
+						$(".loadding").click(function() {
+							vkp();
+							$(".loadding-a").fadeOut();
+						})
+
+					} else {
+						vkp();
+					}
+				}
+			}
+
+			mySwiper.destroy();
+			initProductSwiper();
+
+			setTimeout(function() {
+				$(".wfull-video").stop().hide(0);
+				$('.ibanner-span-cont .swiper-pagination').show();
+				var myiban = new Swiper('.ibanner-pc', {
+					pagination: '.ibanner-span-pc',
+					loop: true,
+					autoplayDisableOnInteraction: false,
+					paginationClickable: true,
+					speed: 800,
+					autoplay: 4000
+				});
+			}, 5000)
+		}
+		window.onload = function() {
+			setTimeout(function() {
+				$(".wfull-video").stop().hide(0);
+				$('.ibanner-span-cont .swiper-pagination').show();
+				var myiban = new Swiper('.ibanner-pc', {
+					pagination: '.ibanner-span-pc',
+					loop: true,
+					autoplayDisableOnInteraction: false,
+					paginationClickable: true,
+					speed: 800,
+					autoplay: 4000
+				});
+			}, 5000)
+
+
+		}
+
+		var myiban = new Swiper('.ibanner-m', {
+			pagination: '.ibanner-span-m',
+			loop: true,
+			autoplayDisableOnInteraction: false,
+			paginationClickable: true,
+			speed: 800,
+			autoplay: 4000
+		});
+
+		// initBannerSwiper();
+
+		// $('#productMenu .menuItem').on('click', function(){
+		// 	$(this).addClass('active').siblings().removeClass('active');
+		// 	var key = $(this).attr('data-key');
+		// 	var len = $('#product').find('.swiper-slide').length;
+		// 	$('#product').find('.swiper-slide').each(function(index, item){
+		// 		if (index >= (key * 4) && index <= (key * 4 + 3)) {
+		// 			$(item).show();
+		// 		}  else {
+		// 			$(item).hide();
+		// 		}
+		// 	})
+		// 	initProductSwiper();
+		// })
+
+		// initProduct();
+		initProductSwiper();
+	})
+
+	function initProduct() {
+		var key = 0;
+		$('#productMenu .menuItem').eq(0).addClass('active').siblings().removeClass('active');
+		var len = $('#product').find('.swiper-slide').length;
+		$('#product').find('.swiper-slide').each(function(index, item){
+			if (index >= (key * 4) && index <= (key * 4 + 3)) {
+				$(item).show();
+			}  else {
+				$(item).hide();
+			}
+		})
+		initProductSwiper();
+	}
+	
+	function vkp() {
+		var myVideo = document.getElementById('myVideo');
+		myVideo.play();
+	}
+
+	// banner轮播
+	function initBannerSwiper() {
+		var mySwiper = new Swiper('#banner', {
+			autoplay: 5000, //可选选项，自动滑动
+			pagination: '.swiper-pagination',
+			loop: true,
+		})
+	}
+
+	function initProductSwiper() {
+		var clientWidth = $(window).width();
+		var slidesPerView = 3;
+		var spaceBetween = 24
+		if (clientWidth <= 768) {
+			slidesPerView = 2
+			spaceBetween = 0
+		}
+		mySwiper = new Swiper('#product', {
+			// 启用自动播放
+			loop: true,
+			autoplay: 5000,
+			disableOnInteraction: false, // 用户交互后是否停止自动播放，默认为true
+
+			slidesPerView: slidesPerView,
+			spaceBetween: spaceBetween,
+			prevButton: '#leftarrow',
+			nextButton: '#rightarrow',
+
+		})
+	}
+</script>
+
+{include file=comm/footer.html}

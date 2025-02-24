@@ -1,0 +1,33 @@
+{pboot:if({page:count} > 1)}
+<div class="pagination">
+
+    {pboot:2if(({page:current} > 2) && ({page:count} > 5))}
+    <a class="first-page" href="{page:index}" data-href="{page:index}">&nbsp;</a>
+    {/pboot:2if}
+
+    {pboot:2if(({page:current} > 1) && ({page:count} > 4))}
+    <a class="prev" href="{page:pre}" data-href="{page:pre}">&nbsp;</a>
+    {/pboot:2if}
+
+<!--    <a class="active" href="javascript:void(0)" data-href="#">{page:current}</a>-->
+
+    {page:numbar}
+
+    {pboot:2if(({page:current} < ({page:count} - 1)) && ({page:count} > 4))}
+    <a class="next" href="{page:next}" data-href="{page:next}">&nbsp;</a>
+    {/pboot:2if}
+
+    {pboot:2if(({page:current} < ({page:count} - 2)) && ({page:count} > 5))}
+    <a class="last-page" href="{page:last}" data-href="{page:last}">&nbsp;</a>
+    {/pboot:2if}
+</div>
+
+
+<script>
+    $(function() {
+        $('.page-num-current').addClass('active');
+    });
+</script>
+
+{/pboot:if}
+

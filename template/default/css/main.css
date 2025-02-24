@@ -1,0 +1,399 @@
+.dcWrap{ width: 100%; }
+.dcHead{ position: absolute; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
+.dcHead .logoImg{ background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-position: 0 0; background-size: cover; width: 58px; height: 60px;}
+.dcHead .navbar{ border-radius: 0; margin-bottom: 0;}
+.dcHead .navbar-default{ background-color: #ffffff; border: none;}
+.dcHead .navbar-default .navbar-nav>li:not(.active)>a{ color: #000000;}
+.dcHead .navbar-default .navbar-nav>li>a{ color: #000000; font-size: 16px;}
+.dcHead .navbar-default .navbar-nav>.active>a,
+.dcHead .navbar-default .navbar-nav>li>a:focus,
+.dcHead .navbar-default .navbar-nav>li>a:hover{ color: #DD2825; background-color: transparent;}
+.dcHead .navbar-default .navbar-nav>.open>a,
+.dcHead .navbar-default .navbar-nav>.open>a:focus,
+.dcHead .navbar-default .navbar-nav>.open>a:hover{ background-color: transparent;}
+.dcHead .navbar-default .searchBox{ margin: 39px 0 25px 0; color: #FFFFFF;}
+
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover{ background-color: #FDEFEF; color: #DD2825;}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover{background-color: #FDEFEF; color: #DD2825;}
+
+
+/* .dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover{ background-color: transparent; color: #DD2825;}
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover{ background-color: transparent; color: #DD2825;}
+.dropdown-menu>.active>a > span,
+.dropdown-menu>.active>a:focus > span,
+.dropdown-menu>.active>a:hover > span{ border-bottom: solid 2px #DD2825;}
+.dropdown-menu>li>a:focus > span,
+.dropdown-menu>li>a:hover > span{ border-bottom: solid 2px #DD2825; }
+.dropdown-menu>li>a > span{ line-height: 28px;}
+.dropdown-menu{ box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.08);}
+.dropdown-menu>li>a{ color: #000000; font-weight: 500; font-family: PingFangSC-Medium, PingFang SC;}
+.dropdown-pc > .dropdown-menu{ border-top-right-radius: 0; border-bottom-right-radius: 0;}
+.dropdown-pc .dropdown-menu > .dropdown{ position: static;}
+    .dropdown-pc .dropdown-menu > .dropdown > .dropdown-menu{ margin-top: 0; border-left: solid 1px #EAEAEA; height: auto; box-shadow: 18px 8px 24px 0px rgba(0, 0, 0, 0.08); border-top-left-radius: 0; border-bottom-left-radius: 0;}
+        .dropdown-pc .dropdown-menu > .dropdown > .dropdown-menu > li{ text-align: left;}
+        .dropdown-pc .dropdown-menu > .dropdown > .dropdown-menu > li>a{ color: #000000; font-weight: 400; font-family: PingFangSC-Regular, PingFang SC;}
+        .dropdown-pc .dropdown-menu > .dropdown > .dropdown-menu > li>a:hover{ color: #DD2825; background-color: #FFFFFF;} */
+
+
+
+.searchBox{ overflow: hidden;  border: solid 1px #AFAFAF; border-radius: 36px; width: 200px; height: 36px; }
+.searchBox .searchInput{ float: left; border: none; height: 34px; padding: 6px 9px; line-height: 22px; width: 160px; background-color: transparent; font-size: 14px; color: #484848;}
+.searchBox .searchIcon{ float: left; display: block; width: 34px; height: 34px; line-height: 20px; padding: 7px; cursor: pointer; text-align: center; font-size: 16px; color: #484848;}
+.dcHead .navbar-default .searchBox .searchInput::-webkit-input-placeholder{
+	color: #999999;
+}
+.dcHead .navbar-default .searchBox .searchInput::-moz-placeholder{
+	color: #999999;
+}
+.dcHead .navbar-default .searchBox .searchInput:-moz-placeholder{
+	color: #999999;
+}
+.dcHead .navbar-default .searchBox .searchInput:-ms-input-placeholder{
+	color: #999999;
+}
+
+
+
+.swiperBanner{ display: block; width: 100%; height: auto;}
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom, .swiper-pagination-fraction{ bottom: 30px; text-align: left; padding-left: 30px;}
+.swiper-pagination-bullet{ background-color: #ffffff; width: 40px; height: 3px; border-radius: 0px;}
+.swiper-pagination-bullet-active{ opacity: 1; background-color: #ffffff;}
+
+.ibanner .swiper-slide > a{ width: 100%; height: 100%;}
+
+.mainProductBox{ width: 100%;}
+.mainProductBox .mainProductCon{ position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 80px 60px 80px;}
+.mainProductBox .mainProductCon .titleBox{ width: 100%; margin-bottom: 20px;}
+.mainProductBox .titleBox .title{ text-align: left; font-size: 24px; color: #000000; }
+.mainProductBox .titleBox .btnBox{ float: right; overflow: hidden;}
+.mainProductBox .productMenuBox{ width: 100%; margin-bottom: 20px;}
+.mainProductBox .productMenuBox .menuItem{ float: left; text-align: center; width: 25%; line-height: 56px; font-size: 18px; color: #000000; cursor: pointer;}
+.mainProductBox .productMenuBox .menuItem span{ line-height: 30px; border-bottom: solid 1px #ffffff; padding: 10px 5px;}
+.mainProductBox .productMenuBox .menuItem.active span,
+.mainProductBox .productMenuBox .menuItem:hover span{ color: #DD2825; border-bottom-color: #DD2825;}
+.mainProductBox .arrowBtn{ float: left; width: 40px; height: 40px; margin: 5px; cursor: pointer; opacity: 1; background-size: cover; background-repeat: no-repeat;}
+.mainProductBox #leftarrow{ position: absolute; left: 0; top: 50%; margin-top: -20px; background-image: url(../img/index/leftarrow_d.png);}
+.mainProductBox #leftarrow:hover{  background-image: url(../img/index/leftarrow.png); opacity: 0.5;}
+.mainProductBox #rightarrow{ position: absolute; right: 0; top: 50%; margin-top: -20px;background-image: url(../img/index/rightarrow_d.png);}
+.mainProductBox #rightarrow:hover{  background-image: url(../img/index/rightarrow.png); opacity: 0.5;}
+.mainProductBox .productSwiper .swiper-slide > a > img{ width: 100%; height: auto; display: block;}
+.mainProductBox .productSwiper .swiper-slide:hover .productCover { display: block;}
+.mainProductBox .productSwiper .productCover{ position: absolute; left: 0; top: 0; background-color: #DD2825; opacity: 0.8; width: 100%; height: 100%; cursor: pointer; display: none;}
+.mainProductBox .productSwiper .productCover .coverText{ position: absolute; top: 50%; margin-top: -20px; height: 40px; line-height: 40px; border-bottom: solid 1px #ffffff; width: 100px; left: 50%; margin-left: -50px; text-align: center; color: #ffffff; font-size: 20px;}
+.mainProductBox .productSwiper .swiper-slide > a{ position: relative; display: block;}
+.mainProductBox .productSwiper .swiper-slide .swiperText{ position: absolute; bottom: 15px; left: 0; width: 100%; text-align: center; color: rgba(0, 0, 0, 0.7); font-size: 18px;}
+.mainProductBox .productSwiper .swiper-slide{ background-image: url(../img/index/p_bg.png); background-repeat: no-repeat; background-size: cover;}
+.productSwiper .swiper-slide:hover .product-recommend-img img { transform: scale(1.08); transition: all .3s; -webkit-transition: all .3s;}
+.product-recommend-img{ overflow: hidden; text-align: center;}
+.product-recommend-img img{ padding: 10% 13% 16% 13%; transition: all .3s; -webkit-transition: all .3s;}
+
+.brand-video-index {
+	width: 100%;
+	height: calc(100vw * 0.4);
+	position: relative;
+	overflow: hidden;
+	/* margin-top: 100px; */
+}
+
+.wfull-video-index {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	z-index: 2;
+}
+
+.full-video-index {
+	position: relative !important;
+	left: auto !important;
+	right: auto !important;
+	bottom: auto !important;
+	top: auto !important;
+	height: 100%;
+	-webkit-transition: width 0.56s, right 0.56s, bottom 0.56s, left 0.56s, top 0.56s, opacity 0.56s !important;
+	transition: width 0.56s, right 0.56s, bottom 0.56s, left 0.56s, top 0.56s, opacity 0.56s !important;
+}
+
+
+.full-video-index video {
+	/* position: absolute; */
+	/* top: 50%;
+	left: 50%; */
+	min-width: 100%;
+	/* min-height: 100%; */
+	width: auto;
+	height: auto;
+	z-index: 0;
+	/* -webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%); */
+}
+.full-video-index video {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/*.videoBox{ */
+/*	width: 100%;*/
+/*}*/
+/*.videoBox .myvideo{ */
+/*	width: 100%;*/
+/*}*/
+
+/* scientificCenter */
+.scientificCenterBox{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px;}
+.scientificCenterBox .scientificImg	{ display: block; width: 100%; height: auto;}
+.scientificCenterBox .scientificInfo .title{ font-size: 30px; color: #000000; font-weight: bold; line-height: 56px; margin-bottom: 38px;}
+.scientificCenterBox .scientificInfo .description{ color: #595959; font-size: 14px; margin-bottom: 38px; line-height: 24px;}
+.scientificCenterBox .scientificInfo .detailBox .detailTitle{ color: #DD2825; font-size: 18px; }
+.scientificCenterBox .scientificInfo .detailBox .detailTitle .num{ color: #DD2825; font-size: 60px; line-height: 72px; font-family: Helvetica;}
+.scientificCenterBox .scientificInfo .detailBox .detailLabel{ color: #595959; font-size: 14px; line-height: 20px; padding-left: 10px;}
+.scientificCenterBox .scientificInfo .detailBox > .row > div:nth-child(2) .detailLabel{ padding-left: 0;}
+
+.scientificCenterBox .scientificInfo .scientificDetail .detailIcon{ display: block; width: 40px; height: 40px; margin: 10px;}
+.scientificCenterBox .scientificInfo .scientificDetail .detailTitle{ color: #000000;}
+.scientificCenterBox .scientificInfo .scientificDetail .detailTitle .num{ color: #000000;}
+
+.scientificCenterBox.scientificDetailBox{ width: 100%; max-width: none; background-image: url(../img/scientific/bg.png); background-position: center; background-size: cover; background-repeat: no-repeat;}
+.scientificCenterBox.scientificDetailBox .scientificInfo{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px;}
+
+.scientificCenterBox .scientificInfo .scientificDetail .detailItem{ width: 33%; float: left; padding: 0 20px;}
+.scientificCenterBox .scientificDetail > div:nth-child(2) .detailLabel{ padding-left: 0;}
+.scientificCenterBox .scientificDetail{ display: flex; flex-direction: row; flex-wrap: wrap; }
+.scientificCenterBox .scientificInfo .scientificDetail .detailItem{ width: auto; margin: 0 auto;}
+
+
+.mainTeamBox{ width: 100%;}
+.mainTeamBox .mainTeamCon{ position: relative; width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px 30px 20px;}
+.mainTeamBox .mainTeamCon .titleBox{ width: 100%; padding-left: 10px;}
+.mainTeamBox .titleBox .title{ text-align: left; float: left; font-size: 24px; color: #000000;}
+.mainTeamBox .titleBox .btnBox{ float: right; overflow: hidden;}
+.mainTeamBox .arrowBtn{ float: left; width: 30px; height: 30px; margin: 5px; cursor: pointer; background-repeat: no-repeat; background-size: cover;}
+.mainTeamBox .arrowBtn.arrowLeft{ opacity: 1; background-image: url(../img/index/leftarrow_d.png);}
+.mainTeamBox .arrowBtn.arrowLeft:hover{ opacity: 0.5; background-image: url(../img/index/leftarrow.png);}
+.mainTeamBox .arrowBtn.arrowRight{ opacity: 1; background-image: url(../img/index/rightarrow_d.png);}
+.mainTeamBox .arrowBtn.arrowRight:hover{ opacity: 0.5; background-image: url(../img/index/rightarrow.png);}
+.mainTeamBox .teamItem{ cursor: pointer; padding: 0; margin: 20px 0;}
+.mainTeamBox .teamItem:hover{ box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);}
+.mainTeamBox .teamItem .swiperTeam{ width: 100%; height: auto; display: block; margin: 0 auto; padding: 26px 42px 10px 42px;}
+.mainTeamBox .teamItem .textBox{ position: relative; padding: 10px 25px 25px 25px; background-color: #FFFFFF;}
+.mainTeamBox .teamItem .textBox span{ display: block;}
+.mainTeamBox .teamItem .textBox span.title{ text-align: center; font-size: 18px; color: #000000; line-height: 20px; padding: 10px 0;}
+.mainTeamBox .teamItem .textBox span.subTitle{ text-align: center; font-size: 14px; color: #595959; line-height: 18px; padding: 0px 0 16px 0;}
+.mainTeamBox .teamItem .textBox span.description{ text-align: center; font-size: 12px; color: #595959; line-height: 20px; visibility: hidden; }
+.mainTeamBox .teamItem:hover span.description{ visibility: visible; -webkit-transition: all .3s; transition: all .3s; height: auto;}
+/* .mainTeamBox .teamItem:hover .textBox{ margin-top: -40px; margin-left: -1px; margin-right: -1px;} */
+.addressInfoBox{ width: 100%; }
+.addressInfoBox .addressInfoCon{width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px;}
+.addressInfoBox .infoItem{ overflow: hidden;}
+.addressInfoBox .infoItem .addressInfo{ width: 50%; float: left;}
+.addressInfoBox .infoItem .addressiImgBox{ width: 50%; float: right;}
+.addressInfoBox .infoItem .addressiImgBox >img{ display: block; width: 100%;}
+.addressInfoBox .infoItem .addressiImgBox Title{ padding: 10px 0; font-size: 20px; color: #ff0000}
+.addressInfoBox .infoItem .addressInfo{ padding: 60px 15% 10px 0;}
+.addressInfoBox .infoItem .addressInfo.p2{ float: right; padding: 60px 10% 10px 10%;}
+.addressInfoBox .infoItem .addressiImgBox.p2{ float: left;}
+.addressInfoBox .infoItem .markIcon{ display: block; width: auto; height: 70px;}
+.addressInfoBox .infoItem .title{ padding: 25px 0; font-size: 40px; color: #000000;}
+.addressInfoBox .infoItem .description{ color: #595959; font-size: 14px; line-height: 24px;}
+.addressInfoBox .infoItem .desc_title{ font-size: 24px; color: #ff0000;}
+
+.dcFooter{ width: 100%; border-top: solid 1px rgba(0, 0, 0, 0.1); }
+.dcFooter .footBox{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 10px 20px;}
+.dcFooter .footBox .text{ float: left; line-height: 60px; color: rgba(0, 0, 0, 0.65); font-size: 14px;}
+.dcFooter .footBox .text:first-child{ margin-right: 30px;}
+.dcFooter .footBox .footImg{ float: right; margin: 14px 0;}
+.dcFooter .footBox .footImg > a{ float: left; display: block; margin: 0 8px; position: relative;}
+.dcFooter .footBox .footImg > a > img{ display: block; width: 100%; height: auto;}
+.beianImg{ display: inline-block; width: 20px; height: 20px; margin-right: 5px; margin-top: -1px; vertical-align: middle;}
+.dcFooter .wechat:hover .weChatImg{ display: block;}
+.dcFooter .weChatImg{ display: none; transition: all 0.3s; position: absolute; right: -46px; bottom: 56px; background: #FFFFFF; padding: 10px; border-radius: 5px; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08); width: 124px;}
+.dcFooter .weChatImg >img{ display: block; width: 104px; height: auto;}
+.dcFooter .weChatImg:before{ content: ''; position: absolute; bottom: -10px; left: 50%; margin-left: -12px; width:0; height:0; border-right: 12px solid transparent; border-left: 12px solid transparent; border-top: 10px solid #ffffff;}
+
+
+
+/* productList */
+.dcMenu{ width: 100%; max-width: 1200px; margin: 138px auto 0 auto; padding: 0 20px; padding-bottom: 60px;}
+.dcMenu .menuTitle{ line-height: 32px; font-size: 20px; padding: 48px 0 10px 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1); background-image: url(../img/menu_close.png); background-repeat: no-repeat; background-size: 24px 24px; background-position: right 54px; cursor: pointer;}
+.dcMenu .menuTitle.on{ background-image: url(../img/menu_down.png);}
+.dcMenu .menuListBox{ overflow: hidden; width: 100%; padding: 10px 0 20px 0;}
+.dcMenu .menuListBox .menuList{ width: 20%; float: left;}
+.dcMenu .menuListBox .menuList >li>a{ font-size: 14px; color: #000000; line-height: 28px;}
+.dcMenu .menuListBox .menuList > li.listTitle{ font-size: 16px; color: #a1a1a1; line-height: 40px;}
+.dcMenu .menuListBox .menuList >li.active a,
+.dcMenu .menuListBox .menuList >li:hover a{ color: #DD2825; border-bottom: solid 1px #DD2825;}
+
+.productListBox{ width: 100%; background-color: #F2F2F2;}
+.productListBox .productListCon{width: 100%; max-width: 1200px; margin: 0 auto; padding: 60px 20px;}
+.productListBox .col-lg-3{ padding-left: 12px; padding-right: 12px;}
+.productListBox .productItem{ background-color: #ffffff; margin-bottom: 0px; padding: 10px 10px 0 10px;}
+
+.productListBox .productItem .productImg{ width: 100%; display: block; height: auto;}
+.productListBox .productItem .productInfo{ padding: 20px 14px; line-height: 30px;}
+.productListBox .productItem .productInfo .text{ display: block; font-size: 14px; color: #000000; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;}
+
+.productListBox .productItem:hover{ box-shadow: 0 0 15px rgb(200 200 200 / 50%);  top: -3px; transition: all .3s; -webkit-transition: all .3s;}
+.productListBox .productItem:hover .productImg{ transform: scale(1.08); transition: all .3s; -webkit-transition: all .3s;}
+
+
+/* productInfo */
+.productInfoBox { width: 100%; max-width: 1200px; margin: 138px auto 0 auto; padding: 0 20px;}
+.productInfoBox .infoLeft{ border-right: solid 1px rgba(0, 0, 0, 0.1);}
+.productInfoBox .breadcrumb{ background-color: transparent; padding: 15px;}
+.productInfoBox .breadcrumb>li+li:before{content: ">";}
+.productInfoBox .breadcrumb>.active{ color: #000000;}
+.productInfoBox .btn{ border-color: #000000; color: #000000; width: 100%; padding: 12px; margin-top: 40px; font-size: 20px;}
+.productInfoBox .btn:hover,
+.productInfoBox .btn:focus{border-color: #DD2825; color: #DD2825;}
+.productInfoBox .btn:hover > a,
+.productInfoBox .btn:focus > a{color: #DD2825;}
+.productInfoBox .originPrice{ color: #999999; font-style: normal; margin-left: 20px;}
+.productInfoBox .deleteLine{ text-decoration: line-through; }
+.productInfoBox .volume > span{font-family: arial, helvetica, sans-serif; font-size: 18px; color: #595959; line-height: 28px;}
+.productInfoBox .volume .volumeNum{color: #000000; font-style: normal;}
+.productInfoBox .price > span{font-family: arial, helvetica, sans-serif; font-size: 18px; color: #595959; line-height: 28px;}
+.productInfoBox .price .priceNum{color: #000000; font-style: normal;}
+.otherProductBox{ background-color: #F2F2F2;}
+
+.proinfo-a1{ height: 500px;}
+
+/* scientific Center*/
+.dcBanner{ width: 100%;}
+.dcBanner .bannerImgBox{ width: 100%; margin-top: 100px;}
+.dcBanner .bannerImgBox .bannerImg{ width: 100%; height: auto; display: block;}
+.brandInfoBox { width: 100%; max-width: 1200px; margin: 0 auto; padding: 50px 20px 0 20px;}
+.brandInfoBox .brandModule{ padding: 50px 0; overflow: hidden;}
+.brandInfoBox .brandModule .w60{ width: 55%;}
+.brandInfoBox .brandModule .w40{ width: 45%;}
+.brandInfoBox .brandModule .moduleLeft{ float: left;}
+.brandInfoBox .brandModule .moduleRight{ float: right;}
+.brandInfoBox .brandModule .brandImgBox{ display: block; width: 100%;}
+.brandInfoBox .brandModule .brandImgBox > img{ display: block; width: 100%; height: auto;}
+.brandInfoBox .brandModule .brandTextBox{ position: relative; padding: 0 40px 0 70px ;}
+.brandInfoBox .brandModule .brandTextBox .title{ font-size: 30px; line-height: 72px; color: #000000;}
+.brandInfoBox .brandModule .brandTextBox .description{ color: #595959; font-size: 14px; line-height: 24px; margin-top: 30px;}
+.brandInfoBox .brandModule .brandTextBox .description > p{ margin-bottom: 0px; }
+.line.vertical{ position: absolute; top: 0; right: 0; width: 2px; height: 130px; background-color: #DD2825;}
+.line.horizontal{ position: absolute; top: 0; left: 0; width: 130px; height: 2px; background-color: #DD2825;}
+.brandInfoBox .brandModule.module1 .brandTextBox{ padding: 0 60px 0 180px;}
+.brandInfoBox .brandModule.module1 .line.horizontal{ top: 36px;}
+.brandInfoBox .brandModule.module2 .brandImgBox{ padding: 0 126px 0 0;}
+.brandInfoBox .brandModule.module2 .line.vertical{ top: 0; left: 0;}
+.brandInfoBox .brandModule.module2 .brandTextBox .title{ line-height: 50px;}
+
+.brandAwardsBox{ width: 100%; background-image: url(../img/brand/new_bg.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center}
+.brandAwardsBox .brandAwardsCon{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;}
+.brandAwardsBox .brandAwardsCon .title{ padding-top: 60px; font-size: 30px; color: #000000; line-height: 100px; text-align: center;}
+.brandAwardsBox .brandAwardsCon .title span{
+	/*border-bottom: solid 1px #DD2825; */
+	padding: 23px 0;
+}
+.brandAwardsBox .brandAwardsCon .brandAwards{ padding: 40px 0 60px 0;}
+.brandAwardsBox .brandAwardsCon .swiperAwards{width: fit-content; margin: 0 auto; background: #FFFFFF; padding: 10px;border-radius: 15px;}
+.brandAwardsBox .swiperAwards .awardImg{ width: 300px; height: auto; display: block; margin: 0 auto;border-radius: 10px;}
+.brandAwardsBox .swiperAwards .awardText{ color: #000000; font-size: 14px; padding: 15px 0;}
+.brandAwardsBox .swiperAwards .awardText span{ display: block; line-height: 24px;}
+.swiper-slide-active .text2{ font-size: 18px;}
+.brandNewsBox{ width: 100%; background-color: #ffffff;}
+.brandNewsBox .brandNewsCon{ width: 100%; max-width: 1200px; margin: 0 auto; padding: 80px 30px;}
+/* .brandNewsBox .row{ margin-left: -30px; margin-right: -30px;}
+.brandNewsBox .col-lg-4,
+.brandNewsBox .col-xs-12{ padding-left: 30px; padding-right: 30px;} */
+.brandNewsBox .brandNewsCon .title{
+	font-size: 30px;
+	color: #000000;
+	line-height: 100px;
+	text-align: left;
+	padding-left: 0px;
+	position: relative;
+}
+/*.brandNewsBox .brandNewsCon .title:before{ position: absolute; top: 50px; left: 0; content: ''; width: 100px; height: 2px; background-color: #DD2825;}*/
+.brandNewsBox .brandNewsItem{ padding-bottom: 20px;}
+.brandNewsBox .brandNewsItem .brandNewsImg{ overflow: hidden;}
+.brandNewsBox .brandNewsItem .brandNewsImg > img{ display: block; width: 100%; height: auto;}
+.brandNewsBox .brandNewsItem .brandNewsImg:hover > img{ transform: scale(1.08); transition: all .3s; -webkit-transition: all .3s;}
+.brandNewsBox .brandNewsItem .brandNewsText{ padding: 10px 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
+.brandNewsBox .brandNewsItem .brandNewsText > p{ font-size: 16px; color: #000000; line-height: 22px; padding: 14px 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;height: 72px;}
+.brandNewsBox .brandNewsItem .brandNewsText > p > a{ color: #000000;}
+.brandNewsBox .brandNewsItem .brandNewsText .detail{ font-size: 16px; color: #000000; margin-bottom: 14px;}
+.brandNewsBox .brandNewsItem .brandNewsText .detail .detailDate{ color: rgba(0, 0, 0, 0.65); font-family: PingFangSC-Regular, PingFang SC;}
+.brandNewsBox .brandNewsItem .brandNewsText .detail .detailMore{ cursor: pointer;}
+.brandNewsBox .detailMore .fa{ margin-left: 10px;}
+.brandNewsBox .detailMore:hover{ padding-right: 15px; transition: all .3s; -webkit-transition: all .3s;}
+.z-video-bg { position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 9; cursor: pointer;}
+.z-video-bg .video-btn { width: 80px; height: 80px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 1; }
+.z-video-bg.cur { opacity: 0; transform: scale(.5, .5); }
+.z-video-bg.cur .video-btn { opacity: 0; }
+
+
+/* v2.0 nav */
+.dcHead.pcHead{ display: block; width: 100%; background-color: #FFFFFF; border-bottom-width: 0; position: fixed; top: 0; left: 0; border-bottom: solid 1px rgba(0, 0, 0, 0.1);}
+.pcHead .headCon{ width: 100%; max-width: 1200px; margin: 0 auto; position: relative;}
+.pcHead .hSearchBox{ height: 34px; position: absolute; bottom: 10px; right: 15px;}
+.pcHead .hSearchBox.on .hSearchInput{ display: block; transition: all 0.3s;}
+.pcHead .hSearchInput{ display: none; transition: all 0.2s; border: none; border-bottom: solid 1px rgba(0, 0, 0, 1); font-size: 14px; padding: 6px 30px 6px 0; line-height: 20px; background-color: #FFFFFF; width: 204px;}
+.pcHead .hSearch{ background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 24px 24px; width: 24px; height: 24px; position: absolute; right: 0; top: 4px; cursor: pointer;}
+.pcHead .logoBox{ height: 94px; padding: 20px 0;}
+.pcHead .logoBox > a{ display: block;}
+.pcHead .logoBox .logo{ width: 48px; height: 50px; margin: 0 auto; display: block; background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-size: cover;}
+.pcHead .menuBox{ transition: all 0.2s; text-align: center; width: 100%;}
+.pcHead .menuBox .menuCon{ height: 100%; display: inline-block;}
+.pcHead .menuBox .menuCon .menuItem{ height: 100%; display: inline-block; padding: 0 25px;}
+.pcHead .menuBox .menuCon .menuItem > a{ font-size: 16px; color: #000000; font-family: PingFangSC-Regular, PingFang SC; padding: 0 5px 15px 5px; display: block; border-bottom: solid 3px transparent; }
+.pcHead .menuBox .menuCon .menuItem.active{ }
+.pcHead .menuBox .menuCon .menuItem.active > a{ color: #DD2825; border-bottom-color: #DD2825;}
+.pcHead .menuBox .menuCon .menuItem.dropdown:hover .dropdown-menu{ display: block; }
+.pcHead .dropdown-menu{ margin-top: -2px; box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.12);}
+.productMenu:hover .menuListBox{ display: block; transition: all 0.2s;}
+.pcHead .menuListBox{ margin-top: -1px; border-top: solid 1px rgba(0, 0, 0, 0.1); display: none; transition: all 0.2s; width: 100vw; box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.12); position: fixed; top: 138px; left: 0; background-color: #ffffff; text-align: left;}
+.pcHead .menuListCon{ overflow: hidden; max-width: 1200px; margin: 0 auto; padding: 30px 20px;}
+.pcHead .menuListBox .menuList{ width: 20%; float: left;}
+.pcHead .menuListBox .menuList >li>a{ font-size: 14px; color: #000000; line-height: 28px;}
+.pcHead .menuListBox .menuList > li.listTitle{ font-size: 18px; color: #000000; line-height: 40px; border-bottom: solid 1px #EAEAEA; width: max-content; padding-bottom: 10px; padding-right: 40px; margin-bottom: 20px; white-space: nowrap;}
+.pcHead .menuListBox .menuList > li:not(.listTitle){ margin-bottom: 10px;}
+.pcHead .menuListBox .menuList > li.listTitle > img{ display: inline-block; width: 28px; height: 28px; margin-left: -5px; vertical-align: middle; margin-right: 2px; margin-top: -6px;}
+.pcHead .menuListBox .menuList >li.active a,
+.pcHead .menuListBox .menuList >li:hover a{ color: #DD2825; border-bottom: solid 1px #DD2825;}
+
+.dcHead.mHead{ display: none; width: 100%; background-color: #FFFFFF; position: fixed; top: 0; left: 0; }
+.mHead .mNavBox{ width: 100%; height: 60px; position: relative;}
+.mHead .mNavBox > * { position: absolute; top: 0;}
+.mHead .mNavBox .mCollapse{ display: block; background-image: url(../img/mCollapse_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; left: 0;}
+.mHead .mNavBox .mLogoBox{ display: block; background-image: url(../img/logo_red.png); background-repeat: no-repeat; background-size: cover; margin: 10px; height: 40px; width: 40px; left: 50%; margin-left: -20px;}
+.mHead .mNavBox .mLogoBox >a{ display: block; width: 100%; height: 100%;}
+.mHead .mNavBox .mSearchBox{ display: block; background-image: url(../img/search_d.png); background-repeat: no-repeat; background-size: 20px 20px; background-position: center; padding: 20px 15px; width: 50px; height: 60px; right: 0; }
+.mHead .mNavBox .mCollapse.on,
+.mHead .mNavBox .mSearchBox.on{ background-image: url(../img/menu_close.png);}
+.mCollapseMenuBox{ display: none; transition: all 0.2s; position: absolute; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: rgba(0, 0, 0, 0.2);}
+.mCollapseMenuBox .mCollapseMenu{ background-color: #FFFFFF; padding-left: 15px; padding-bottom: 60px;}
+.mCollapseMenuBox .mCollapseMenu > li{border-bottom: solid 1px #EAEAEA;}
+.mCollapseMenuBox .mCollapseMenu > li > a{ font-size: 16px; font-family: PingFangSC-Regular, PingFang SC;  line-height: 60px; display: block; color: rgba(0, 0, 0, 0.65);}
+.mSearchContainer{ display: none; transition: all 0.2s; position: absolute; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: rgba(0, 0, 0, 0.2);}
+.mSearchContainer .mSearchCon{ background-color: #FFFFFF; padding: 15px 15px 60px 15px; padding-bottom: 60px;}
+.mSearchContainer .mSearchItem{ border-bottom: solid 1px #EAEAEA; display: flex; flex-direction: row; align-items: center; }
+.mSearchContainer .mSearchItem > input{ flex: 1; border: none; color: #000000; font-size: 15px; font-family: PingFangSC-Regular, PingFang SC; padding: 10px 0;}
+.mSearchContainer .mSearchItem > input::-webkit-input-placeholder{
+	color: #C4C3C3;
+}
+.mSearchContainer .mSearchItem > input::-moz-placeholder{
+	color: #C4C3C3;
+}
+.mSearchContainer .mSearchItem > input:-moz-placeholder{
+	color: #C4C3C3;
+}
+.mSearchContainer .mSearchItem > input:-ms-input-placeholder{
+	color: #C4C3C3;
+}
+.mSearchContainer .mSearchItem > img{ width: 30px; height: 40px; padding: 10px 0 10px 10px;}
+
+.mCollapseMenuBox .dropdown .dropdownMenu{ margin-top: -10px; margin-bottom: 10px; display: none;}
+.mCollapseMenuBox .dropdown .dropdownMenu li{ line-height: 40px; padding-left: 10px;}

@@ -1,0 +1,244 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?33" />
+
+<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
+
+<script>
+    window['adaptive'].desinWidth = 750;
+    window['adaptive'].init();
+</script>
+
+<div class="dcWrap">
+
+    {include file=comm/nav.html}
+
+    <div class="sf-nav" style="position: absolute;top: 0;left: 0;width: 100%;">
+        <div class="sf-nav-pos">
+            <div class="w1200">
+                <div class="sf-nav-a on">品牌介绍</div>
+                <div class="sf-nav-a">品牌奖项</div>
+                <div class="sf-nav-a">品牌新闻</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dcBanner">
+        <!-- <div class="bannerImgBox">
+            <img class="bannerImg" src="img/brand/banner.png" />
+        </div> -->
+        <div class="ibanner brand-video">
+            <div class="wfull-video">
+                <div class="full-video">
+                    <video id="loadding-video" loop="" muted="" autoplay="" src="{pboot:sitetplpath}/img/index/video3.mp4"></video>
+                </div>
+            </div>
+            <div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video2.png?2) no-repeat 0 center; background-size:cover;">
+                <!-- <div class="video-btn">
+                    <img src="img/brand/img11.png" alt="">
+                </div> -->
+            </div>
+        </div>
+        <!--手机端使用-->
+        <div class="wfull-video1 brand-video ibanner-m">
+            <div class="full-video brand-video-a">
+                <video id="loadding-video2" loop="" muted="" playsinline="" autoplay="" preload=""
+                       src="{pboot:sitetplpath}/img/index/video3.mp4"
+                       poster="{pboot:sitetplpath}/img/index/video2.png?3">
+                </video>
+            </div>
+            <div class="z-video-bg" style="background:url({pboot:sitetplpath}/img/index/video2.png?1) no-repeat 0 center;background-size:cover;">
+                <!-- <div class="video-btn">
+                    <img src="img/brand/img11.png" alt="">
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- introduce start -->
+    {include file=about/introduce.html}
+    <!-- introduce stop -->
+
+    <!-- awards start -->
+    {include file=about/awards.html}
+    <!-- awards stop -->
+
+    <!-- news start -->
+    {include file=about/news.html}
+    <!-- news stop -->
+
+
+</div>
+
+<script type="text/javascript">
+    var awardsSwiper;
+    $(function(){
+        var clientWidth = $(window).width();
+        if (clientWidth > 768) {
+            $(document).off('click.bs.dropdown.data-api');
+        } else {
+            $(document).on('click.bs.dropdown.data-api');
+        }
+
+        initAwardsSwiper();
+
+        var myVideo = document.getElementById("loadding-video");
+        var myVideo2 = document.getElementById("loadding-video2");
+        $(".brand-video").click(function() {
+            if ($(this).hasClass("cur")) {
+                $(this).removeClass("cur");
+                $(".z-video-bg").removeClass("cur");
+                if ($(window).width() > 1024) {
+                    myVideo.pause();
+                } else {
+                    myVideo2.pause();
+                }
+
+            } else {
+                $(this).addClass("cur");
+                $(".z-video-bg").addClass("cur");
+                if ($(window).width() > 1024) {
+                    myVideo.play();
+                } else {
+                    myVideo2.play();
+                }
+            }
+        })
+
+        $(".brand-video").addClass("cur");
+        $(".z-video-bg").addClass("cur");
+        if ($(window).width() > 1024) {
+            myVideo.play();
+        } else {
+            myVideo2.play();
+        }
+
+        myVideo.addEventListener('ended', function() {
+            $(".brand-video").removeClass("cur");
+            $(".z-video-bg").removeClass("cur");
+            if ($(window).width() > 1024) {
+                myVideo.pause();
+            } else {
+                myVideo2.pause();
+            }
+        }, false);
+
+        myVideo2.addEventListener('ended', function() {
+            $(".brand-video").removeClass("cur");
+            $(".z-video-bg").removeClass("cur");
+            if ($(window).width() > 1024) {
+                myVideo.pause();
+            } else {
+                myVideo2.pause();
+            }
+        }, false);
+
+        // 页面导航被选中效果
+        var mdsz = [".brandInfo", ".awards", ".brandNews"];
+        var navh = $(".sf-nav").height();
+        var winh = $(window).height();
+        var mdt1 = $(".brandInfo").offset().top - winh + navh;
+        var mdt2 = $(".awards").offset().top - winh + navh;
+        var mdt3 = $(".brandNews").offset().top - winh + navh;
+        var winw = $(window).width();
+
+        $(window).scroll(function() {
+            var wtop = $(window).scrollTop();
+            if (wtop > 10) {
+                $(".sf-nav").css({'visibility': 'visible'});
+            } else {
+                $(".sf-nav").css({'visibility': 'hidden'});
+            }
+
+            if (wtop > mdt1) {
+                $('.dcHead').css({'position': 'relative'});
+                $('.dcBanner').css({'margin-top': '0'});
+
+                $(".sf-nav-a").eq(0).addClass("on").siblings(".sf-nav-a").removeClass("on");
+
+            }
+            if (wtop > mdt2) {
+                $('.dcHead').css({'position': 'relative'});
+                $(".sf-nav-a").eq(1).addClass("on").siblings(".sf-nav-a").removeClass("on");
+
+            }
+            if (wtop > mdt3) {
+                $('.dcHead').css({'position': 'relative'});
+                $(".sf-nav-a").eq(2).addClass("on").siblings(".sf-nav-a").removeClass("on");
+            }
+
+            var isExpand = $('#navbar-collapse').attr('aria-expanded');
+            if (isExpand == 'true') {
+                $('.dcHead').css({'position': 'fixed'});
+            } else {
+                $('.dcHead').css({'position': 'relative'});
+            }
+        });
+        // 点击内页导航效果
+        $(".sf-nav-a").click(function() {
+            var inx = $(this).index();
+            var lens = mdsz[inx];
+            var itop = $(lens).offset().top - navh;
+
+            $("html,body").stop().animate({
+                scrollTop: itop
+            }, 1000);
+        });
+
+        // 带参数进来效果
+        var _md = getUrlParam("md");
+        if (_md != null) {
+            $(".sf-nav-a").eq(_md).click();
+        }
+
+        var video = document.getElementById("loadding-video");
+        video.addEventListener('ended', function() {
+            $(".loadding").fadeOut(500);
+            $(".ibody").fadeIn(500);
+        }, false);
+
+    });
+
+    window.onresize = function(){
+        awardsSwiper.destroy();
+        initAwardsSwiper();
+    };
+
+    function vkp() {
+        var myVideo = document.getElementById('loadding-video');
+        myVideo.play();
+
+    }
+
+    // 带参数效果
+    function getUrlParam(name){
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    }
+
+    function initAwardsSwiper() {
+        var clientWidth = $(window).width();
+        var slidesPerView = 3;
+        if (clientWidth <= 768) slidesPerView = 1.5;
+        awardsSwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            autoplay: 2000, //可选选项，自动滑动
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: slidesPerView,
+            coverflow: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows : false
+            }
+        });
+    }
+</script>
+
+{include file=comm/footer.html}

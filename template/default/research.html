@@ -1,0 +1,141 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?20210310" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?33" />
+
+<script type="text/javascript" src="{pboot:sitetplpath}/js/wow.min.js"></script>
+<script type="text/javascript" src="{pboot:sitetplpath}/js/adaptive-version2.js"></script>
+
+<div class="dcWrap">
+
+    {include file=comm/nav.html}
+
+    <div class="dcBanner">
+        <div class="bannerImgBox">
+            <img class="bannerImg" src="{pboot:sitetplpath}/img/scientific/banner.png" />
+        </div>
+    </div>
+    <div class="mainTeamBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+        <div class="mainTeamCon">
+            <div class="titleBox clearfix">
+                <div class="title">国际化科研团队</div>
+                <div class="btnBox">
+                    <img id="leftarrow" class="arrowBtn arrowLeft" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+                    <img id="rightarrow" class="arrowBtn arrowRight" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+                </div>
+            </div>
+            <div class="swiper-container teamSwiper" style="padding: 0 10px;" id="team">
+                <div class="swiper-wrapper">
+		 
+                    {pboot:list scode=105}
+                    <div class="swiper-slide">
+                        <div class="teamItem">
+                            <img class="swiperTeam" src="[list:ico]" />
+                            <div class="textBox">
+                                <span class="title">[list:title]</span>
+                                <span class="subTitle">[list:ext_professional_post]</span>
+                                <span class="description animated">[list:content]</span>
+                            </div>
+                        </div>
+                    </div>
+                    {/pboot:list}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--    <div class="scientificCenterBox scientificDetailBox wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">-->
+<!--        <div class="scientificInfo">-->
+<!--            <div class="detailBox scientificDetail clearfix">-->
+<!--                <div class="detailItem">-->
+<!--                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_1.png?1" />-->
+<!--                    <div class="detailTitle">近<span class="num">200</span> 项</div>-->
+<!--                    <div class="detailLabel">获得专利</div>-->
+<!--                </div>-->
+<!--                <div class="detailItem">-->
+<!--                </div>-->
+<!--                &lt;!&ndash;-->
+<!--                <div class="detailItem">-->
+<!--                    <img class="detailIcon" src="{pboot:sitetplpath}/img/scientific/icon_2.png?1" />-->
+<!--                    <div class="detailTitle"><span class="num">35</span> 个</div>-->
+<!--                    <div class="detailLabel">日本医药部外品</div>-->
+<!--                </div>-->
+<!--                &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="addressInfoBox">
+        <div class="addressInfoCon">
+            <div class="infoItem wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="addressiImgBox">
+                    <img src="{pboot:sitetplpath}/img/scientific/a_1.png" />
+                </div>
+                <div class="addressInfo">
+                    <div class="desc_title">Global Supply Chain</div>
+                    <div class="title">上美科技园</div>
+                    <div class="description">
+                        上美科技园，坐落于上海市“东方美谷”产业园，总占地面积达150亩，集专业化、自动化、智能化于一体的化妆品生产基地，秉承环保可持续生产理念，涵盖护肤、面膜、母婴、洗护等多品类生产线，拥有“上海高新技术企业”、“上海市技术中心”认证，更是 “国家级”实训基地。
+                    </div>
+                </div>
+
+            </div>
+            <div class="infoItem wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="addressiImgBox p2">
+                    <img src="{pboot:sitetplpath}/img/scientific/a_3.png" />
+                </div>
+                <div class="addressInfo p2">
+                    <div class="desc_title">Global Dual Research Centers</div>
+                    <div class="title">上海环球港总部科研中心</div>
+                    <div class="description">
+                        专注基础研究、临床测试、工艺开发。<br>
+                        配备一流实验环境、优质人才和国际化设备。<br>
+                        专注于基础研究、前沿技术研究、配方创新研究，覆盖国际供应链战略中心。<br>
+                        近年来，科研成果全面应用产品品质不断提升，近200项专利。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var mySwiper;
+    $(function(){
+        var clientWidth = $(window).width();
+        if (clientWidth > 768) {
+            $(document).off('click.bs.dropdown.data-api');
+        } else {
+            $(document).on('click.bs.dropdown.data-api');
+        }
+
+        initProductSwiper();
+    })
+
+    window.onresize = function(){
+        mySwiper.destroy();
+        initProductSwiper();
+    }
+
+    function initProductSwiper() {
+        var clientWidth = $(window).width();
+        var slidesPerView = 4;
+        var spaceBetween = 40;
+        if (clientWidth <= 768) {
+            slidesPerView = 2;
+            spaceBetween = 0;
+        }
+        mySwiper = new Swiper('#team', {
+            autoplay: 5000, //可选选项，自动滑动
+            loop: true,
+            slidesPerView: slidesPerView,
+            spaceBetween: spaceBetween,
+            prevButton: '#leftarrow',
+            nextButton: '#rightarrow',
+        })
+    }
+</script>
+
+{include file=comm/footer.html}

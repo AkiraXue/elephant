@@ -1,0 +1,184 @@
+{include file=comm/header.html}
+
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/animate.css?24" />
+<link rel="stylesheet" href="{pboot:sitetplpath}/css/style.css?33" />
+
+<div class="dcWrap">
+
+    {include file=comm/nav.html}
+
+    <div class="productInfoBox clearfix">
+        <div class="infoLeft proinfo-a">
+            <ul class="breadcrumb">
+                <li><a href="/">首页</a></li>
+                <li><a href="{pboot:sitepath}/stars">明星产品</a></li>
+                <li class="active">产品详情</li>
+            </ul>
+            <div class="productImgBox wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;padding: 0 20px 48px;">
+                <img class="proinfo-a1" src="{content:ico}">
+                <div class="proinfo-a2">
+                    <div class="swiper-container proinfo-swiper swiper-container-horizontal">
+                        <div class="swiper-wrapper">
+<!--                            swiper-slide-active-->
+<!--                            swiper-slide-next-->
+                            {pboot:if({content:ispics})}
+                            {pboot:pics id={content:id} }
+                            <div class="swiper-slide swiper-slide-img" style="width: 92px; margin-right: 20px;">
+                                <img src="[pics:src]" />
+                            </div>
+                            {/pboot:pics}
+                            {/pboot:if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="infoRight proinfo-b wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;" style="padding-bottom: 30px;">
+            <div class="proinfo-b1">{content:title}</div>
+            <div class="proinfo-b2">
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:content}
+                    </span>
+                    <br>
+                </p>
+                {pboot:if('{content:ext_color}' != '')}
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px; font-weight: bold">
+                    色号：
+                    </span>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:ext_color}
+                    </span>
+                    <br>
+                </p>
+                {/pboot:if}
+                <br>
+                {pboot:if('{content:ext_ml}' != '')}
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px; font-weight: bold">
+                    容量：
+                    </span>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:ext_ml}
+                    </span>
+                    <br>
+                </p>
+                {/pboot:if}
+
+		<br>
+                {pboot:if('{content:ext_material}' != '')}
+                <p>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px; font-weight: bold">
+                    主要材质：
+                    </span>
+                    <span style="font-family: arial, helvetica, sans-serif; font-size: 16px;">
+                    {content:ext_material}
+                    </span>
+                    <br>
+                </p>
+                {/pboot:if}
+
+            </div>
+
+            <div class="btn"><a href="{content:ext_tmall_link}">立即购买</a></div>
+        </div>
+    </div>
+
+    <div class="mainProductBox productListBox otherProductBox" style="padding-top: 30px;">
+        <div class="mainProductCon">
+            <div class="titleBox clearfix">
+                <div class="title">猜你喜欢</div>
+                <div class="btnBox">
+                    <img id="leftarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/leftarrow.png" />
+                    <img id="rightarrow" class="arrowBtn" src="{pboot:sitetplpath}/img/index/rightarrow.png" />
+                </div>
+            </div>
+            <div class="swiper-container productSwiper" id="product">
+                <div class="swiper-wrapper">
+
+                    {pboot:list scode=1}
+                    <div class="swiper-slide">
+                        <a href="[list:link]">
+                            <div class="productItem">
+                                <img class="productImg" src="[list:ico]" />
+                                <div class="productInfo">
+                                    <span class="text">[list:title]</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {/pboot:list}
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var mySwiper;
+
+    $(function() {
+        var clientWidth = $(window).width();
+        initProductSwiper();
+        var aH = $('.proinfo-a').height();
+        var bH = 0;
+        if (clientWidth > 768) {
+            bH = $('.proinfo-b').height() + 200;
+        } else {
+            bH = $('.proinfo-b').height() + 60;
+        }
+        if (aH < bH) {
+            $('.proinfo-a').height(bH);
+        }
+
+        // banner轮播
+        var myiban = new Swiper('.proinfo-swiper', {
+            autoplayDisableOnInteraction: false,
+            paginationClickable: true,
+            slidesPerView: 5,
+            spaceBetween: 20,
+            breakpoints: {
+                767: {
+                    slidesPerView: 4,
+                    spaceBetween: 10
+                }
+            }
+
+        });
+
+        //切换图片
+        $(".swiper-slide-img img").on('click', function() {
+            var imgs = $(this).attr("src");
+            console.log('imgs => ' + imgs);
+            $(".proinfo-a1").attr("src", imgs);
+        });
+    });
+
+
+    window.onresize = function(){
+        mySwiper.destroy();
+        initProductSwiper();
+    };
+
+    function initProductSwiper() {
+        var clientWidth = $(window).width();
+        var slidesPerView = 4;
+        if (clientWidth <= 768) slidesPerView = '2';
+        mySwiper = new Swiper('#product', {
+            autoplay: 5000, //可选选项，自动滑动
+            loop: true,
+            slidesPerView: slidesPerView,
+            spaceBetween: 24,
+            prevButton:'#leftarrow',
+            nextButton:'#rightarrow',
+        })
+    }
+</script>
+
+{include file=comm/footer.html}
+
