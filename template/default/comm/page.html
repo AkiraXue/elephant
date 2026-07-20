@@ -1,33 +1,50 @@
-{pboot:if({page:count} > 1)}
-<div class="pagination">
+{pboot:if('{page:count}' > 1)}
+<div class="pagination" 
+     data-current="{page:current}" 
+     data-total="{page:count}">
 
-    {pboot:2if(({page:current} > 2) && ({page:count} > 5))}
     <a class="first-page" href="{page:index}" data-href="{page:index}">&nbsp;</a>
-    {/pboot:2if}
-
-    {pboot:2if(({page:current} > 1) && ({page:count} > 4))}
     <a class="prev" href="{page:pre}" data-href="{page:pre}">&nbsp;</a>
-    {/pboot:2if}
-
-<!--    <a class="active" href="javascript:void(0)" data-href="#">{page:current}</a>-->
 
     {page:numbar}
 
-    {pboot:2if(({page:current} < ({page:count} - 1)) && ({page:count} > 4))}
     <a class="next" href="{page:next}" data-href="{page:next}">&nbsp;</a>
-    {/pboot:2if}
-
-    {pboot:2if(({page:current} < ({page:count} - 2)) && ({page:count} > 5))}
     <a class="last-page" href="{page:last}" data-href="{page:last}">&nbsp;</a>
-    {/pboot:2if}
 </div>
 
-
 <script>
-    $(function() {
-        $('.page-num-current').addClass('active');
-    });
+$(function(){
+    const wrap = $('.pagination');
+    const curr = parseInt(wrap.data('current'));
+    const total = parseInt(wrap.data('total'));
+
+    // 1. 对应原 {pboot:2if(({page:current} > 2) && ({page:count} > 5))}
+    if (!(curr > 2 && total > 5)) {
+        wrap.find('.first-page').hide();
+    }
+
+    // 2. 对应原 {pboot:2if(({page:current} > 1) && ({page:count} > 4))}
+    if (!(curr > 1 && total > 4)) {
+        wrap.find('.prev').hide();
+    }
+
+    // 3. 对应原 {pboot:2if(({page:current} < ({page:count} - 1)) && ({page:count} > 4))}
+    if (!(curr < (total - 1) && total > 4)) {
+        wrap.find('.next').hide();
+    }
+
+    // 4. 对应原 {pboot:2if(({page:current} < ({page:count} - 2)) && ({page:count} > 5))}
+    if (!(curr < (total - 2) && total > 5)) {
+        wrap.find('.last-page').hide();
+    }
+
+    // 修复：总页数较少时，numbar 前置多余省略号
+    const firstNum = wrap.find('.page-num').first();
+    if (firstNum.text().indexOf('···') !== -1) {
+        firstNum.hide();
+    }
+
+    $('.page-num-current').addClass('active');
+})
 </script>
-
 {/pboot:if}
-

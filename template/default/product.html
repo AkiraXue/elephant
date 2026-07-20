@@ -21,10 +21,10 @@
                         <div class="swiper-wrapper">
 <!--                            swiper-slide-active-->
 <!--                            swiper-slide-next-->
-                            {pboot:if({content:ispics})}
-                            {pboot:pics id={content:id} }
+                            {pboot:if('{content:ispics}' == 1)}
+                            {pboot:pics id='{content:id}' }
                             <div class="swiper-slide swiper-slide-img" style="width: 92px; margin-right: 20px;">
-                                <img src="[pics:src]" />
+                                <img src="[pics:pic]" alt="[pics:title]" />
                             </div>
                             {/pboot:pics}
                             {/pboot:if}

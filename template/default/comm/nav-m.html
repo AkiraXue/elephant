@@ -31,7 +31,8 @@
         <div class="mSearchCon">
             <form class="mSearchForm" action="{pboot:scaction}"  method="get">
                 <div class="mSearchItem">
-                    <input class="mSearchInput" type="text" name="title" placeholder="请输入搜索内容" />
+		    <input type="hidden" name="field" value="title" >
+                    <input class="mSearchInput" type="text" name="keyword" placeholder="请输入搜索内容" />
                     <img class="mSearch" src="{pboot:sitetplpath}/img/search_d.png" />
                 </div>
             </form>

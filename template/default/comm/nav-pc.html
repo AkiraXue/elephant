@@ -61,7 +61,8 @@
         <!-- h search -->
         <form action="{pboot:scaction}"  method="get" class="hSearchCon">
             <div class="hSearchBox">
-                <input class="hSearchInput" type="text" name="title" placeholder="搜索你喜欢的产品" />
+		<input type="hidden" name="field" value="title" >
+                <input class="hSearchInput" type="text" name="keyword" placeholder="搜索你喜欢的产品" />
                 <div class="hSearch"></div>
             </div>
         </form>
