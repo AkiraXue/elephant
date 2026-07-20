@@ -22,7 +22,8 @@ class ContentSortModel extends Model
         $field = array(
             'a.*',
             'b.type',
-            'b.urlname'
+            'b.urlname',
+            '(select count(*) from ay_content c where c.scode=a.scode) wzcount'
         );
         $join = array(
             'ay_model b',
@@ -257,5 +258,10 @@ class ContentSortModel extends Model
     public function getTheme()
     {
         return parent::table('ay_site')->where("acode='" . session('acode') . "'")->value('theme');
+    }
+
+    public function getImage()
+    {
+        return parent::table('ay_content_sort')->column('pic,ico');
     }
 }

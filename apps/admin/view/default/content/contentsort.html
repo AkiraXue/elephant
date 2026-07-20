@@ -42,9 +42,16 @@
 		                               <i class="fa fa-folder-open-o" aria-hidden="true"></i>
 		                            {/if}
 		                            [value->name]
+		                           
 		                            
 		                            {if($value->outlink)}
-		                            	<span class="layui-badge layui-bg-black">链</span>
+		                            	<a href="[value->outlink]" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+		                            {else}
+		                            	{if($value->type==1)}
+		                            	 <a href="{url./admin/Single/index/mcode}/[value->mcode]&scode=[value->scode]"><i class="fa fa-file-text-o" aria-hidden="true"></i> </a>
+		                            	{else}
+		                            	 <a href="{url./admin/Content/index/mcode}/[value->mcode]&scode=[value->scode]"><i class="fa fa-file-text-o" aria-hidden="true"></i> </a>
+		                            	 {/if}
 		                            {/if}
 		                        </td>
 		                        <td>[value->scode]</td>
@@ -61,25 +68,18 @@
 		                        <td class="table-input"><input type="text" name="sorting[]" value="[value->sorting]" class="layui-input"></td>
 		                       	<td>
 		                            {if($value->status)}
-		                            <a href="{url./admin/'.C.'/mod/scode/'.$value->scode.'/field/status/value/0}"><i class='fa fa-toggle-on' title="点击禁用"></i></a>
+		                            <a href="{url./admin/'.C.'/mod/scode/'.$value->scode.'/field/status/value/0}" class="switch"><i class='fa fa-toggle-on' title="点击禁用"></i></a>
 		                            {else}
-		                            <a href="{url./admin/'.C.'/mod/scode/'.$value->scode.'/field/status/value/1}"><i class='fa fa-toggle-off' title="点击启用"></i></a>
+		                            <a href="{url./admin/'.C.'/mod/scode/'.$value->scode.'/field/status/value/1}" class="switch"><i class='fa fa-toggle-off' title="点击启用"></i></a>
 		                            {/if}
 		                        </td>
 		                        <td>
 		                        	{if(!$value->outlink)}
-			                        	{if($value->type==1)}
-				                           {php}$value->urlname=$value->urlname?:'about';{/php}
-				                        {else}
-				                       	   {php}$value->urlname=$value->urlname?:'list';{/php}
-				                        {/if}
-				                        {php} $url_rule_sort_suffix = \core\basic\Config::get('url_rule_sort_suffix') ? true : false;{/php}
-				                       
-			                           	{if($value->filename)}
-			                        		<a href="{fun=homeurl('/home/Index/'.$value->filename,$url_rule_sort_suffix)}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
-			                        	{else}
-			                        		<a href="{fun=homeurl('/home/Index/'.$value->urlname.[$url_break_char].$value->scode,$url_rule_sort_suffix)}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
-			                        	{/if}
+		                        		{php}
+			                        		$Parser=new app\home\controller\ParserController();
+			                        		$link=$Parser->parserLink($value->type,$value->urlname,'list',$value->scode,$value->filename,'','');
+			                        	{/php}
+			                        	<a href="{php}echo $link{/php}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
 		                        	{/if}
 		                
 		                            {fun=get_btn_del($value->scode,'scode')}
@@ -132,7 +132,7 @@
 			                <div class="layui-form-item">
 			                     <label class="layui-form-label">URL名称 </label>
 			                     <div class="layui-input-block">
-			                     	<input type="text" name="filename" placeholder="请输入URL名称，如:test" class="layui-input">
+			                     	<input type="text" name="filename"  placeholder="请输入URL名称，如:test，test/a/b/c" class="layui-input">
 			                     </div>
 			                </div>
 			                
@@ -213,6 +213,27 @@
 			                     <label class="layui-form-label">栏目副名称</label>
 			                     <div class="layui-input-block">
 			                     	<input type="text" name="subname" placeholder="请输入栏目副名称" class="layui-input">
+			                     </div>
+			                </div>
+			                
+			                <div class="layui-form-item">
+			                     <label class="layui-form-label">栏目描述1</label>
+			                     <div class="layui-input-block">
+			                     	<input type="text" name="def1"  placeholder="请输入栏目描述1内容"  class="layui-input">
+			                     </div>
+			                </div>
+			                
+			                <div class="layui-form-item">
+			                     <label class="layui-form-label">栏目描述2</label>
+			                     <div class="layui-input-block">
+			                     	<input type="text" name="def2" placeholder="请输入栏目描述2内容"  class="layui-input">
+			                     </div>
+			                </div>
+			                
+			                <div class="layui-form-item">
+			                     <label class="layui-form-label">栏目描述3</label>
+			                     <div class="layui-input-block">
+			                     	<input type="text" name="def3" placeholder="请输入栏目描述3内容"  class="layui-input">
 			                     </div>
 			                </div>
 			                
@@ -398,7 +419,7 @@
 		                <div class="layui-form-item">
 		                     <label class="layui-form-label">URL名称 </label>
 		                     <div class="layui-input-block">
-		                     	<input type="text" name="filename" value="{$sort->filename}" placeholder="请输入URL名称，如:test" class="layui-input">
+		                     	<input type="text" name="filename" value="{$sort->filename}"  placeholder="请输入URL名称，如:test，test/a/b/c" class="layui-input">
 		                     </div>
 		                </div>
 		                
@@ -497,6 +518,27 @@
 		                     </div>
 		                </div>
 		                
+		                 <div class="layui-form-item">
+		                     <label class="layui-form-label">栏目描述1</label>
+		                     <div class="layui-input-block">
+		                     	<input type="text" name="def1"  value="{$sort->def1}"  placeholder="请输入栏目描述1内容"  class="layui-input">
+		                     </div>
+		                </div>
+		                
+		                <div class="layui-form-item">
+		                     <label class="layui-form-label">栏目描述2</label>
+		                     <div class="layui-input-block">
+		                     	<input type="text" name="def2" value="{$sort->def2}" placeholder="请输入栏目描述2内容"  class="layui-input">
+		                     </div>
+		                </div>
+		                
+		                <div class="layui-form-item">
+		                     <label class="layui-form-label">栏目描述3</label>
+		                     <div class="layui-input-block">
+		                     	<input type="text" name="def3" value="{$sort->def3}" placeholder="请输入栏目描述3内容"  class="layui-input">
+		                     </div>
+		                </div>
+			                
 		                <div class="layui-form-item">
 		                     <label class="layui-form-label">跳转链接</label>
 		                     <div class="layui-input-block">

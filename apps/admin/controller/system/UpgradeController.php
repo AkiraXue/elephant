@@ -55,6 +55,23 @@ class UpgradeController extends Controller
         $this->display('system/upgrade.html');
     }
 
+    public function checkCache(){
+        $now = time();
+        $cache = $_SESSION['check_cache'];
+        if(!$cache){
+            $_SESSION['check_cache'] = time();
+            json(1,'');
+        }else{
+            $sub = $now - $cache;
+            if($sub > 3600){
+                $_SESSION['check_cache'] = time();
+                json(1,'');
+            }else{
+                json(0,'');
+            }
+        }
+    }
+
     // 检查更新
     public function check()
     {
@@ -63,7 +80,7 @@ class UpgradeController extends Controller
         if (! check_dir(RUN_PATH . '/upgrade', true)) {
             json(0, '目录写入权限不足，无法正常升级！' . RUN_PATH . '/upgrade');
         }
-        check_dir(DOC_PATH . STATIC_DIR . '/backup/upgrade', true);
+        check_dir(DOC_PATH . DATA_DIR . '/backup/upgrade', true);
         
         $files = $this->getServerList();
         $db = get_db_type();
@@ -154,7 +171,7 @@ class UpgradeController extends Controller
                     } else {
                         $path = RUN_PATH . '/upgrade' . $value;
                         $des_path = ROOT_PATH . $value;
-                        $back_path = DOC_PATH . STATIC_DIR . '/backup/upgrade/' . $backdir . $value;
+                        $back_path = DOC_PATH . DATA_DIR . '/backup/upgrade/' . $backdir . $value;
                         if (! check_dir(dirname($des_path), true)) {
                             json(0, '目录写入权限不足，无法正常升级！' . dirname($des_path));
                         }
@@ -182,7 +199,7 @@ class UpgradeController extends Controller
                     $db = new DatabaseController();
                     switch (get_db_type()) {
                         case 'sqlite':
-                            copy(DOC_PATH . $this->config('database.dbname'), DOC_PATH . STATIC_DIR . '/backup/sql/' . date('YmdHis') . '_' . basename($this->config('database.dbname')));
+                            $db->backupSqliteDB(date('YmdHis') . '_' . basename($this->config('database.dbname')), '/backup/upgrade/');
                             break;
                         case 'mysql':
                             $db->backupDB();

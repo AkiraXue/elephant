@@ -80,14 +80,14 @@ class MenuModel extends Model
             ->autoTime()
             ->update($data);
         if ($result) {
-            if (array_key_exists('mcode', $data) && $mcode != $data['mcode']) {
+            if (is_array($data) && array_key_exists('mcode', $data) && $mcode != $data['mcode']) {
                 $this->modSubMenu($mcode, $data['mcode']);
             }
             if (is_array($actions)) {
                 $this->delMenuAction($mcode);
             }
             if ($actions) {
-                if (array_key_exists('mcode', $data)) {
+                if (is_array($data) && array_key_exists('mcode', $data)) {
                     $mcode = $data['mcode'];
                 }
                 $this->addMenuAction($mcode, $actions);
@@ -99,7 +99,7 @@ class MenuModel extends Model
     // 修改子菜单的父菜单
     private function modSubMenu($mcode, $mcodeNew)
     {
-        return parent::table('ay_menu')->where("pcode='$mcode'")->update("mcode='$mcodeNew'");
+        return parent::table('ay_menu')->where("pcode='$mcode'")->update(['mcode' => $mcodeNew]);
     }
 
     // 获取指定菜单的功能数据

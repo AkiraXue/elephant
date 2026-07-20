@@ -49,6 +49,7 @@ function homeurl($url, $suffix = null, $qs = null)
 function error($string, $jump_url = null, $time = 2)
 {
     @ob_clean();
+    http_response_code(404);
     if (! $string)
         $string = '未知错误！';
     
@@ -443,6 +444,7 @@ function filter($varname, $condition)
         $data = trim($data); // 去空格
         $data = preg_replace_r('/(x3c)|(x3e)/', '', $data); // 去十六进制括号
         $data = preg_replace_r('/pboot:if/i', 'pboot@if', $data); // 过滤插入cms条件语句
+        $data = preg_replace_r('/pboot:sql/i', 'pboot@sql', $data); // 过滤插入cms条件语句
         $data = preg_replace_r('/GET\[/i', 'GET@[', $data);
         $data = preg_replace_r('/POST\[/i', 'POST@[', $data);
     }
@@ -555,7 +557,7 @@ function request($name, $type = null, $require = false, $vartext = null, $defaul
  * @param string $path
  *            路径，默认站点目录
  */
-function cookie($name, $value = null, $expire = null, $path = null, $domain = null, $secure = null, $httponly = true)
+function cookie($name, $value = null, $expire = null, $path = null, $domain = null, $secure = null, $httponly = false)
 {
     if (! is_null($value)) {
         $path = SITE_DIR . '/';
@@ -720,8 +722,7 @@ function get_sms_balance(array $config)
 // 返回404页面,文件中可使用{info}替换提示信息
 function _404($string, $jump_url = null, $time = 2)
 {
-    header('HTTP/1.1 404 Not Found');
-    header('status: 404 Not Found');
+    http_response_code(404);
     $file_404 = ROOT_PATH . '/404.html';
     if (file_exists($file_404)) {
         echo parse_info_tpl($file_404, $string, $jump_url, $time);
@@ -729,4 +730,223 @@ function _404($string, $jump_url = null, $time = 2)
     } else {
         error($string, $jump_url, $time);
     }
+}
+
+// php对象转为数组
+function toArray($obj){
+    if($obj === null){
+        return [];
+    }else{
+        return json_decode(json_encode($obj),true);
+    }
+}
+
+//if标签比较符处理
+function symbol($matches): string
+{
+    $flag = '';
+    $symbol1 = ['&&','||'];
+    foreach ($symbol1 as $items) {
+        if (strpos($matches, $items) !== false) {
+            $arr = explode($items, $matches);
+            switch ($items) {
+                case '&&':
+                    $bool1 = compareSymbol1($arr[0]);
+                    $bool2 = compareSymbol1($arr[1]);
+                    $flag = $bool1 && $bool2 ? 'if' : 'else';
+                    break;
+                case '||':
+                    $bool1 = compareSymbol1($arr[0]);
+                    $bool2 = compareSymbol1($arr[1]);
+
+                    $flag = $bool1 || $bool2 ? 'if' : 'else';
+                    break;
+            }
+            break;
+        }
+    }
+    if(!$flag){
+        $compare = compareSymbol1($matches);
+        if($compare === true){
+            $flag = 'if';
+        }else if($compare === false){
+            $flag = 'else';
+        }
+    }
+    return $flag;
+}
+
+function compareSymbol1($str){
+    $bool = null;
+    $symbol = ['>=','<=','!=','==','>','<'];
+    foreach ($symbol as $items) {
+        if (strpos($str, $items) !== false) {
+            $arr = explode($items, $str);
+            switch ($items) {
+                case '>':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 > $res2;
+                    break;
+                case '>=':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 >= $res2;
+                    break;
+                case '!=':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 != $res2;
+                    break;
+                case '==':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 == $res2;
+                    break;
+                case '<=':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 <= $res2;
+                    break;
+                case '<':
+                    $res1 = compareSymbol2($arr[0]);
+                    $res2 = compareSymbol2($arr[1]);
+                    $bool = $res1 < $res2;
+                    break;
+            }
+            break;
+        }
+    }
+    if($bool === null){
+        $res = compareSymbol2($str);
+        if (trim($res)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return $bool;
+}
+
+function compareSymbol2($str){
+    $res = null;
+
+    if (strpos($str, '%') !== false) { // 取模运算
+        $arr = explode('%', $str);
+        if (count($arr) === 2 && is_numeric(trim($arr[0])) && is_numeric(trim($arr[1]))) {
+            $res = intval($arr[0]) % intval($arr[1]);
+        }
+    }
+
+    if($res === null) {
+        $str = trim($str);
+        $str = trim($str,"'");
+        $res = (string)$str;
+    }
+    return $res;
+}
+
+/**
+ * 应用级密钥生成器（站点唯一、可隔离）
+ * @param string $namespace 业务命名空间标识（用于密钥隔离）。如 '|pboot_sign_v1'。
+ * @param int    $length    输出密钥长度（hex 字符数）。默认 32（适配 AES-256 的 32 字节 Key）。
+ * @param string $algo      哈希算法名称。默认 'sha256'。
+ * @return string 派生密钥（小写十六进制字符串，长度等于 $length）
+ */
+function app_secret_key($namespace = '|pbootcms_ai_secret_v1', $length = 32, $algo = 'sha256')
+{
+    if (! is_string($namespace) || $namespace === '') {
+        $namespace = '|pbootcms_ai_secret_v1';
+    }
+
+    $length = (int) $length;
+    if ($length < 8 || $length > 64) {
+        $length = 32;
+    }
+
+    if (! is_string($algo) || $algo === '' || ! in_array($algo, hash_algos(), true)) {
+        $algo = 'sha256';
+    }
+
+    $saltFile = DOC_PATH . DATA_DIR . '/.app_salt';
+    if (!file_exists($saltFile)) {
+        $salt = bin2hex(random_bytes(16));
+        @file_put_contents($saltFile, $salt, LOCK_EX);
+    } else {
+        $salt = trim(file_get_contents($saltFile));
+    }
+    return substr(hash($algo, $salt . $namespace), 0, $length);
+}
+
+/**
+ * 加密AI API Key
+ * @param string $plain 明文
+ * @return string base64(iv + cipher)
+ */
+function aes_encrypt($plain)
+{
+    if ($plain === null || $plain === '') {
+        return '';
+    }
+    if (! function_exists('openssl_encrypt')) {
+        return '';
+    }
+    $key = app_secret_key();
+    $iv = openssl_random_pseudo_bytes(16);
+    $cipher = openssl_encrypt($plain, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+    if ($cipher === false) {
+        return '';
+    }
+    return base64_encode($iv . $cipher);
+}
+
+/**
+ * 解密AI API Key
+ * @param string $encoded base64(iv + cipher)
+ * @return string 解密后明文，失败返回''
+ */
+function aes_decrypt($encoded)
+{
+    if ($encoded === null || $encoded === '') {
+        return '';
+    }
+    if (! function_exists('openssl_decrypt')) {
+        return '';
+    }
+    $raw = base64_decode($encoded, true);
+    if ($raw === false || strlen($raw) < 17) {
+        return '';
+    }
+    $iv = substr($raw, 0, 16);
+    $cipher = substr($raw, 16);
+    $key = app_secret_key();
+    $plain = openssl_decrypt($cipher, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
+    return $plain === false ? '' : $plain;
+}
+
+/**
+ * 脱敏API Key：保留前4后4，中间用****替代
+ * @param string $key 明文Key
+ * @return string
+ */
+function mask_secret($key)
+{
+    if (! is_string($key) || $key === '') {
+        return '';
+    }
+    $len = strlen($key);
+    if ($len <= 8) {
+        return str_repeat('*', $len);
+    }
+    return substr($key, 0, 4) . '****' . substr($key, -4);
+}
+
+/**
+ * 判断是否为已脱敏的API Key（含****）
+ * @param string $val
+ * @return bool
+ */
+function is_masked_secret($val)
+{
+    return is_string($val) && strpos($val, '****') !== false;
 }

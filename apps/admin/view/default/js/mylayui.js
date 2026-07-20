@@ -13,6 +13,7 @@ layui.use(['element','upload','laydate','form'], function(){
 	var clayid=this.getAttribute('lay-id');
 	if(clayid){
 		location.hash = 'tab='+ clayid;
+		document.dispatchEvent(new CustomEvent('pbootcms-tab-change', { detail: { layId: clayid } }));
 		$('.page').find('a').each(function(index,element){//避免tab翻页问题
 			var url=$(this).attr('href');
 			if(url.indexOf('tab=')==-1){
@@ -66,7 +67,7 @@ layui.use(['element','upload','laydate','form'], function(){
       },
       error:function(xhr,status,error){
     	  layer.msg("登录请求发生错误!", {icon: 5});
-    	  $('#note').html('登录请求发生错误，您可按照如下方式排查：<br>1、试着删除根目录下runtime目录，刷新页面重试;<br>2、检查系统会话文件存储目录是否具有写入权限；<br>3、检查服务器环境pathinfo及伪静态规则配置；<br>4、如果还不行那就到交流群出钱请人处理吧！');
+    	  $('#note').html('登录请求发生错误，您可按照如下方式排查：<br>1、试着删除根目录下runtime目录，刷新页面重试;<br>2、检查系统会话文件存储目录是否具有写入权限；<br>3、检查服务器环境pathinfo及伪静态规则配置；');
       }
 	});
     return false;
@@ -75,6 +76,7 @@ layui.use(['element','upload','laydate','form'], function(){
   
   var sitedir=$('#sitedir').data('sitedir');
   var uploadurl = $("#preurl").data('preurl')+'/index/upload';
+  var imageExts = 'jpg|jpeg|png|gif|bmp|webp';
   
   //执行单图片实例
   var uploadInst = upload.render({
@@ -84,6 +86,7 @@ layui.use(['element','upload','laydate','form'], function(){
 	,multiple: false //多文件上传
 	,accept: 'images' //接收文件类型 images（图片）、file（所有文件）、video（视频）、audio（音频）
 	,acceptMime: 'image/*'
+	,exts: imageExts
     ,before: function(obj){ 
        //判断是否需要加水印
        if($(this.item).hasClass('watermark')){
@@ -112,6 +115,7 @@ layui.use(['element','upload','laydate','form'], function(){
    //执行多图片上传实例
   var files='';
   var html='';
+  var html2='';
   var uploadsInst = upload.render({
 	elem: '.uploads' //绑定元素
 	,url: uploadurl //上传接口
@@ -119,6 +123,7 @@ layui.use(['element','upload','laydate','form'], function(){
 	,multiple: true//多文件上传
 	,accept: 'images' //接收文件类型 images（图片）、file（所有文件）、video（视频）、audio（音频）
 	,acceptMime: 'image/*'
+	,exts: imageExts
 	,before: function(obj){ 
 	   //判断是否需要加水印
        if($(this.item).hasClass('watermark')){
@@ -133,7 +138,10 @@ layui.use(['element','upload','laydate','form'], function(){
 		   }else{
 			   files+=res.data[0];
 		   }
-		   html += "<dl><dt><img src='"+sitedir+res.data[0]+"' data-url='"+res.data[0]+"'></dt><dd>删除</dd></dl>";
+		   html += "<dl><dt><img src='"+sitedir+res.data[0]+"' data-url='"+res.data[0]+"'></dt><dd>删除</dd>" +
+		   		"<dt><input type='text' name='picstitle[]' style='width:95%' /></dt>"+		
+		   		"</dl>";
+		   html2 += "<dl><dt><img src='"+sitedir+res.data[0]+"' data-url='"+res.data[0]+"'></dt><dd>删除</dd>" +	"</dl>";
 	   }else{
 		   layer.msg('有文件上传失败：'+res.data); 
 	   } 
@@ -149,10 +157,15 @@ layui.use(['element','upload','laydate','form'], function(){
 	       }else{
 	    	   $('#'+des).val(files); 
 	       }
-	 	   $('#'+des+'_box').append(html); 
+	       if(des=='pics'){
+	    	   $('#'+des+'_box').append(html); 
+	       }else{
+	    	   $('#'+des+'_box').append(html2); 
+	       }
 	 	   layer.msg('成功上传'+obj.successful+'个文件！'); 
 	 	   files='';
 	 	   html='';
+	 	   html2='';
 	    }else{
 	 	   layer.msg('全部上传失败！'); 
 	    }

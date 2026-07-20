@@ -66,29 +66,9 @@ class ContentSortController extends Controller
         foreach ($tree as $value) {
             $this->count ++;
             $this->outData[$this->count] = new \stdClass();
-            $this->outData[$this->count]->id = $value->id;
-            $this->outData[$this->count]->blank = $this->blank;
-            $this->outData[$this->count]->name = $value->name;
-            $this->outData[$this->count]->subname = $value->subname;
-            $this->outData[$this->count]->scode = $value->scode;
-            $this->outData[$this->count]->pcode = $value->pcode;
-            $this->outData[$this->count]->mcode = $value->mcode;
-            $this->outData[$this->count]->listtpl = $value->listtpl;
-            $this->outData[$this->count]->contenttpl = $value->contenttpl;
-            $this->outData[$this->count]->ico = $value->ico;
-            $this->outData[$this->count]->pic = $value->pic;
-            $this->outData[$this->count]->keywords = $value->keywords;
-            $this->outData[$this->count]->description = $value->description;
-            $this->outData[$this->count]->outlink = $value->outlink;
-            $this->outData[$this->count]->sorting = $value->sorting;
-            $this->outData[$this->count]->status = $value->status;
-            $this->outData[$this->count]->filename = $value->filename;
-            $this->outData[$this->count]->type = $value->type;
-            $this->outData[$this->count]->urlname = $value->urlname;
-            $this->outData[$this->count]->create_user = $value->create_user;
-            $this->outData[$this->count]->update_user = $value->update_user;
-            $this->outData[$this->count]->create_time = $value->create_time;
-            $this->outData[$this->count]->update_time = $value->update_time;
+            foreach ($value as $k => $v) {
+                $this->outData[$this->count]->$k = $v;
+            }
             
             if ($value->son) {
                 $this->outData[$this->count]->son = true;
@@ -173,7 +153,7 @@ class ContentSortController extends Controller
                 $contenttpl = basename(post('contenttpl'));
                 $status = post('status');
                 $subname = post('subname');
-                $filename = post('filename');
+                $filename = trim(post('filename'), '/');
                 $outlink = post('outlink');
                 $ico = post('ico');
                 $pic = post('pic');
@@ -184,6 +164,10 @@ class ContentSortController extends Controller
                 $gid = post('gid', 'int') ?: 0;
                 $gtype = post('gtype', 'int') ?: 4;
                 $gnote = post('gnote');
+                
+                $def1 = post('def1');
+                $def2 = post('def2');
+                $def3 = post('def3');
                 
                 if (! $scode) {
                     alert_back('编码不能为空！');
@@ -205,8 +189,8 @@ class ContentSortController extends Controller
                     alert_back('栏目类型不能为空！');
                 }
                 
-                if ($filename && ! preg_match('/^[a-zA-Z0-9\-]+$/', $filename)) {
-                    alert_back('URL名称只允许字母、数字、横线组成!');
+                if ($filename && ! preg_match('/^[a-zA-Z0-9\-\/]+$/', $filename)) {
+                    alert_back('URL名称只允许字母、数字、横线、斜线组成!');
                 }
                 
                 if ($filename && $this->model->checkUrlname($filename)) {
@@ -244,6 +228,9 @@ class ContentSortController extends Controller
                     'gtype' => $gtype,
                     'gnote' => $gnote,
                     'subname' => $subname,
+                    'def1' => $def1,
+                    'def2' => $def2,
+                    'def3' => $def3,
                     'filename' => $filename,
                     'outlink' => $outlink,
                     'ico' => $ico,
@@ -382,7 +369,7 @@ class ContentSortController extends Controller
             $contenttpl = basename(post('contenttpl'));
             $status = post('status');
             $subname = post('subname');
-            $filename = post('filename');
+            $filename = trim(post('filename'), '/');
             $outlink = post('outlink');
             $ico = post('ico');
             $pic = post('pic');
@@ -394,6 +381,10 @@ class ContentSortController extends Controller
             $gid = post('gid', 'int') ?: 0;
             $gtype = post('gtype', 'int') ?: 4;
             $gnote = post('gnote');
+            
+            $def1 = post('def1');
+            $def2 = post('def2');
+            $def3 = post('def3');
             
             if (! $pcode) { // 父编码默认为0
                 $pcode = 0;
@@ -411,8 +402,8 @@ class ContentSortController extends Controller
                 alert_back('栏目类型不能为空！');
             }
             
-            if ($filename && ! preg_match('/^[a-zA-Z0-9\-]+$/', $filename)) {
-                alert_back('URL名称只允许字母、数字、横线组成!');
+            if ($filename && ! preg_match('/^[a-zA-Z0-9\-\/]+$/', $filename)) {
+                alert_back('URL名称只允许字母、数字、横线、斜线组成!');
             }
             
             if ($filename && $this->model->checkUrlname($filename)) {
@@ -442,6 +433,9 @@ class ContentSortController extends Controller
                 'gtype' => $gtype,
                 'gnote' => $gnote,
                 'subname' => $subname,
+                'def1' => $def1,
+                'def2' => $def2,
+                'def3' => $def3,
                 'filename' => $filename,
                 'outlink' => $outlink,
                 'ico' => $ico,

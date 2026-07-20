@@ -42,4 +42,9 @@ class SiteModel extends Model
     {
         return parent::one('SELECT VERSION()', MYSQLI_NUM);
     }
+
+    public function getImage()
+    {
+        return parent::table('ay_site')->column('logo');
+    }
 }

@@ -19,17 +19,22 @@ class HomeController extends Controller
         // 自动缓存基础信息
         cache_config();
         
+        // 从配置文件读取cmsname参数来设置系统名称
+        define("CMSNAME", $this->config("cmsname") ?: 'PbootCMS');
+
+
         // 站点关闭检测
         if (! ! $close_site = Config::get('close_site')) {
             $close_site_note = Config::get('close_site_note');
             error($close_site_note ?: '本站维护中，请稍后再访问，带来不便，敬请谅解！');
         }
-        
+
         // 自动跳转HTTPS
         if (! is_https() && ! ! $tohttps = Config::get('to_https')) {
-            header("Location: https://" . $_SERVER['HTTP_HOST'], true, 301);
+            //header("Location: http://" . $_SERVER['HTTP_HOST'], true, 301);
+            header("Location: https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], true,301);
         }
-        
+
         // 自动跳转主域名
         if (! ($this->config('wap_domain') && is_mobile()) && (! ! $main_domain = Config::get('main_domain')) && (! ! $to_main_domain = Config::get('to_main_domain'))) {
             if (! preg_match('{^' . $main_domain . '$}i', get_http_host(true))) {
@@ -38,6 +43,7 @@ class HomeController extends Controller
                 } else {
                     header("Location: http://" . $main_domain . ':' . $_SERVER['SERVER_PORT'], true, 301);
                 }
+                exit();
             }
         }
         
@@ -78,7 +84,8 @@ class HomeController extends Controller
         }
         
         // 未设置语言时使用默认语言
-        if (! isset($_COOKIE['lg'])) {
+        $black_lg = ['pboot','system'];
+        if (!isset($_COOKIE['lg']) || in_array($_COOKIE['lg'],$black_lg)) {
             cookie('lg', get_default_lg());
         }
         
@@ -92,7 +99,8 @@ class HomeController extends Controller
                 } else {
                     $pre = 'http://';
                 }
-                header('Location:' . $pre . $this->config('wap_domain') . URL, true, 301); // 手机访问并且绑定了域名，但是访问域名不一致则跳转
+                header('Location:' . $pre . $this->config('wap_domain') . URL, true, 302); // 手机访问并且绑定了域名，但是访问域名不一致则跳转
+                exit();
             } elseif (is_mobile()) { // 其他情况手机访问则自动手机版本
                 $this->setTheme(get_theme() . '/wap');
             } else { // 其他情况，电脑版本

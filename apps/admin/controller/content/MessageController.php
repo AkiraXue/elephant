@@ -110,10 +110,19 @@ class MessageController extends Controller
     // 清空
     public function clear()
     {
-        if ($this->model->clearMessage()) {
-            alert_location('清空成功！', url('/admin/Message/index'));
+        if($_GET['ids']){
+            $idList = implode("," , explode("and",$_GET['ids']));
         } else {
-            alert_location('清空失败！', url('/admin/Message/index'));
+            $idList = null;
         }
+        if ($this->model->clearMessage($idList)){
+            alert_location('删除成功！', url('/admin/Message/index'));
+        } else {
+            alert_location('删除失败！', url('/admin/Message/index'));
+        }
+
+
+
+
     }
 }

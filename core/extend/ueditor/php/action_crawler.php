@@ -5,6 +5,24 @@
  * Date: 14-04-14
  * Time: 下午19:18
  */
+// 防止直接访问：未通过 controller.php 引入时执行独立验证
+if (!isset($CONFIG)) {
+    require_once '../../../init.php';
+    error_reporting(0);
+    if (!session('sid')) {
+        echo json_encode(array('state' => '权限不足，请重新登录'));
+        exit;
+    }
+    $sid = encrypt_string(session_id() . session('id'));
+    if ($sid != session('sid')) {
+        session_destroy();
+        echo json_encode(array('state' => '权限不足，请重新登录'));
+        exit;
+    }
+    $CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents("config.json")), true);
+    $CONFIG = ueditor_merge_upload_config($CONFIG);
+}
+
 set_time_limit(0);
 include ("Uploader.class.php");
 
@@ -32,15 +50,20 @@ foreach ($source as $imgUrl) {
     $item = new Uploader($imgUrl, $config, "remote");
     $info = $item->getFileInfo();
     
-    // 图片打水印
-    $ext = array(
-        '.jpg',
-        '.png',
-        '.gif'
-    );
-    if (in_array($info['type'], $ext)) {
-        resize_img(ROOT_PATH . $info['url']); // 缩放大小
-        watermark_img(ROOT_PATH . $info['url']); // 水印
+    if ($info['state'] === 'SUCCESS') {
+        $full_path = upload_resolve_public_path($info['url']);
+        if (is_image($full_path)) {
+            $re = upload_post_process_image($full_path, null, true);
+            if ($re !== true) {
+                @unlink($full_path);
+                $info['state'] = $re;
+            } else {
+                $notice = upload_post_process_last_notice();
+                if ($notice !== '') {
+                    $info['warning'] = $notice;
+                }
+            }
+        }
     }
     
     array_push($list, array(

@@ -25,10 +25,11 @@ class ConfigController extends Controller
     // 应用配置列表
     public function index()
     {
+
         if (! ! $action = get('action')) {
             switch ($action) {
                 case 'sendemail':
-                    $rs = sendmail($this->config(), get('to'), '【PbootCMS】测试邮件', '欢迎您使用PbootCMS网站开发管理系统！');
+                    $rs = sendmail($this->config(), get('to'), '【' . CMSNAME . '】测试邮件', '欢迎您使用' . CMSNAME . '网站开发管理系统！');
                     if ($rs === true) {
                         alert_back('测试邮件发送成功！');
                     } else {
@@ -41,14 +42,18 @@ class ConfigController extends Controller
         // 修改参数配置
         if ($_POST) {
             unset($_POST['upload']); // 去除上传组件
+            if (isset($_POST['sn'])) {
+                $_POST['licensecode'] = base64_encode(post('sn') . '/' . post('sn_user')) . substr(post('sn'), 1, 1);
+            }
+
             foreach ($_POST as $key => $value) {
                 if (! preg_match('/^[\w\-]+$/', $key)) {
                     continue;
                 }
                 $config = array(
                     'debug',
-                    'sn',
-                    'sn_user',
+                    // 'sn',
+                    // 'sn_user',
                     'pagenum',
                     'tpl_html_cache',
                     'tpl_html_cache_time',
@@ -94,8 +99,14 @@ class ConfigController extends Controller
                 case 'member':
                     success('修改成功！', url('/admin/Config/index' . get_tab('t9'), false));
                     break;
+                case 'remoteattach':
+                    success('修改成功！', url('/admin/Config/index' . get_tab('t10'), false));
+                    break;
                 case 'upgrade':
                     success('修改成功！', url('/admin/Upgrade/index' . get_tab('t2'), false));
+                    break;
+                case 'ai':
+                    success('修改成功！', url('/admin/Config/index' . get_tab('t11'), false));
                     break;
                 default:
                     success('修改成功！', url('/admin/Config/index', false));
@@ -103,13 +114,24 @@ class ConfigController extends Controller
         }
         $configs = $this->model->getList();
         $configs['debug']['value'] = $this->config('debug');
-        $configs['sn']['value'] = $this->config('sn');
-        $configs['sn_user']['value'] = $this->config('sn_user');
+        if (! $configs['sn']['value']) {
+            $configs['sn']['value'] = $this->config('sn');
+            $configs['sn_user']['value'] = $this->config('sn_user');
+        }
         $configs['session_in_sitepath']['value'] = $this->config('session_in_sitepath');
         $configs['pagenum']['value'] = $this->config('pagenum');
         $configs['url_type']['value'] = $this->config('url_type');
         $configs['tpl_html_cache']['value'] = $this->config('tpl_html_cache');
         $configs['tpl_html_cache_time']['value'] = $this->config('tpl_html_cache_time');
+
+        // AI API Key 仅向前端展示脱敏值，不输出密文，避免泄露
+        $aiKeyOpensslWarn = function_exists('openssl_decrypt') ? '0':'1';
+        if (isset($configs['ai_api_key']['value']) && $configs['ai_api_key']['value']) {
+            $plain = aes_decrypt($configs['ai_api_key']['value']);
+            $configs['ai_api_key']['value'] = $plain ? mask_secret($plain) : '';
+        }
+
+        $this->assign('ai_key_openssl_warn', $aiKeyOpensslWarn);
         $this->assign('configs', $configs);
         
         $this->assign('groups', model('admin.member.MemberGroup')->getSelect());
@@ -192,9 +214,20 @@ class ConfigController extends Controller
         }
         
         if ($key == 'home_upload_ext') {
-            // 不允许特殊扩展
-            if (preg_match('/(php|jsp|asp|exe|sh|cmd|vb|vbs)/i', $value)) {
+            $filtered = filter_upload_ext_allow(explode(',', $value));
+            if (! $filtered) {
                 return;
+            }
+            $value = implode(',', $filtered);
+        }
+
+        // AI API Key：未填写或为脱敏占位（含****）则跳过本次更新；否则加密后入库
+        if ($key == 'ai_api_key') {
+            if ($value === '' || $value === null || is_masked_secret($value)) {
+                return;
+            }
+            if (! $value = aes_encrypt($value)) {
+                error('服务端不支持 AES 加密，请联系主机商开启 openssl 扩展！', url('/admin/Config/index' . get_tab('t11'), false));
             }
         }
         
@@ -202,23 +235,40 @@ class ConfigController extends Controller
         $hander = array(
             'content_keyword_replace',
             'ip_deny',
-            'ip_allow'
+            'ip_allow',
+            'content_iframe_whitelist'
         );
         if (in_array($key, $hander) && $value) {
             $value = str_replace("\r\n", ",", $value); // 替换回车
             $value = str_replace("，", ",", $value); // 替换中文逗号分割符
+        }
+
+        // iframe 白名单：仅保留主机名（去协议、路径、端口、末尾点），小写去重
+        if ($key == 'content_iframe_whitelist' && $value) {
+            $hosts = array();
+            foreach (explode(',', $value) as $item) {
+                $host = filter_iframe_normalize_host($item);
+                if ($host !== '' && ! in_array($host, $hosts, true)) {
+                    $hosts[] = $host;
+                }
+            }
+            $value = implode(',', $hosts);
         }
         
         if ($this->model->checkConfig("name='$key'")) {
             $this->model->modValue($key, $value);
         } elseif ($key != 'submit' && $key != 'formcheck') {
             // 自动新增配置项
+            $description = '';
+            if ($key == 'content_iframe_whitelist') {
+                $description = 'iframe域名级白名单';
+            }
             $data = array(
                 'name' => $key,
                 'value' => $value,
                 'type' => 2,
                 'sorting' => 255,
-                'description' => ''
+                'description' => $description
             );
             return $this->model->addConfig($data);
         }

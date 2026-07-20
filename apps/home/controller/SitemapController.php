@@ -26,48 +26,29 @@ class SitemapController extends Controller
     {
         header("Content-type:text/xml;charset=utf-8");
         $str = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $str .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/">' . "\n";
-        $str .= $this->makeNode('', date('Y-m-d'), '1.00'); // 根目录
-        
-        $url_break_char = $this->config('url_break_char') ?: '_';
+        //$str .= '<urlset>' . "\n";
+        $str .= '<urlset xmlns= "http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n" ;
+        $str .= $this->makeNode('', date('Y-m-d'), '1.00', 'always'); // 根目录
         
         $sorts = $this->model->getSorts();
+        $Parser = new ParserController();
         foreach ($sorts as $value) {
             if ($value->outlink) {
                 continue;
             } elseif ($value->type == 1) {
-                $value->urlname = $value->urlname ?: 'list';
-                if ($value->filename) {
-                    $link = Url::home('/home/Index/' . $value->filename);
-                } else {
-                    $link = Url::home('/home/Index/' . $value->urlname . $url_break_char . $value->scode);
-                }
-                $str .= $this->makeNode($link, date('Y-m-d'), '0.80');
+                $link = $Parser->parserLink(1, $value->urlname, 'about', $value->scode, $value->filename);
+                $str .= $this->makeNode($link, date('Y-m-d'), '0.80', 'daily');
             } else {
-                $value->urlname = $value->urlname ?: 'list';
-                if ($value->filename) {
-                    $link = Url::home('home/Index/' . $value->filename);
-                } else {
-                    $link = Url::home('home/Index/' . $value->urlname . $url_break_char . $value->scode);
-                }
-                $str .= $this->makeNode($link, date('Y-m-d'), '0.80');
+                $link = $Parser->parserLink(2, $value->urlname, 'list', $value->scode, $value->filename);
+                $str .= $this->makeNode($link, date('Y-m-d'), '0.80', 'daily');
                 $contents = $this->model->getSortContent($value->scode);
                 foreach ($contents as $value2) {
                     if ($value2->outlink) { // 外链
                         continue;
                     } else {
-                        $value2->urlname = $value2->urlname ?: 'list';
-                        if ($value2->filename && $value2->sortfilename) {
-                            $link = Url::home('home/Index/' . $value2->sortfilename . '/' . $value2->filename, true);
-                        } elseif ($value2->sortfilename) {
-                            $link = Url::home('home/Index/' . $value2->sortfilename . '/' . $value2->id, true);
-                        } elseif ($value2->contentfilename) {
-                            $link = Url::home('home/Index/' . $value2->urlname . $url_break_char . $value2->scode . '/' . $value2->filename, true);
-                        } else {
-                            $link = Url::home('home/Index/' . $value2->urlname . $url_break_char . $value2->scode . '/' . $value2->id, true);
-                        }
+                        $link = $Parser->parserLink(2, $value2->urlname, 'content', $value2->scode, $value2->sortfilename, $value2->id, $value2->filename);
                     }
-                    $str .= $this->makeNode($link, date('Y-m-d'), '0.60');
+                    $str .= $this->makeNode($link, date('Y-m-d', strtotime($value2->date)), '0.60', 'daily');
                 }
             }
         }
@@ -75,16 +56,45 @@ class SitemapController extends Controller
     }
 
     // 生成结点信息
-    private function makeNode($link, $date, $priority = 0.60)
+    private function makeNode($link, $date, $priority = 0.60, $changefreq = 'always')
     {
         $node = '
 <url>
-    <mobile:mobile type="pc,mobile"/>
     <loc>' . get_http_url() . $link . '</loc>
     <priority>' . $priority . '</priority>
     <lastmod>' . $date . '</lastmod>
-    <changefreq>Always</changefreq>
+    <changefreq>' . $changefreq . '</changefreq>
 </url>';
         return $node;
+    }
+
+    // 文本格式
+    public function linkTxt()
+    {
+        header("Content-type:text/plain;charset=utf-8");
+        $sorts = $this->model->getSorts();
+        $Parser = new ParserController();
+        $str = get_http_url() . "\n";
+        foreach ($sorts as $value) {
+            if ($value->outlink) {
+                continue;
+            } elseif ($value->type == 1) {
+                $link = $Parser->parserLink(1, $value->urlname, 'about', $value->scode, $value->filename);
+                $str .= get_http_url() . $link . "\n";
+            } else {
+                $link = $Parser->parserLink(2, $value->urlname, 'list', $value->scode, $value->filename);
+                $str .= get_http_url() . $link . "\n";
+                $contents = $this->model->getSortContent($value->scode);
+                foreach ($contents as $value2) {
+                    if ($value2->outlink) { // 外链
+                        continue;
+                    } else {
+                        $link = $Parser->parserLink(2, $value2->urlname, 'content', $value2->scode, $value2->sortfilename, $value2->id, $value2->filename);
+                    }
+                    $str .= get_http_url() . $link . "\n";
+                }
+            }
+        }
+        echo $str;
     }
 }

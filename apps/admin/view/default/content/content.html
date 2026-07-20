@@ -76,45 +76,31 @@
 		                        <td class="table-input"><input type="text" lay-ignore class="layui-input" name="sorting[]" value="[value->sorting]"></td>
 		                        <td>
 		                        {if($value->status)}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/0}"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/0}" class="switch"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
 			                        {else}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/1}"><i class='fa fa-toggle-off' title="点击开启"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/1}" class="switch"><i class='fa fa-toggle-off' title="点击开启"></i></a>
 			                    {/if}
 			                    </td>
 			                    <td>
 		                        {if($value->istop)}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/istop/value/0}"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/istop/value/0}" class="switch"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
 			                        {else}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/istop/value/1}"><i class='fa fa-toggle-off' title="点击开启"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/istop/value/1}" class="switch"><i class='fa fa-toggle-off' title="点击开启"></i></a>
 			                    {/if}
 			                    </td>
 			                    <td>
 		                        {if($value->isrecommend)}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/isrecommend/value/0}"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/isrecommend/value/0}" class="switch"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
 			                        {else}
-			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/isrecommend/value/1}"><i class='fa fa-toggle-off' title="点击开启"></i></a>
+			                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/isrecommend/value/1}" class="switch"><i class='fa fa-toggle-off' title="点击开启"></i></a>
 			                    {/if}
 			                    </td>
 			                    <td>[value->visits]</td>
 		                        <td>
 		                         	{if(!$value->outlink)}
 			                        	{php}
-				                        	$sortfilename = $value->sortfilename;
-				                        	$contentfilename = $value->filename;
-				                        	$id = $value->id;
-				                        	$urlname = $value->urlname?:'list';
-				                        	$scode = $value->scode;
-				                        	$url_break_char= get_var('url_break_char');
-				                        	
-				                        	if ($sortfilename && $contentfilename) {
-							                    $link = homeurl('home/Index/' . $sortfilename . '/' . $contentfilename, true);
-							                } elseif ($sortfilename) {
-							                    $link = homeurl('home/Index/' . $sortfilename . '/' . $id, true);
-							                } elseif ($contentfilename) {
-							                    $link = homeurl('home/Index/' . $urlname . $url_break_char . $scode . '/' . $contentfilename, true);
-							                } else {
-							                    $link = homeurl('home/Index/' . $urlname . $url_break_char . $scode . '/' . $id, true);
-							                }
+			                        		$Parser=new app\home\controller\ParserController();
+			                        		$link=$Parser->parserLink(2,$value->urlname,'content',$value->scode,$value->sortfilename,$value->id,$value->filename);
 			                        	{/php}
 	
 			                        	<input type="hidden" name="urls[[value->id]]" value="{php}echo $link{/php}">
@@ -275,6 +261,19 @@
 									 <div id="[value->name]_box" class="pic"></div>
 				                </div>
 			                	{/if}
+			                	
+			                	{if($value->type==10)}<!-- 多图片 -->
+			                	 <div class="layui-form-item">
+				                     <label class="layui-form-label">[value->description]</label>
+				                     <div class="layui-input-inline">
+				                     	<input type="text" name="[value->name]" id="[value->name]" placeholder="请上传[value->description]"  class="layui-input">
+				                     </div>
+				                     <button type="button" class="layui-btn uploads watermark" data-des="[value->name]">
+									 	 <i class="layui-icon">&#xe67c;</i>上传多图
+									 </button>
+									 <div id="[value->name]_box" class="pic addedit"><dl></dl> <!-- 规避空内容拖动bug --></div>
+				                </div>
+				                {/if}
 			                	
 			                	{if($value->type==6)}<!-- 文件 -->
 			                	<div class="layui-form-item">
@@ -445,7 +444,7 @@
 			                 <div class="layui-form-item">
 			                     <label class="layui-form-label">URL名称</label>
 			                     <div class="layui-input-block">
-			                     	<input type="text" name="filename" placeholder="请输入URL名称，如:test" class="layui-input">
+			                     	<input type="text" name="filename" placeholder="请输入URL名称，如:test，test/a/b" class="layui-input">
 			                     </div>
 			                 </div>
 			                 
@@ -629,6 +628,34 @@
 				                </div>
 			                	{/if}
 			                	
+			                	{if($value->type==10)}<!-- 多图 -->
+			                	 <div class="layui-form-item">
+				                     <label class="layui-form-label">[value->description]</label>
+				                     <div class="layui-input-inline">
+				                     	<input type="text" name="[value->name]" id="[value->name]" value="{$content->{$value->name}}" placeholder="请上传[value->description]"  class="layui-input">
+				                     </div>
+				                     <button type="button" class="layui-btn uploads watermark" data-des="[value->name]">
+									 	 <i class="layui-icon">&#xe67c;</i>上传多图
+									 </button>
+									 <div id="[value->name]_box" class="pic addedit">
+									 	 <dl></dl> <!-- 规避空内容拖动bug -->
+										 {php}
+										 	$name=$value->name;
+										    if([$content->$name]){
+			                					$pics=explode(',',[$content->$name]);
+			                				}else{
+			                					$pics = array();
+			                				}
+			                				foreach ($pics as $key=>$value) {
+			                					//需要留一个空，不然被解析为标签了
+			                					echo "<dl><dt><img src='".SITE_DIR.$value."' data-url='".$value."'></dt><dd>删除</dd></dl>";
+		          							}
+		         						 {/php}
+	         						 </div>
+				                </div>
+			                	
+			                	{/if}
+			                	
 			                	{if($value->type==6)}<!-- 文件 -->
 			                	<div class="layui-form-item">
 			                		<label class="layui-form-label">[value->description]</label>
@@ -657,7 +684,7 @@
 			                			{php}
 			                				$name=@$value->name;
 			                			{/php}
-				                		<script type="text/plain" id="editor_[value->name]" name="[value->name]" style="width:100%;height:240px;">{fun=decode_string([$content->$name])}</script>
+				                		<script type="text/plain" id="editor_[value->name]" name="[value->name]" style="width:100%;height:240px;">{fun=ueditor_holder_html([$content->$name])}</script>
 				                		<script>
 											//初始化编辑器
 											$(document).ready(function (e) {
@@ -696,7 +723,7 @@
 			                <div class="layui-form-item">
 			                     <label class="layui-form-label">内容</label>
 			                     <div class="layui-input-block">
-			                     	<script type="text/plain" id="editor" name="content" style="width:100%;height:240px;">{fun=decode_string([$content->content])}</script>
+			                     	<script type="text/plain" id="editor" name="content" style="width:100%;height:240px;">{fun=ueditor_holder_html([$content->content])}</script>
 			                     </div>
 			                </div>
 			                
@@ -748,8 +775,14 @@
 		                				}else{
 		                					$pics = array();
 		                				}
-		                				foreach ($pics as $value) {
-		                					echo "<dl><dt><img src='".SITE_DIR.$value."' data-url='".$value."'></dt><dd>删除</dd></dl></dl>";
+		                				if([$content->picstitle]){
+		                					$picstitle=explode(',',[$content->picstitle]);
+		                				}else{
+		                					$picstitle = array();
+		                				}
+		                				foreach ($pics as $key=>$value) {
+		                					//需要留一个空，不然被解析为标签了
+		                					echo "<dl><dt><img src='".SITE_DIR.$value."' data-url='".$value."'></dt><dd>删除</dd><dt><input type='text' value='".$picstitle[$key ]."' name='picstitle[]' style='width:95%' /></dt></dl>";
 	          							}
 	         						 {/php}
          						 </div>
@@ -819,7 +852,7 @@
 			                 <div class="layui-form-item">
 			                     <label class="layui-form-label">URL名称</label>
 			                     <div class="layui-input-block">
-			                     	<input type="text" name="filename" value="{$content->filename}" placeholder="请输入URL名称，如:test" class="layui-input">
+			                     	<input type="text" name="filename" value="{$content->filename}" placeholder="请输入URL名称，如:test，test/a/b" class="layui-input">
 			                     </div>
 			                 </div>
 			                 
@@ -916,4 +949,7 @@ function saveOrder() {
 <script type="text/javascript" src="{APP_THEME_DIR}/js/jscolor.js"></script>
 
 {include file='common/ueditor.html'}
+{if([$mod]||[$list])}
+{include file='common/ai_assistant.html'}
+{/if}
 {include file='common/foot.html'}

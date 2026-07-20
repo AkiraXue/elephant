@@ -62,7 +62,7 @@ class MemberController extends Controller
             }
             
             // 检查用户名
-            if (! $this->model->checkUsername("username='$username' or useremail='$username' or usermobile='$username'")) {
+            if (! $this->model->findByAccount($username)) {
                 alert_back('用户账号不存在！');
             }
             
@@ -74,7 +74,7 @@ class MemberController extends Controller
             }
             
             // 登录验证
-            if (! ! $login = $this->model->login("(username='$username' or useremail='$username' or usermobile='$username') AND password='$password'")) {
+            if (! ! $login = $this->model->loginByAccount($username, $password)) {
                 if (! $login->status) {
                     alert_back('您的账号待审核，请联系管理员！');
                 }
@@ -154,7 +154,7 @@ class MemberController extends Controller
                 if (! preg_match('/^[\w]+@[\w\.]+\.[a-zA-Z]+$/', $useremail)) {
                     alert_back('账号格式不正确，请输入正确的邮箱账号！');
                 }
-                if ($this->model->checkUsername("useremail='$useremail' OR username='$useremail'")) {
+                if ($this->model->existsByEmail($useremail)) {
                     alert_back('您输入的邮箱已被注册！');
                 }
             } elseif ($this->config('register_type') == 3) { // 手机注册
@@ -165,7 +165,7 @@ class MemberController extends Controller
                 if (! preg_match('/^1[0-9]{10}$/', $usermobile)) {
                     alert_back('账号格式不正确，请输入正确的手机号码！');
                 }
-                if ($this->model->checkUsername("usermobile='$usermobile' OR username='$usermobile'")) {
+                if ($this->model->existsByMobile($usermobile)) {
                     alert_back('您输入的手机号码已被注册！');
                 }
             } else { // 账号注册
@@ -176,7 +176,7 @@ class MemberController extends Controller
                     alert_back('用户账号含有不允许的特殊字符！');
                 }
                 // 检查用户名
-                if ($this->model->checkUsername("username='$username' OR useremail='$username' OR usermobile='$username'")) {
+                if ($this->model->existsByAccount($username)) {
                     alert_back('您输入的账号已被注册！');
                 }
             }
@@ -259,6 +259,51 @@ class MemberController extends Controller
         }
     }
 
+    //找回密码
+    public function retrieve(){
+        if($_POST){
+            // 验证码验证
+            $checkcode = strtolower(post('checkcode', 'var'));
+            $email = post('email');
+            $retrieve_email = strtolower(trim($email));
+            $username = post('username');
+            $password = post('password');
+            if (! $checkcode) {
+                alert_back('验证码不能为空！');
+            }
+            $retrieve_checkcode = session('retrieve_checkcode');
+            $session_retrieve_email = session('retrieve_email');
+            if (! $retrieve_checkcode || ! $session_retrieve_email || $checkcode != $retrieve_checkcode || $retrieve_email != $session_retrieve_email) {
+                alert_back('验证码错误！');
+            }
+            $where = array('username' => $username);
+            $userInfo = object_to_array($this->model->checkUsername($where));
+            if(!$userInfo){
+                alert_back('该用户不存在！');
+            }
+            if(empty($userInfo['useremail']) || strcasecmp($userInfo['useremail'], $email) !== 0){
+                alert_back('与注册邮箱不匹配，请联系管理员！');
+            }
+            $data = [
+                'password' => md5(md5($password))
+            ];
+            $this->model->updatePassword($where,$data);
+            unset($_SESSION['retrieve_checkcode']);
+            unset($_SESSION['retrieve_email']);
+            alert_location('修改成功！', Url::home('member/login'), 1);
+        } else {
+            $content = parent::parser($this->htmldir . 'member/retrieve.html'); // 框架标签解析
+            $content = $this->parser->parserBefore($content); // CMS公共标签前置解析
+            $content = str_replace('{pboot:pagetitle}', $this->config('register_title') ?: '找回密码-{pboot:sitetitle}-{pboot:sitesubtitle}', $content);
+            $content = $this->parser->parserPositionLabel($content, 0, '找回密码', Url::home('member/retrieve')); // CMS当前位置标签解析
+            $content = $this->parser->parserSpecialPageSortLabel($content, - 3, '找回密码', Url::home('member/retrieve')); // 解析分类标签
+            $content = $this->parser->parserAfter($content); // CMS公共标签后置解析
+            echo $content;
+            exit();
+        }
+
+    }
+
     // 用户中心
     public function ucenter()
     {
@@ -290,15 +335,24 @@ class MemberController extends Controller
             $nickname = post('nickname');
             $useremail = post('useremail');
             $usermobile = post('usermobile');
+            $opassword = post('opassword');
             $password = post('password');
             $rpassword = post('rpassword');
             $headpic = str_replace(SITE_DIR, '', post('headpic'));
+            
+            if (! $opassword) {
+                alert_back('请输入当前密码！');
+            } else {
+                if (! $this->model->verifyMemberPassword(session('pboot_uid'), md5(md5($opassword)))) {
+                    alert_back('您输入的当前密码不正确！');
+                }
+            }
             
             if ($useremail) { // 邮箱校验
                 if (! preg_match('/^[\w]+@[\w\.]+\.[a-zA-Z]+$/', $useremail)) {
                     alert_back('邮箱格式不正确，请输入正确的邮箱账号！');
                 }
-                if ($this->model->checkUsername("(useremail='$useremail' OR username='$useremail') AND id<>'" . session('pboot_uid') . "'")) {
+                if ($this->model->existsByEmail($useremail, session('pboot_uid'))) {
                     alert_back('您输入的邮箱已被注册！');
                 }
             }
@@ -307,7 +361,7 @@ class MemberController extends Controller
                 if (! preg_match('/^1[0-9]{10}$/', $usermobile)) {
                     alert_back('手机格式不正确，请输入正确的手机号码！');
                 }
-                if ($this->model->checkUsername("(usermobile='$usermobile' OR username='$usermobile') AND id<>'" . session('pboot_uid') . "'")) {
+                if ($this->model->existsByMobile($usermobile, session('pboot_uid'))) {
                     alert_back('您输入的手机号码已被注册！');
                 }
             }
@@ -400,7 +454,7 @@ class MemberController extends Controller
             json(0, '请先登录！');
         }
         
-        $ext = $this->config('home_upload_ext') ?: "jpg,jpeg,png,gif,xls,xlsx,doc,docx,ppt,pptx,rar,zip,pdf,txt";
+        $ext = $this->config('home_upload_ext') ?: "jpg,jpeg,png,gif,webp,xls,xlsx,doc,docx,ppt,pptx,rar,zip,pdf,txt";
         $upload = upload('upload', $ext);
         if (is_array($upload)) {
             json(1, $upload);
@@ -412,10 +466,14 @@ class MemberController extends Controller
     // 发送邮件
     public function sendEmail()
     {
-        if ($this->config('register_check_code') != 2) {
-            json(0, '发送失败，后台配置非邮箱验证码模式！');
+        $retrieve = post('retrieve');
+        //$retrieve存在时为找回密码邮箱验证，不进行验证码模式判断
+        if(!$retrieve){
+            if ($this->config('register_check_code') != 2) {
+                json(0, '发送失败，后台配置非邮箱验证码模式！');
+            }
         }
-        
+
         if (time() - session('lastsend') < 10) {
             json(0, '您提交太频繁了，请稍后再试！');
         }
@@ -434,16 +492,21 @@ class MemberController extends Controller
         }
         
         // 检查邮箱注册
-        if ($this->model->checkUsername("useremail='$to' OR username='$to'")) {
-            alert_back('您输入的邮箱已被注册！');
+        if(!$retrieve) {
+            if ($this->model->existsByEmail($to)) {
+                alert_back('您输入的邮箱已被注册！');
+            }
         }
         
         $rs = false;
         if ($to) {
             session('lastsend', time()); // 记录最后提交时间
-            $mail_subject = "【PbootCMS】您有新的验证码信息，请注意查收！";
+            $mail_subject = "【" . CMSNAME . "】您有新的验证码信息，请注意查收！";
             $code = create_code(4);
-            session('checkcode', strtolower($code));
+            session($retrieve ? 'retrieve_checkcode' : 'checkcode', strtolower($code));
+            if ($retrieve) {
+                session('retrieve_email', strtolower(trim($to)));
+            }
             $mail_body = "您的验证码为：" . $code;
             $mail_body .= '<br>来自网站 ' . get_http_url() . ' （' . date('Y-m-d H:i:s') . '）';
             $rs = sendmail($this->config(), $to, $mail_subject, $mail_body);
@@ -469,7 +532,7 @@ class MemberController extends Controller
             if (! preg_match('/^[\w]+@[\w\.]+\.[a-zA-Z]+$/', $username)) {
                 $err = '账号格式不正确，请输入正确的邮箱账号！';
             }
-            if ($this->model->checkUsername("useremail='$username' OR username='$username'")) {
+            if ($this->model->existsByEmail($username)) {
                 $err = '您输入的邮箱已被注册！';
             } else {
                 $suc = '您输入的邮箱可以使用！';
@@ -478,7 +541,7 @@ class MemberController extends Controller
             if (! preg_match('/^1[0-9]{10}$/', $username)) {
                 $err = '账号格式不正确，请输入正确的手机号码！';
             }
-            if ($this->model->checkUsername("usermobile='$username' OR username='$username'")) {
+            if ($this->model->existsByMobile($username)) {
                 $err = '您输入的手机号码已被注册！';
             } else {
                 $suc = '您输入的手机号码可以使用！';
@@ -488,7 +551,7 @@ class MemberController extends Controller
                 $err = '用户账号含有不允许的特殊字符！';
             }
             // 检查用户名
-            if ($this->model->checkUsername("username='$username' OR useremail='$username' OR usermobile='$username'")) {
+            if ($this->model->existsByAccount($username)) {
                 $err = '您输入的账号已被注册！';
             } else {
                 $suc = '您输入的账号可以使用！';

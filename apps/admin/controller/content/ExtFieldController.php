@@ -44,7 +44,7 @@ class ExtFieldController extends Controller
         $this->display('content/extfield.html');
     }
 
-    // 扩展字段增加
+    ##全局配置-模型字段-扩展字段新增
     public function add()
     {
         if ($_POST) {
@@ -101,6 +101,10 @@ class ExtFieldController extends Controller
                     $mysql = 'TEXT';
                     $sqlite = 'TEXT(10000)';
                     break;
+                case '10': // 多图
+                    $mysql = 'varchar(1000)';
+                    $sqlite = 'TEXT(1000)';
+                    break;
                 default:
                     $mysql = 'varchar(200)';
                     $sqlite = 'TEXT(200)';
@@ -112,6 +116,8 @@ class ExtFieldController extends Controller
                     $result = $this->model->amd("ALTER TABLE ay_content_ext ADD COLUMN $name $sqlite NULL");
                 } else {
                     $result = $this->model->amd("ALTER TABLE ay_content_ext ADD $name $mysql NULL COMMENT '$description'");
+                    //添加索引
+                    $this->model->amd("create index ay_content_{$name}_index on ay_content_ext ($name)");
                 }
             } elseif ($this->model->checkExtField($name)) { // 字段存在且已使用则 报错
                 alert_back('字段已经存在，不能重复添加！');
@@ -145,6 +151,13 @@ class ExtFieldController extends Controller
             if (! ! $name) {
                 if (get_db_type() == 'mysql') {
                     $result = $this->model->amd("ALTER TABLE ay_content_ext DROP COLUMN $name");
+                    //删除索引(如果有)
+                    $contentExt = $this->model->checkExtIndex();
+                    foreach ($contentExt as $items){
+                        if($items[2] == "ay_content_{$name}_index"){
+                            $this->model->amd("ALTER table ay_content_ext drop key ay_content_{$name}_index");
+                        }
+                    }
                 }
             }
             $this->log('删除扩展字段' . $id . '成功！');

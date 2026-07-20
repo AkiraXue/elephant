@@ -6,6 +6,7 @@
  * @date 2018年03月23日
  * 自定义标签模型类
  */
+
 namespace app\admin\model\content;
 
 use core\basic\Model;
@@ -17,6 +18,12 @@ class LabelModel extends Model
     public function getList()
     {
         return parent::table('ay_label')->select();
+    }
+
+    // 标签名 => 类型（1文本…5编辑器…）
+    public function getTypeMap()
+    {
+        return parent::table('ay_label')->column('type', 'name');
     }
 
     // 检查自定义标签
@@ -56,9 +63,10 @@ class LabelModel extends Model
     // 修改自定义标签值
     public function modValue($name, $value)
     {
+        // 必须用数组更新：字符串 "value='$value'" 若含 ?，会被 autoTime 的 update_time=? 占位符误替换
         return parent::table('ay_label')->where("name='$name'")
             ->autoTime()
-            ->update("value='$value'");
+            ->update(['value' => $value]);
     }
 
     // 获取配置参数
@@ -66,5 +74,22 @@ class LabelModel extends Model
     {
         return parent::table('ay_label')->column('value', 'name');
     }
-}
 
+    //获取标签图片
+    public function getImage()
+    {
+
+        $resArr = parent::table('ay_label')->column('value');
+        $setArr = [];
+        foreach ($resArr as $key => $content) {
+            $pattern = '/src=&quot;\/(.*?)&quot;/';
+            preg_match_all($pattern, $content, $matches);
+            if (!empty($matches[1])) {
+                unset($resArr[$key]);
+                $setArr = $matches[1];
+            }
+        }
+        return array_merge($resArr, $setArr);
+
+    }
+}

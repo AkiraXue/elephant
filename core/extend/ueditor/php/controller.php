@@ -4,15 +4,32 @@
 // date_default_timezone_set("Asia/chongqing");
 // error_reporting(E_ERROR);
 // header("Content-Type: text/html; charset=utf-8");
-require '../../../init.php';
+require_once '../../../init.php';
 error_reporting(0);
 
-// 启动会话
-if (! session('sid')) {
-    die('权限不足');
+// 与 AdminController 一致的登录态验证
+function ueditor_check_auth()
+{
+    if (!session('sid')) {// 启动会话
+        return false;
+    }
+    $sid = encrypt_string(session_id() . session('id'));
+    if ($sid != session('sid')) {
+        session_destroy();
+        return false;
+    }
+    return true;
+}
+
+if (!ueditor_check_auth()) {
+    echo json_encode(array(
+        'state' => '权限不足，请重新登录'
+    ));
+    exit;
 }
 
 $CONFIG = json_decode(preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents("config.json")), true);
+$CONFIG = ueditor_merge_upload_config($CONFIG);
 $action = $_GET['action'];
 
 switch ($action) {

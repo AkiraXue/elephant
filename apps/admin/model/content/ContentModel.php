@@ -8,6 +8,7 @@
  */
 namespace app\admin\model\content;
 
+use core\basic\Db;
 use core\basic\Model;
 
 class ContentModel extends Model
@@ -16,7 +17,7 @@ class ContentModel extends Model
     protected $scodes = array();
 
     // 获取文章列表
-    public function getList($mcode)
+    public function getList($mcode, $where = array())
     {
         $field = array(
             'a.id',
@@ -61,6 +62,7 @@ class ContentModel extends Model
             ->where("b.mcode='$mcode'")
             ->where('d.type=2 OR d.type is null ')
             ->where("a.acode='" . session('acode') . "'")
+            ->where($where)
             ->join($join)
             ->order('a.sorting ASC,a.id DESC')
             ->page()
@@ -328,5 +330,30 @@ class ContentModel extends Model
             ->where("filename='$filename'")
             ->where($where)
             ->find();
+    }
+
+    // 检查自定义URL名称是否与已有内容ID冲突
+    public function checkFilenameConflictId($filename, $excludeId = 0)
+    {
+        if (! ctype_digit((string) $filename)) {
+            return false;
+        }
+        $where = $excludeId ? "id<>$excludeId" : '';
+        return parent::table('ay_content')->field('id')
+            ->where("id='$filename'")
+            ->where($where)
+            ->find();
+    }
+
+    public function getImage()
+    {
+        $list = parent::table('ay_content')->limit(2000)->column('ico,pics,content');
+        foreach ($list as &$value){
+            preg_match_all('/<img\s+.*?src=\s?[\'|\"](.*?(\.gif|\.jpg|\.jpeg|\.png|\.webp))[\'|\"].*?[\/]?>/i', decode_string($value['content']), $match);
+            $value['content_img'] = $match[1];
+            $value['pics'] = explode(',',$value['pics']);
+            unset($value['content']);
+        }
+        return $list;
     }
 }

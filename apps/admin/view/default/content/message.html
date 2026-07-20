@@ -7,13 +7,16 @@
 	    <li class="layui-this" lay-id="t1">留言列表</li>
 	  </ul>
 	  <div class="layui-tab-content">
+		  <form method="get" name="contentForm" >
 	  	   <div class="layui-tab-item layui-show">
 	  	   		{foreach $messages(key,value,num)}
 	  	   		<table class="layui-table table-two">
 	  	   			<thead>
 				  		<tr>
 					  		<th colspan="2">
-					  			在线留言-[num] 
+								<input type="checkbox" name="checkbox" title="选择" lay-skin="primary" class="check" value="[value->id]">
+								<input type="hidden" name="listall[]" value="[value->id]">
+								在线留言-[num]
 					  			<span style="float:right">
 						  			{if($value->status)}
 		                            <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/0}"><i class='fa fa-toggle-on' title="点击前端隐藏" style="vertical-align:middle"></i></a>
@@ -21,7 +24,7 @@
 		                            <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/1}"><i class='fa fa-toggle-off' title="点击前端显示" style="vertical-align:middle"></i></a>
 		                            {/if}
 						  			{fun=get_btn_mod($value->id,'id','回复')}
-						  			{fun=get_btn_del($value->id)} 
+						  			{fun=get_btn_del($value->id)}
 					  			</span>
 					  		</th>
 					  	</tr>
@@ -61,7 +64,9 @@
 	            {/foreach}
 	            
 	            {if(session('ucode')==10001 && [$messages])}
-			     	<a href="{url./admin/Message/clear}"  onclick='return confirm("您确定要清空么？")' class="layui-btn layui-btn-sm">清空记录</a>
+			     	<a href="{url./admin/Message/clear}"  onclick='return confirm("您确定要全部清空么？")' class="layui-btn layui-btn-sm">清空全部记录</a>
+			   		<a href="javascript:" onclick="selectall('checkbox')" class="layui-btn layui-btn-sm">全选</a>
+			   		<a href="javascript:" onclick="delselect(this);return false" class="layui-btn layui-btn-sm">清空选中记录</a>
 			    {/if}
 			    
 			    {if([$messages])}
@@ -70,6 +75,7 @@
 			    
 	            <div class="page">{$pagebar}</div>
 	  	   </div>
+		  </form>
 	  	 </div>
 	</div>
 	{/if}
@@ -115,5 +121,28 @@
 	{/if} 
 	
 </div>
+<script>
 
+	function selectall(objName){
+		var objNameList=document.getElementsByName(objName);
+		if(null!=objNameList){
+			for(var i=0;i<objNameList.length;i++){
+				objNameList[i].checked="checked";
+			}
+		}
+	}
+
+	function delselect(obj){
+		if(confirm("您确定要删除选中的内容么？")){
+			var check_list = [];
+			$('input[name="checkbox"]:checked').each(function (){
+				check_list.push($(this).val());
+			});
+			var url = $(obj).attr("href");
+			var str = check_list.join("and");
+			// $(obj).attr("href", url + "" + str);
+			location.href = "{url./admin/Message/clear}/ids/" + str;
+		}
+	}
+</script>
 {include file='common/foot.html'}

@@ -44,6 +44,12 @@ class ExtFieldModel extends Model
             ->select();
     }
 
+    // 扩展字段名 => 类型（8=编辑器）
+    public function getTypeMap()
+    {
+        return parent::table('ay_extfield')->column('type', 'name');
+    }
+
     // 获取扩展字段详情
     public function getExtField($id)
     {
@@ -83,5 +89,11 @@ class ExtFieldModel extends Model
         } else {
             return false;
         }
+    }
+
+    //查询content_ext的索引
+    public function checkExtIndex(): array
+    {
+        return parent::table('ay_content_ext')->checkIndexSql();
     }
 }

@@ -36,4 +36,9 @@ class CompanyModel extends Model
     {
         return parent::table('ay_company')->where("acode='" . session('acode') . "'")->update($data);
     }
+
+    public function getImage()
+    {
+        return parent::table('ay_company')->column('weixin');
+    }
 }

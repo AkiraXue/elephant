@@ -60,24 +60,19 @@
 	                        <td>[value->date]</td>
 	                        <td>
 	                        {if($value->status)}
-		                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/0}"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
+		                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/0}" class="switch"><i class='fa fa-toggle-on' title="点击关闭"></i></a>
 		                        {else}
-		                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/1}"><i class='fa fa-toggle-off' title="点击开启"></i></a>
+		                        <a href="{url./admin/'.C.'/mod/id/'.$value->id.'/field/status/value/1}" class="switch"><i class='fa fa-toggle-off' title="点击开启"></i></a>
 		                    {/if}
 		                    </td>
 		                    <td>[value->visits]</td>
 	                        <td>
 	                        	{if(!$value->outlink)}
-		                        	{php}
-		                        	 $value->urlname=$value->urlname?:'about';
-		                        	 $url_rule_sort_suffix = \core\basic\Config::get('url_rule_sort_suffix') ? true : false;
-		                        	{/php}
-		                        	
-		                           	{if($value->filename)}
-		                        	<a href="{fun=homeurl('/home/Index/'.$value->filename,$url_rule_sort_suffix)}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
-		                        	{else}
-		                        	<a href="{fun=homeurl('/home/Index/'.$value->urlname.[$url_break_char].$value->scode,$url_rule_sort_suffix)}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
-		                        	{/if}
+	                        		{php}
+			                        		$Parser=new app\home\controller\ParserController();
+			                        		$link=$Parser->parserLink(1,$value->urlname,'about',$value->scode,$value->filename,'','');
+			                       {/php}
+		                        	<a href="{php}echo $link{/php}" class="layui-btn layui-btn-xs layui-btn-primary"  target="_blank">查看</a>
 	                        	{/if}
 	                        	
 	                            {if(check_level('mod'))}
@@ -229,7 +224,7 @@
 			                			{php}
 			                				$name=@$value->name;
 			                			{/php}
-				                		<script type="text/plain" id="editor_[value->name]" name="[value->name]" style="width:100%;height:240px;">{fun=decode_string([$content->$name])}</script>
+				                		<script type="text/plain" id="editor_[value->name]" name="[value->name]" style="width:100%;height:240px;">{fun=ueditor_holder_html([$content->$name])}</script>
 				                		<script>
 											//初始化编辑器
 											$(document).ready(function (e) {
@@ -268,7 +263,7 @@
 			                <div class="layui-form-item">
 			                     <label class="layui-form-label">内容</label>
 			                     <div class="layui-input-block">
-			                     	<script type="text/plain" id="editor" name="content" style="width:100%;height:240px;">{fun=decode_string([$content->content])}</script>
+			                     	<script type="text/plain" id="editor" name="content" style="width:100%;height:240px;">{fun=ueditor_holder_html([$content->content])}</script>
 			                     </div>
 			                </div>
 			                
@@ -314,16 +309,22 @@
 								 </button>
 								 <div id="pics_box" class="pic addedit">
 								 	<dl></dl> <!-- 规避空内容拖动bug -->
-								 	{php}
-		                				if([$content->pics]){
+								 	 {php}
+									    if([$content->pics]){
 		                					$pics=explode(',',[$content->pics]);
 		                				}else{
 		                					$pics = array();
 		                				}
-		                				foreach ($pics as $value) {
-		                					echo "<dl><dt><img src='".SITE_DIR.$value."' data-url='".$value."'></dt><dd>删除</dd></dl></dl>";
+		                				if([$content->picstitle]){
+		                					$picstitle=explode(',',[$content->picstitle]);
+		                				}else{
+		                					$picstitle = array();
+		                				}
+		                				foreach ($pics as $key=>$value) {
+		                					//需要留一个空，不然被解析为标签了
+		                					echo "<dl><dt><img src='".SITE_DIR.$value."' data-url='".$value."'></dt><dd>删除</dd><dt><input type='text' value='".$picstitle[$key ]."' name='picstitle[]' style='width:95%' /></dt></dl>";
 	          							}
-          						    {/php}
+	         						 {/php}
 								 </div>
 			                </div>
 					    </div>
@@ -422,4 +423,7 @@ function saveOrder() {
 <script type="text/javascript" src="{APP_THEME_DIR}/js/jscolor.js"></script>
 
 {include file='common/ueditor.html'}
+{if([$mod])}
+{include file='common/ai_assistant.html'}
+{/if}
 {include file='common/foot.html'}

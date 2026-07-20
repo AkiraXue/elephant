@@ -77,4 +77,9 @@ class LinkModel extends Model
             ->where("acode='" . session('acode') . "'")
             ->update($data);
     }
+
+    public function getImage()
+    {
+        return parent::table('ay_link')->column('logo');
+    }
 }

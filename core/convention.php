@@ -29,7 +29,7 @@ return array(
     'tpl_html_cache_time' => 900,
     
     // URL允许的特殊字符，正则模型或直接写 ,如：\*
-    'url_allow_char' => '',
+    'url_allow_char' => '+',
     
     // 前台URL分隔符
     'url_break_char' => '_',
@@ -66,7 +66,7 @@ return array(
     // 配置会话缓存，files,memcache,redis
     'session' => array(
         'handler' => 'files',
-        'path' => 'tcp://127.0.0.1:11211;'
+        'path' => 'tcp://127.0.0.1:11211'
     ),
     
     // 缓存服务器配置,memcache,redis, server支持多节点server1,server2...
@@ -88,7 +88,7 @@ return array(
     
     // 上传配置
     'upload' => array(
-        'format' => 'jpg,jpeg,png,gif,xls,xlsx,doc,docx,ppt,pptx,rar,zip,pdf,txt,mp4,avi,flv,rmvb,mp3,otf,ttf',
+        'format' => 'jpg,jpeg,png,gif,webp,xls,xlsx,doc,docx,ppt,pptx,rar,zip,pdf,txt,mp4,avi,flv,rmvb,mp3,otf,ttf',
         'max_width' => '1920',
         'max_height' => ''
     ),

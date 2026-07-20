@@ -91,9 +91,13 @@ class MessageModel extends Model
         return $rs->count ?: 0;
     }
 
-    // 删除全部
-    public function clearMessage()
+    // 删除留言
+    public function clearMessage($where)
     {
-        return parent::table('ay_message')->delete();
+        if(!$where){
+            return parent::table('ay_message')->delete();
+        } else {
+            return parent::table('ay_message')->delete($where);
+        }
     }
 }

@@ -109,9 +109,8 @@ class Url
         if (! isset(self::$urls[md5($path . $suffix . $qs)])) {
             $url_rule_type = Config::get('url_rule_type') ?: 3;
             $url_rule_suffix = Config::get('url_rule_suffix') ?: '.html';
-            $url_rule_sort_suffix = Config::get('url_rule_sort_suffix');
             
-            if (($suffix === null && $url_rule_sort_suffix) || $suffix) {
+            if ($suffix === true) {
                 $suffix = $url_rule_suffix;
             } elseif ($suffix === false) {
                 $suffix = '';
@@ -119,16 +118,16 @@ class Url
                 $suffix = '/';
             }
             
-            $path = ltrim($path, '/');
-            
             // 去除默认模块及控制器部分
-            $path = str_replace('home/Index/', '', $path);
+            $path = trim($path, '/');
+            $path = str_replace('home/Index', '', $path);
+            $path = trim($path, '/');
             
-            if (! $path) {
+            if (! $path) { // 地址前缀
                 if ($url_rule_type == 1) {
-                    $link = SITE_INDEX_DIR . '/index.php';
+                    $link = SITE_INDEX_DIR . '/index.php/';
                 } elseif ($url_rule_type == 2) {
-                    $link = SITE_INDEX_DIR;
+                    $link = SITE_INDEX_DIR . '/';
                 } else {
                     $link = SITE_INDEX_DIR . '/?';
                 }

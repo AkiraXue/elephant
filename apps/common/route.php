@@ -13,7 +13,8 @@ return array(
         'admin/Database' => 'admin/system.Database',
         'admin/Config' => 'admin/system.Config',
         'admin/Upgrade' => 'admin/system.Upgrade',
-        
+        'admin/ImageExt' => 'admin/system.ImageExt',
+
         // 内容发布模块路由
         'admin/Site' => 'admin/content.Site',
         'admin/Company' => 'admin/content.Company',
@@ -28,6 +29,8 @@ return array(
         'admin/Link' => 'admin/content.Link',
         'admin/Form' => 'admin/content.Form',
         'admin/Tags' => 'admin/content.Tags',
+		'admin/DeleCache' => 'admin/content.DeleCache',
+        'admin/Ai' => 'admin/content.Ai',
         
         // 会员模块
         'admin/MemberGroup' => 'admin/member.MemberGroup',
@@ -37,8 +40,9 @@ return array(
         
         // 前台及接口路径统一小写URL
         // =======前台路由============
-        'home/sitemap.xml' => 'home/Sitemap/index', // 站点地图1
-        'home/sitemap' => 'home/Sitemap/index', // 站点地图2
+        'home/sitemap.xml' => 'home/Sitemap/index', // 站点地图XML格式
+        'home/sitemap.txt' => 'home/Sitemap/linkTxt', // 站点地图TXT格式
+        'home/sitemap' => 'home/Sitemap/index', // 站点地图默认XML
                                                 
         // =======接口路由============
         'api/list' => 'api/list/index/scode',

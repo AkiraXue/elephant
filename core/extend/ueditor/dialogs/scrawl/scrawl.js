@@ -633,17 +633,17 @@ function exec(scrawlObj) {
         if (!!base64) {
             var options = {
                 timeout:100000,
+                headers: editor.options.serverHeaders || {},
                 onsuccess:function (xhr) {
                     if (!scrawlObj.isCancelScrawl) {
                         var responseObj;
                         responseObj = eval("(" + xhr.responseText + ")");
-                        if (responseObj.state == "SUCCESS") {
+                        if (responseObj.state === "SUCCESS") {
                             var imgObj = {},
                                 url = editor.options.scrawlUrlPrefix + responseObj.url;
                             imgObj.src = url;
                             imgObj._src = url;
                             imgObj.alt = responseObj.original || '';
-                            imgObj.title = responseObj.title || '';
                             editor.execCommand("insertImage", imgObj);
                             dialog.close();
                         } else {

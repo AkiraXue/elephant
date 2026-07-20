@@ -160,18 +160,24 @@ class SingleController extends Controller
             $title = post('title');
             $author = post('author');
             $source = post('source');
-            $ico = post('ico');
-            $pics = post('pics');
-            $content = post('content');
+            $ico = normalize_upload_saved_path(post('ico'));
+            $pics = normalize_upload_saved_paths(post('pics'));
+            $content = normalize_richtext_for_storage(post('content'));
             $tags = str_replace('，', ',', post('tags'));
             $titlecolor = post('titlecolor');
             $subtitle = post('subtitle');
             $outlink = post('outlink');
             $date = post('date');
-            $enclosure = post('enclosure');
+            $enclosure = normalize_upload_saved_path(post('enclosure'));
             $keywords = post('keywords');
             $description = post('description');
             $status = post('status', 'int');
+            
+            // 获取多图标题
+            $picstitle = post('picstitle');
+            if ($picstitle) {
+                $picstitle = implode(',', $picstitle);
+            }
             
             if (! $title) {
                 alert_back('单页内容标题不能为空！');
@@ -180,6 +186,11 @@ class SingleController extends Controller
             // 自动提起前一百个字符为描述
             if (! $description && isset($_POST['content'])) {
                 $description = escape_string(clear_html_blank(substr_both(strip_tags($_POST['content']), 0, 150)));
+            }
+            
+            // 无缩略图时，自动提取文章第一张图为缩略图
+            if (! $ico && preg_match('/<img\s+.*?src=\s?[\'|\"](.*?(\.gif|\.jpg|\.jpeg|\.png|\.webp))[\'|\"].*?[\/]?>/i', decode_string($content), $srcs) && isset($srcs[1])) {
+                $ico = $srcs[1];
             }
             
             // 缩放缩略图
@@ -196,6 +207,7 @@ class SingleController extends Controller
                 'source' => $source,
                 'ico' => $ico,
                 'pics' => $pics,
+                'picstitle' => $picstitle,
                 'titlecolor' => $titlecolor,
                 'subtitle' => $subtitle,
                 'outlink' => $outlink,
@@ -217,7 +229,7 @@ class SingleController extends Controller
                         if (is_array($temp)) {
                             $data2[$key] = implode(',', $temp);
                         } else {
-                            $data2[$key] = str_replace("\r\n", '<br>', $temp);
+                            $data2[$key] = str_replace("\r\n", '<br>', normalize_richtext_for_storage($temp));
                         }
                     }
                 }
@@ -231,10 +243,22 @@ class SingleController extends Controller
                 }
                 
                 $this->log('修改单页内容' . $id . '成功！');
+                $msg = '修改成功！';
+                $syncHtmls = array($content);
+                if (isset($data2)) {
+                    foreach ($data2 as $__k => $__v) {
+                        if (strpos($__k, 'ext_') === 0 && is_string($__v)) {
+                            $syncHtmls[] = $__v;
+                        }
+                    }
+                }
+                if ($notice = iframe_whitelist_sync_notice_many($syncHtmls, '修改成功！')) {
+                    $msg = $notice;
+                }
                 if (! ! $backurl = get('backurl')) {
-                    success('修改成功！', base64_decode($backurl));
+                    success($msg, base64_decode($backurl));
                 } else {
-                    success('修改成功！', url('/admin/Single/index/mcode/1'));
+                    success($msg, url('/admin/Single/index/mcode/1'));
                 }
             } else {
                 location(- 1);
@@ -252,6 +276,8 @@ class SingleController extends Controller
                 error('传递的模型编码参数有误，请核对后重试！');
             }
             $this->assign('extfield', model('admin.content.ExtField')->getModelField($mcode));
+
+            $this->assign('ai_show_assistant', '1');
             
             $this->display('content/single.html');
         }

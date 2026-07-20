@@ -11,6 +11,7 @@ namespace app\api\controller;
 use core\basic\Controller;
 use app\api\model\CmsModel;
 use core\basic\Url;
+use app\home\controller\ParserController;
 
 class AboutController extends Controller
 {
@@ -40,17 +41,10 @@ class AboutController extends Controller
                 $data->likeslink = url('/home/Do/likes/id/' . $data->id, false);
                 $data->opposelink = url('/home/Do/oppose/id/' . $data->id, false);
                 
-                $urlname = $data->urlname ?: 'about';
-                $url_break_char = $this->config('url_break_char') ?: '_';
-                $url_rule_sort_suffix = $this->config('url_rule_sort_suffix') ? true : null;
-                
-                if ($data->sortfilename) {
-                    $data->contentlink = Url::home($data->sortfilename, $url_rule_sort_suffix);
-                } else {
-                    $data->contentlink = Url::home($urlname . $url_break_char . $data->scode, $url_rule_sort_suffix);
-                }
-                
-                $data->content = str_replace(STATIC_DIR . '/upload/', get_http_url() . STATIC_DIR . '/upload/', $data->content);
+                $Parser = new ParserController();
+                $data->contentlink = $Parser->parserLink(1, $data->urlname, 'about', $data->scode, $data->sortfilename);
+                $data->content = upload_output_html($data->content);
+                upload_output_content_assets($data);
                 json(1, $data);
             } else {
                 json(0, '分类编码为' . $scode . '的内容已经不存在了！');

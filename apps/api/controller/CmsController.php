@@ -11,6 +11,7 @@ namespace app\api\controller;
 use core\basic\Controller;
 use app\api\model\CmsModel;
 use core\basic\Url;
+use app\home\controller\ParserController;
 
 class CmsController extends Controller
 {
@@ -33,9 +34,9 @@ class CmsController extends Controller
         
         // 读取数据
         if (! $name = request('name', 'var')) {
-            $data = $this->model->getSiteAll($acode);
+            $data = upload_output_site_data($this->model->getSiteAll($acode));
         } else {
-            $data = $this->model->getSite($acode, $name);
+            $data = upload_output_site_data($this->model->getSite($acode, $name), $name);
         }
         
         // 输出数据
@@ -50,9 +51,9 @@ class CmsController extends Controller
         
         // 读取数据
         if (! $name = request('name', 'var')) {
-            $data = $this->model->getCompanyAll($acode);
+            $data = upload_output_company_data($this->model->getCompanyAll($acode));
         } else {
-            $data = $this->model->getCompany($acode, $name);
+            $data = upload_output_company_data($this->model->getCompany($acode, $name), $name);
         }
         
         // 输出数据
@@ -81,9 +82,9 @@ class CmsController extends Controller
         
         // 获取栏目树
         if (! $scode = request('scode', 'var')) {
-            $data = $this->model->getSorts($acode);
+            $data = upload_output_sorts_tree($this->model->getSorts($acode));
         } else { // 获取子类
-            $data = $this->model->getSortsSon($acode, $scode);
+            $data = upload_output_rows($this->model->getSortsSon($acode, $scode), array('ico', 'pic'));
         }
         // 输出数据
         json(1, $data);
@@ -110,7 +111,7 @@ class CmsController extends Controller
         $acode = request('acode', 'var') ?: $this->lg;
         
         if (! ! $scode = request('scode', 'var')) {
-            $data = $this->model->getSort($acode, $scode);
+            $data = upload_output_sort_assets($this->model->getSort($acode, $scode));
             json(1, $data);
         } else {
             json(0, '必须传递分类scode参数');
@@ -123,7 +124,7 @@ class CmsController extends Controller
         if (! ! $id = request('id', 'int')) {
             $acode = request('acode', 'var') ?: $this->lg;
             if (! ! $pics = $this->model->getContentPics($acode, $id)) {
-                $pics = explode(',', $pics);
+                $pics = array_values(array_filter(explode(',', upload_output_paths($pics)), 'strlen'));
             } else {
                 $pics = array();
             }
@@ -139,7 +140,7 @@ class CmsController extends Controller
         if (! ! $gid = request('gid', 'var')) {
             $acode = request('acode', 'var') ?: $this->lg;
             $num = request('num', 'int') ?: 10;
-            $data = $this->model->getSlides($acode, $gid, $num);
+            $data = upload_output_rows($this->model->getSlides($acode, $gid, $num), array('pic'));
             json(1, $data);
         } else {
             json(0, '必须传递幻灯片分组gid参数');
@@ -152,7 +153,7 @@ class CmsController extends Controller
         if (! ! $gid = request('gid', 'var')) {
             $acode = request('acode', 'var') ?: $this->lg;
             $num = request('num', 'int') ?: 20;
-            $data = $this->model->getLinks($acode, $gid, $num);
+            $data = upload_output_rows($this->model->getLinks($acode, $gid, $num), array('logo'));
             json(1, $data);
         } else {
             json(0, '必须传递友情链接分组gid参数');
@@ -170,7 +171,7 @@ class CmsController extends Controller
         
         // 获取主要参数
         $field = request('field');
-        if (! preg_match('/^[\w\|\s]+$/', $field)) {
+        if (! preg_match('/^[\w\|]+$/', $field)) {
             $field = '';
         }
         $keyword = request('keyword', 'vars');
@@ -185,7 +186,7 @@ class CmsController extends Controller
         $num = request('num', 'int') ?: $this->config('pagesize');
         $rorder = request('order');
         $tags = request('tags', 'vars');
-        $fuzzy = request('fuzzy', 'int') ?: true;
+        $fuzzy = parse_fuzzy_param(request('fuzzy', 'int', false, null, null), true);
         
         if (! preg_match('/^[\w\-,\s]+$/', $rorder)) {
             $order = 'a.istop DESC,a.isrecommend DESC,a.isheadline DESC,a.sorting ASC,a.date DESC,a.id DESC';
@@ -245,12 +246,8 @@ class CmsController extends Controller
         if ($tags) {
             $tags_arr = explode(',', $tags);
             foreach ($tags_arr as $value) {
-                if ($value) {
-                    if ($fuzzy) {
-                        $where2[] = "a.tags like '%" . escape_string($value) . "%'";
-                    } else {
-                        $where2[] = "a.tags='" . escape_string($value) . "'";
-                    }
+                if ($clause = build_tags_where($value, $fuzzy)) {
+                    $where2[] = $clause;
                 }
             }
         }
@@ -326,10 +323,15 @@ class CmsController extends Controller
         unset($where3['searchtpl']);
         unset($where3['p']);
         unset($where3['s']);
+        unset($where3['acode']);
+        unset($where3['num']);
+        unset($where3['order']);
+        unset($where3['tags']);
+        unset($where3['fuzzy']);
         
         // 读取数据
         $data = $this->model->getLists($acode, $scode, $num, $order, $where1, $where2, $where3, $fuzzy);
-        $url_break_char = $this->config('url_break_char') ?: '_';
+        $Parser = new ParserController();
         
         foreach ($data as $key => $value) {
             if ($value->outlink) {
@@ -339,19 +341,11 @@ class CmsController extends Controller
             }
             $data[$key]->likeslink = url('/home/Do/likes/id/' . $value->id, false);
             $data[$key]->opposelink = url('/home/Do/oppose/id/' . $value->id, false);
-            $data[$key]->content = str_replace(STATIC_DIR . '/upload/', get_http_url() . STATIC_DIR . '/upload/', $value->content);
+            $data[$key]->content = upload_output_html($value->content);
+            upload_output_content_assets($data[$key]);
             
             // 返回网页链接地址，便于AJAX调用内容
-            $urlname = $value->urlname ?: 'list';
-            if ($value->sortfilename && $value->filename) {
-                $data[$key]->contentlink = Url::home($value->sortfilename . '/' . $value->filename, true);
-            } elseif ($value->sortfilename) {
-                $data[$key]->contentlink = Url::home($value->sortfilename . '/' . $value->id, true);
-            } elseif ($value->filename) {
-                $data[$key]->contentlink = Url::home($urlname . $url_break_char . $value->scode . '/' . $value->filename, true);
-            } else {
-                $data[$key]->contentlink = Url::home($urlname . $url_break_char . $value->scode . '/' . $value->id, true);
-            }
+            $data[$key]->contentlink = $Parser->parserLink(2, $value->urlname, 'content', $value->scode, $value->sortfilename, $value->id, $value->filename);
         }
         
         // 输出数据
@@ -427,7 +421,7 @@ class CmsController extends Controller
             if ($this->model->addMessage($value->table_name, $data)) {
                 $this->log('API提交留言数据成功！');
                 if ($this->config('message_send_mail') && $this->config('message_send_to')) {
-                    $mail_subject = "【PbootCMS】您有新的" . $value->form_name . "信息，请注意查收！";
+                    $mail_subject = "【" . CMSNAME . "】您有新的" . $value->form_name . "信息，请注意查收！";
                     $mail_body .= '<br>来自网站' . get_http_url() . '（' . date('Y-m-d H:i:s') . '）';
                     sendmail($this->config(), $this->config('message_send_to'), $mail_subject, $mail_body);
                 }
@@ -509,7 +503,7 @@ class CmsController extends Controller
             if ($this->model->addForm($value->table_name, $data)) {
                 $this->log('API提交表单数据成功！');
                 if ($this->config('form_send_mail') && $this->config('message_send_to')) {
-                    $mail_subject = "【PbootCMS】您有新的" . $value->form_name . "信息，请注意查收！";
+                    $mail_subject = "【" . CMSNAME . "】您有新的" . $value->form_name . "信息，请注意查收！";
                     $mail_body .= '<br>来自网站' . get_http_url() . '（' . date('Y-m-d H:i:s') . '）';
                     sendmail($this->config(), $this->config('message_send_to'), $mail_subject, $mail_body);
                 }

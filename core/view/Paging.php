@@ -163,7 +163,7 @@ class Paging
                 $url_rule_type = Config::get('url_rule_type') ?: 3;
                 $url_rule_suffix = Config::get('url_rule_suffix') ?: '.html';
                 $url_break_char = Config::get('url_break_char') ?: '_';
-                $url_rule_sort_suffix = Config::get('url_rule_sort_suffix') ? $url_rule_suffix : '/';
+                $url_rule_sort_suffix = '/';
                 
                 if ($url_rule_type == 1 || $url_rule_type == 2) {
                     if (defined('CMS_PAGE_CUSTOM')) { // 去分页参数
@@ -237,11 +237,13 @@ class Paging
         // 对于路径保留变量给予去除
         $qs = $_SERVER["QUERY_STRING"];
         if ((M == 'home' && Config::get('url_rule_type') == 2) || (M != 'home' && Config::get('app_url_type') == 2)) {
-            $qs = preg_replace('/[&\?]?p=([\w\/\.]+)?/i', '', $qs);
-            $qs = preg_replace('/[&\?]?s=([\w\/\.]+)?/i', '', $qs);
+            $qs = preg_replace('/[&\?]?p=([\w\/\.]+)?&?/i', '', $qs);
+            $qs = preg_replace('/[&\?]?s=([\w\/\.]+)?&?/i', '', $qs);
         }
         $qs = preg_replace('/[&\?]?page=([0-9]+)?/i', '', $qs);
-        
+        if (C == 'Tag') {
+            $qs = false;
+        }
         if ($page == 1) {
             if ($qs) {
                 return $this->getPreUrl() . '?' . $qs;
